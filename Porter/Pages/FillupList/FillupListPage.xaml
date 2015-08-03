@@ -1,0 +1,60 @@
+﻿<Page
+    x:Class="Porter.Pages.FillupList.FillupListPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Porter.Pages.FillupList"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{StaticResource PageBackground}"
+    RequestedTheme="Dark">
+
+    <Page.Resources>
+        <DataTemplate x:Key="FillupViewTemplate">
+            <Border BorderThickness="1" CornerRadius="25" BorderBrush="White"
+                    Background="{Binding ItemBackground}"  Margin="5" Padding="5"
+                    HorizontalAlignment="Center">
+                <Grid HorizontalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="75" />
+                        <ColumnDefinition Width="75" />
+                        <ColumnDefinition Width="75" />
+                        <ColumnDefinition Width="75" />
+                        <ColumnDefinition Width="75" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding Path=Date}" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding Path=Efficiency}" Grid.Column="1" HorizontalAlignment="Center" />
+                    <TextBlock Text="{Binding Path=Gallons}" Grid.Column="2" HorizontalAlignment="Center" />
+                    <TextBlock Text="{Binding Path=Miles}" Grid.Column="3" HorizontalAlignment="Center" />
+                    <TextBlock Text="{Binding Path=Cost}" Grid.Column="4" HorizontalAlignment="Center" />
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid Background="{StaticResource PageBackground}">
+        <ListView x:Name="FillupList" Height="550"
+            ItemsSource="{Binding}"
+            ItemTemplate="{StaticResource FillupViewTemplate}"
+            HorizontalAlignment="Center" IsItemClickEnabled="True"
+                  ItemClick="OnItemClick" VerticalAlignment="Top"
+            />
+        <Grid VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Width="96" Height="96" HorizontalAlignment="Center" Click="OnClickEdit">
+                <Button.Background>
+                    <ImageBrush Stretch="None" ImageSource="ms-appx:///Assets/Icons/edit.png"/>
+                </Button.Background>
+            </Button>
+            <Button Grid.Column="1" Width="96" Height="96" HorizontalAlignment="Center" Click="OnClickDelete">
+                <Button.Background>
+                    <ImageBrush Stretch="None" ImageSource="ms-appx:///Assets/Icons/delete.png"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+
+    </Grid>
+</Page>
