@@ -48,18 +48,12 @@ namespace Porter.Pages.FillupList.EditFillup
                     db.Update(Current);
                 }
             }
-            ReturnToFillupList();
+            Frame.GoBack();
         }
 
         private void OnClickCancel(object sender, RoutedEventArgs e)
         {
-            ReturnToFillupList();
-        }
-
-        private void ReturnToFillupList()
-        {
             Frame.GoBack();
         }
-
     }
 }

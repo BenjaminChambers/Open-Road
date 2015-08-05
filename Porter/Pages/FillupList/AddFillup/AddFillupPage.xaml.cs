@@ -50,15 +50,10 @@ namespace Porter.Pages.FillupList.AddFillup
                 db.Insert(fill);
             }
 
-            ReturnToFillupList();
+            Frame.GoBack();
         }
 
         private void OnClickCancel(object sender, RoutedEventArgs e)
-        {
-            ReturnToFillupList();
-        }
-
-        private void ReturnToFillupList()
         {
             Frame.GoBack();
         }
