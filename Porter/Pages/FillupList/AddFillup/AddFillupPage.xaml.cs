@@ -1,8 +1,6 @@
 ﻿using Porter.Common;
-using Porter.Util.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -20,20 +18,19 @@ using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace Porter.Pages.FillupList
+namespace Porter.Pages.FillupList.AddFillup
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class FillupListPage : Page
+    public sealed partial class AddFillupPage : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        ObservableCollection<FillupView> Fillups = new ObservableCollection<FillupView>();
-        private FillupView FillupSelection = null;
+        Util.ViewModels.FillupForm FormData = new Util.ViewModels.FillupForm();
 
-        public FillupListPage()
+        public AddFillupPage()
         {
             this.InitializeComponent();
 
@@ -41,9 +38,32 @@ namespace Porter.Pages.FillupList
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
 
-            FillupList.DataContext = Fillups;
-            RefreshDisplay();
+            FillupForm.DataContext = FormData;
         }
+
+        private void OnClickSave(object sender, RoutedEventArgs e)
+        {
+            Util.Models.Fillup fill = new Util.Models.Fillup();
+            FormData.Update(fill);
+            using (var db = Util.Database.Connection())
+            {
+                db.Insert(fill);
+            }
+
+            ReturnToFillupList();
+        }
+
+        private void OnClickCancel(object sender, RoutedEventArgs e)
+        {
+            ReturnToFillupList();
+        }
+
+        private void ReturnToFillupList()
+        {
+            Frame.GoBack();
+        }
+
+
 
         /// <summary>
         /// Gets the <see cref="NavigationHelper"/> associated with this <see cref="Page"/>.
@@ -89,6 +109,8 @@ namespace Porter.Pages.FillupList
         {
         }
 
+        #region NavigationHelper registration
+
         /// <summary>
         /// The methods provided in this section are simply used to allow
         /// NavigationHelper to respond to the page's navigation methods.
@@ -112,64 +134,6 @@ namespace Porter.Pages.FillupList
             this.navigationHelper.OnNavigatedFrom(e);
         }
 
-        public void RefreshDisplay()
-        {
-            FillupSelection = null;
-
-            Fillups.Clear();
-
-            using (var db = Util.Database.Connection())
-            {
-                var data = db.Table<Util.Models.Fillup>().OrderByDescending(item => item.Odometer).ToList();
-
-                if (data.Count > 0)
-                {
-                    for (int i = 0; i < data.Count-1; i++)
-                        Fillups.Add(new FillupView(data[i], data[i + 1]));
-
-                    Fillups.Add(new FillupView(data[data.Count-1]));
-                }
-            }
-        }
-
-        private void OnClickDelete(object sender, RoutedEventArgs e)
-        {
-            if (FillupSelection != null)
-            {
-                using (var db = Util.Database.Connection())
-                {
-                    var toDelete = db.Get<Util.Models.Fillup>(FillupSelection.ID);
-
-                    db.Delete(toDelete);
-                }
-
-                RefreshDisplay();
-            }
-        }
-
-        private void OnItemClick(object sender, ItemClickEventArgs e)
-        {
-            if (FillupSelection != null)
-            {
-                FillupSelection.ItemBackground = new SolidColorBrush(Windows.UI.Colors.Transparent);
-            }
-
-            ((FillupView)e.ClickedItem).ItemBackground = (Brush)App.Current.Resources["ButtonBackground"];
-            FillupSelection = (FillupView)e.ClickedItem;
-        }
-
-        private void OnClickEdit(object sender, RoutedEventArgs e)
-        {
-            if (FillupSelection != null)
-            {
-                EditFillup.EditFillupPage.FillupID = FillupSelection.ID;
-                Frame.Navigate(typeof(EditFillup.EditFillupPage));
-            }
-        }
-
-        private void OnClickAdd(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(AddFillup.AddFillupPage));
-        }
+        #endregion
     }
 }

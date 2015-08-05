@@ -43,13 +43,19 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Width="96" Height="96" HorizontalAlignment="Center" Click="OnClickEdit">
+            <Button Grid.Column="0" Width="96" Height="96" HorizontalAlignment="Center" Click="OnClickAdd">
+                <Button.Background>
+                    <ImageBrush Stretch="None" ImageSource="ms-appx:///Assets/Icons/add.png"/>
+                </Button.Background>
+            </Button>
+            <Button Grid.Column="1" Width="96" Height="96" HorizontalAlignment="Center" Click="OnClickEdit">
                 <Button.Background>
                     <ImageBrush Stretch="None" ImageSource="ms-appx:///Assets/Icons/edit.png"/>
                 </Button.Background>
             </Button>
-            <Button Grid.Column="1" Width="96" Height="96" HorizontalAlignment="Center" Click="OnClickDelete">
+            <Button Grid.Column="2" Width="96" Height="96" HorizontalAlignment="Center" Click="OnClickDelete">
                 <Button.Background>
                     <ImageBrush Stretch="None" ImageSource="ms-appx:///Assets/Icons/delete.png"/>
                 </Button.Background>
