@@ -41,12 +41,6 @@ namespace Porter.Pages.Main
         {
             FormData = new Util.ViewModels.FillupForm();
             QuickFillupForm.DataContext = FormData;
-
-            var menu = (MenuFlyoutItem)FindName("EfficiencyPreferenceToggle");
-            if (Util.Settings.PreferGPM)
-                menu.Text = "Switch to Miles / Gal";
-            else
-                menu.Text = "Switch to Gal / 100 mi";
         }
 
         private void SetupAnimations()
@@ -65,28 +59,19 @@ namespace Porter.Pages.Main
             Util.LiveTile.Render();
         }
 
-        private void OnViewMaintenance(object sender, RoutedEventArgs e)
-        {
-        }
-
         private void OnTapHamburger(object sender, TappedRoutedEventArgs e)
         {
             FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
         }
 
-        private void EfficiencyToggle(object sender, RoutedEventArgs e)
+        private void OnClickCustomize(object sender, RoutedEventArgs e)
         {
-            if (Util.Settings.PreferGPM)
-            {
-                Util.Settings.PreferGPM = false;
-                ((MenuFlyoutItem)sender).Text = "Switch to Gal / 100 mi";
-            } else
-            {
-                Util.Settings.PreferGPM = true;
-                ((MenuFlyoutItem)sender).Text = "Switch to Miles / Gal";
-            }
+            Frame.Navigate(typeof(Customization.CustomizationPage));
+        }
 
-            RefreshDisplay();
+        private void OnClickPreferences(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Settings.PreferencesPage));
         }
     }
 }

@@ -30,23 +30,9 @@
                    Width="40" Height="40" Tapped="OnTapHamburger">
                 <FlyoutBase.AttachedFlyout>
                     <MenuFlyout>
-                        <MenuFlyout.MenuFlyoutPresenterStyle>
-                            <Style TargetType="MenuFlyoutPresenter">
-                                <Setter Property="FontSize" Value="12" />
-                                <Setter Property="Margin" Value="0" />
-                                <Setter Property="Padding" Value="0" />
-                                <Setter Property="Background" Value="#FF404040" />
-                                <Setter Property="Foreground" Value="White" />
-                            </Style>
-                        </MenuFlyout.MenuFlyoutPresenterStyle>
                         <MenuFlyoutItem Text="View Fill-ups" Click="OnViewFillups" />
-                        <MenuFlyoutItem Text="Show Fill-up Stats" HorizontalAlignment="Center" />
-                        <MenuFlyoutItem x:Name="MenuLatestFillupToggle" Text="Hide Latest Fill-up" Click="FillupToggle" />
-                        <MenuFlyoutItem x:Name="MenuMonthlyFillupToggle" Text="Hide Monthly Gas Usage" Click="FillupToggle" />
-                        <MenuFlyoutItem x:Name="MenuAnnualFillupToggle" Text="Hide Annual Gas Usage" Click="FillupToggle" />
-                        <MenuFlyoutItem x:Name="MenuAllFillupToggle" Text="Hide Total Gas Usage" Click="FillupToggle" />
-                        <MenuFlyoutItem Text="Preferences" HorizontalAlignment="Center" />
-                        <MenuFlyoutItem x:Name="EfficiencyPreferenceToggle" Text="Switch to Gal/100mi" Click="EfficiencyToggle" />
+                        <MenuFlyoutItem Text="Customize Main Page" Click="OnClickCustomize" />
+                        <MenuFlyoutItem Text="Preferences" Click="OnClickPreferences" />
                     </MenuFlyout>
                 </FlyoutBase.AttachedFlyout>
             </Image>

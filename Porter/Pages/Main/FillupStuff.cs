@@ -38,48 +38,13 @@ namespace Porter.Pages.Main
             fillupStats.Clear();
             FillupStatListView.Items.Clear();
 
-            fillupStats.Add(new Util.ViewModels.FillupStatsView(0, sLatest));
-            fillupStats.Add(new Util.ViewModels.FillupStatsView(31, sMonthly));
-            fillupStats.Add(new Util.ViewModels.FillupStatsView(366, sAnnual));
-            fillupStats.Add(new Util.ViewModels.FillupStatsView(-1, sTotal));
+            if (!Util.Settings.HideFillupRecent) fillupStats.Add(new Util.ViewModels.FillupStatsView(0, sLatest));
+            if (!Util.Settings.HideFillupMonthly) fillupStats.Add(new Util.ViewModels.FillupStatsView(31, sMonthly));
+            if (!Util.Settings.HideFillupAnnual) fillupStats.Add(new Util.ViewModels.FillupStatsView(366, sAnnual));
+            if (!Util.Settings.HideFillupTotal) fillupStats.Add(new Util.ViewModels.FillupStatsView(-1, sTotal));
 
             foreach (Util.ViewModels.FillupStatsView view in fillupStats)
                 FillupStatListView.Items.Add(view);
-        }
-
-        private void FillupToggle(object sender, RoutedEventArgs e)
-        {
-            var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-            var menu = (MenuFlyoutItem)sender;
-            string str;
-            switch (menu.Name)
-            {
-                case "MenuLatestFillupToggle": str = sLatest; break;
-                case "MenuMonthlyFillupToggle": str = sMonthly; break;
-                case "MenuAnnualFillupToggle": str = sAnnual; break;
-                case "MenuAllFillupToggle": str = sTotal; break;
-                default:
-                    str = "";
-                    break;
-            }
-
-            var view = fillupStats.Single(item => item.Name == str);
-
-            switch (view.Visibility)
-            {
-                case Visibility.Visible:
-                    view.Visibility = Visibility.Collapsed;
-                    menu.Text = "Show " + str;
-                    localSettings.Values["Toggle " + str] = false;
-                    break;
-                case Visibility.Collapsed:
-                    view.Visibility = Visibility.Visible;
-                    menu.Text = "Hide " + str;
-                    localSettings.Values["Toggle " + str] = true;
-                    break;
-            }
-
-            RefreshDisplay();
         }
     }
 }

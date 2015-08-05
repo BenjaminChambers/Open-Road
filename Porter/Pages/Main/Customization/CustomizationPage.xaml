@@ -1,0 +1,19 @@
+﻿<Page
+    x:Class="Porter.Pages.Main.Customization.CustomizationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Porter.Pages.Main.Customization"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{StaticResource PageBackground}"
+    RequestedTheme="Dark">
+
+    <StackPanel x:Name="Root">
+        <TextBlock Text="Hide fill-up stats for..." Style="{StaticResource SubheaderTextBlockStyle}" />
+        <ToggleSwitch IsOn="{Binding Path=HideFillupRecent, Mode=TwoWay}" OnContent="Most Recent" OffContent="Most Recent" Toggled="OnToggleFillupDisplay" />
+        <ToggleSwitch IsOn="{Binding Path=HideFillupMonthly, Mode=TwoWay}" OnContent="Last Month" OffContent="Last Month" />
+        <ToggleSwitch IsOn="{Binding Path=HideFillupAnnual, Mode=TwoWay}" OnContent="Last Year" OffContent="Last Year" />
+        <ToggleSwitch IsOn="{Binding Path=HideFillupTotal, Mode=TwoWay}" OnContent="All Time" OffContent="All Time" />
+    </StackPanel>
+</Page>

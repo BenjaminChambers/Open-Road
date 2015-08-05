@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="Porter.Pages.Settings.PreferencesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Porter.Pages.Settings"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{StaticResource PageBackground}"
+    RequestedTheme="Dark">
+
+    <Grid x:Name="LayoutRoot">
+        <StackPanel>
+            <Button Click="OnToggleEfficiency" HorizontalAlignment="Stretch" >
+                <Border BorderThickness="0" CornerRadius="25" Width="300"
+                                BorderBrush="White" Background="{StaticResource ButtonBackground}">
+                    <TextBlock x:Name="PreferGPMBox" Text="Prefer GPM"
+                               Margin="5" Foreground="White"
+                               SelectionHighlightColor="#00CC9229" />
+                </Border>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>
