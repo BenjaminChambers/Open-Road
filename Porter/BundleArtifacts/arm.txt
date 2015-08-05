@@ -1,3 +1,3 @@
-MainPackage=C:\Users\benja\Documents\Visual Studio 2015\Projects\Cars\Porter\Porter\bin\ARM\Release\Porter_1.1.0.6_ARM.appx
-SymbolPackage=C:\Users\benja\Documents\Visual Studio 2015\Projects\Cars\Porter\Porter\AppPackages\Porter_1.1.0.6_Test\Porter_1.1.0.6_ARM.appxsym
-ResourcePack=C:\Users\benja\Documents\Visual Studio 2015\Projects\Cars\Porter\Porter\bin\ARM\Release\Porter_1.1.0.6_scale-100.appx
+MainPackage=C:\Users\benja\Documents\GitHubVisualStudio\Open-Road\Porter\bin\ARM\Release\Porter_2015.805.0.3_ARM.appx
+SymbolPackage=C:\Users\benja\Documents\GitHubVisualStudio\Open-Road\Porter\AppPackages\Porter_2015.805.0.3_Test\Porter_2015.805.0.3_ARM.appxsym
+ResourcePack=C:\Users\benja\Documents\GitHubVisualStudio\Open-Road\Porter\bin\ARM\Release\Porter_2015.805.0.3_scale-100.appx

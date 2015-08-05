@@ -165,11 +165,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <AppxManifest Include="Package.appxmanifest">
-      <SubType>Designer</SubType>
-    </AppxManifest>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Assets\Icons\add.png" />
     <Content Include="Assets\Icons\back.png" />
     <Content Include="Assets\Icons\cancel.png" />
@@ -184,8 +179,11 @@
     <Content Include="Assets\StoreLogo.scale-240.png" />
     <Content Include="Assets\WideLogo.scale-100.png" />
     <Content Include="Assets\WideLogo.scale-240.png" />
-    <Content Include="ToDo.txt" />
     <None Include="Package.StoreAssociation.xml" />
+    <Content Include="ToDo.txt" />
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
     <None Include="Sample Data\porter.sqlite" />
   </ItemGroup>
   <ItemGroup>
