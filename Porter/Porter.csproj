@@ -136,6 +136,7 @@
     <Compile Include="Pages\FillupList\FillupListPage.xaml.cs">
       <DependentUpon>FillupListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Main\Customization\BoolNegator.cs" />
     <Compile Include="Pages\Main\Customization\CustomizationPage.xaml.cs">
       <DependentUpon>CustomizationPage.xaml</DependentUpon>
     </Compile>
