@@ -49,9 +49,9 @@
                     <StackPanel HorizontalAlignment="Center">
                         <Grid x:Name="QuickFillupForm">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
                             </Grid.ColumnDefinitions>
                             <StackPanel Orientation="Vertical" Grid.Column="0">
                                 <TextBlock Text="Gallons" />
@@ -66,12 +66,7 @@
                                 <TextBox x:Name="QuickMiles" Margin="5" InputScope="Number" Text="{Binding Path=Odometer, Mode=TwoWay}"/>
                             </StackPanel>
                         </Grid>
-                        <Button Click="OnAddFillup" HorizontalAlignment="Stretch" >
-                            <Border BorderThickness="0" CornerRadius="25" Width="300"
-                                BorderBrush="White" Background="{StaticResource ButtonBackground}">
-                                <TextBlock Text="Add Fill-up" Margin="5" Foreground="White" SelectionHighlightColor="#00CC9229" />
-                            </Border>
-                        </Button>
+                        <Button Tag="Add Fill-up" Click="OnAddFillup" Template="{StaticResource PorterButton}" HorizontalAlignment="Stretch" />
                     </StackPanel>
                 </Border>
                 <ListView x:Name="FillupStatListView" 

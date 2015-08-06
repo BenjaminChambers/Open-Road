@@ -11,14 +11,7 @@
 
     <Grid x:Name="LayoutRoot">
         <StackPanel>
-            <Button Click="OnToggleEfficiency" HorizontalAlignment="Stretch" >
-                <Border BorderThickness="0" CornerRadius="25" Width="300"
-                                BorderBrush="White" Background="{StaticResource ButtonBackground}">
-                    <TextBlock x:Name="PreferGPMBox" Text="Prefer GPM"
-                               Margin="5" Foreground="White"
-                               SelectionHighlightColor="#00CC9229" />
-                </Border>
-            </Button>
+            <Button x:Name="PreferGPMBox" Click="OnToggleEfficiency" Template="{StaticResource PorterButton}" Tag="Prefer GPM" Width="300" HorizontalAlignment="Center" />
         </StackPanel>
     </Grid>
 </Page>

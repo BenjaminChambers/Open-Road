@@ -21,6 +21,13 @@
             <GradientStop Color="Black"/>
             <GradientStop Color="Teal" Offset="1"/>
         </LinearGradientBrush>
+
+        <ControlTemplate TargetType="Button" x:Name="PorterButton">
+            <Border BorderThickness="0" CornerRadius="25" Padding="0" Margin="0" Width="{TemplateBinding Width}" VerticalAlignment="Center" Background="{StaticResource ButtonBackground}">
+                <TextBlock Text="{TemplateBinding Tag}" Foreground="White" SelectionHighlightColor="Transparent" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+        </ControlTemplate>
+
     </Application.Resources>
-    
+
 </Application>

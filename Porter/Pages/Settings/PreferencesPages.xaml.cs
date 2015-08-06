@@ -113,9 +113,9 @@ namespace Porter.Pages.Settings
         private void SetEfficiency()
         {
             if (Util.Settings.PreferGPM)
-                PreferGPMBox.Text = "Gallons per 100mi";
+                PreferGPMBox.Tag = "Gallons per 100mi";
             else
-                PreferGPMBox.Text = "Miles per Gallon";
+                PreferGPMBox.Tag = "Miles per Gallon";
         }
 
         private void OnToggleEfficiency(object sender, RoutedEventArgs e)
