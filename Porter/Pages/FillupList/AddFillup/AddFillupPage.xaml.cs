@@ -47,11 +47,6 @@ namespace Porter.Pages.FillupList.AddFillup
             Frame.GoBack();
         }
 
-        private void OnClickCancel(object sender, RoutedEventArgs e)
-        {
-            Frame.GoBack();
-        }
-
 
 
         // Navigation stuff

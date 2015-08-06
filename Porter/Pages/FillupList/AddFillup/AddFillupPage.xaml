@@ -37,22 +37,7 @@
                 <TextBox Grid.Column="1" Grid.Row="1" InputScope="Number" Text="{Binding Path=Volume, Mode=TwoWay}" />
                 <TextBox Grid.Column="1" Grid.Row="2" InputScope="Number" Text="{Binding Path=Cost, Mode=TwoWay}" />
             </Grid>
+            <Button Click="OnClickSave" Tag="Save Fill-up" Width="300" Template="{StaticResource PorterButton}" HorizontalAlignment="Center" /> 
         </StackPanel>
-        <Grid VerticalAlignment="Bottom" Margin="0,50,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Width="96" Height="96" HorizontalAlignment="Center" Click="OnClickSave">
-                <Button.Background>
-                    <ImageBrush Stretch="None" ImageSource="ms-appx:///Assets/Icons/save.png"/>
-                </Button.Background>
-            </Button>
-            <Button Grid.Column="1" Width="96" Height="96" HorizontalAlignment="Center" Click="OnClickCancel">
-                <Button.Background>
-                    <ImageBrush Stretch="None" ImageSource="ms-appx:///Assets/Icons/cancel.png"/>
-                </Button.Background>
-            </Button>
-        </Grid>
     </Grid>
 </Page>
