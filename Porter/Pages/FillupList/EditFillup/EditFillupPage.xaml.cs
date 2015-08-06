@@ -55,5 +55,11 @@ namespace Porter.Pages.FillupList.EditFillup
         {
             Frame.GoBack();
         }
+
+        private void OnRevert(object sender, RoutedEventArgs e)
+        {
+            FormData = new Util.ViewModels.FillupForm(Current);
+            FillupForm.DataContext = FormData;
+        }
     }
 }

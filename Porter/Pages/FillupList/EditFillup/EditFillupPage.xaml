@@ -36,6 +36,7 @@
                 <TextBox Grid.Column="1" Grid.Row="1" InputScope="Number" Text="{Binding Path=Volume, Mode=TwoWay}" />
                 <TextBox Grid.Column="1" Grid.Row="2" InputScope="Number" Text="{Binding Path=Cost, Mode=TwoWay}" />
             </Grid>
+            <Button Click="OnRevert" Template="{StaticResource PorterButton}" Tag="Revert" HorizontalAlignment="Center" Width="300" />
         </StackPanel>
         <Grid VerticalAlignment="Bottom" Margin="0,50,0,0">
             <Grid.ColumnDefinitions>
