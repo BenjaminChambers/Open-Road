@@ -40,24 +40,6 @@ namespace Porter.Pages.FillupList.EditFillup
             FillupForm.DataContext = FormData;
         }
 
-        private void OnClickSave(object sender, RoutedEventArgs e)
-        {
-            if (FormData != null)
-            {
-                FormData.Update(Current);
-                using (var db = Util.Database.Connection())
-                {
-                    db.Update(Current);
-                }
-            }
-            Frame.GoBack();
-        }
-
-        private void OnClickCancel(object sender, RoutedEventArgs e)
-        {
-            Frame.GoBack();
-        }
-
         private void OnRevert(object sender, RoutedEventArgs e)
         {
             FormData = new Util.ViewModels.FillupForm(Current);
@@ -79,6 +61,20 @@ namespace Porter.Pages.FillupList.EditFillup
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e) { }
         private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e) { }
         protected override void OnNavigatedTo(NavigationEventArgs e) { this.navigationHelper.OnNavigatedTo(e); }
-        protected override void OnNavigatedFrom(NavigationEventArgs e) { this.navigationHelper.OnNavigatedFrom(e); }
+
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            if (FormData != null)
+            {
+                FormData.Update(Current);
+                using (var db = Util.Database.Connection())
+                {
+                    db.Update(Current);
+                }
+            }
+
+            this.navigationHelper.OnNavigatedFrom(e);
+        }
     }
 }

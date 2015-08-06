@@ -38,21 +38,5 @@
             </Grid>
             <Button Click="OnRevert" Template="{StaticResource PorterButton}" Tag="Revert" HorizontalAlignment="Center" Width="300" />
         </StackPanel>
-        <Grid VerticalAlignment="Bottom" Margin="0,50,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Width="96" Height="96" HorizontalAlignment="Center" Click="OnClickSave">
-                <Button.Background>
-                    <ImageBrush Stretch="None" ImageSource="ms-appx:///Assets/Icons/save.png"/>
-                </Button.Background>
-            </Button>
-            <Button Grid.Column="1" Width="96" Height="96" HorizontalAlignment="Center" Click="OnClickCancel">
-                <Button.Background>
-                    <ImageBrush Stretch="None" ImageSource="ms-appx:///Assets/Icons/cancel.png"/>
-                </Button.Background>
-            </Button>
-        </Grid>
     </Grid>
 </Page>

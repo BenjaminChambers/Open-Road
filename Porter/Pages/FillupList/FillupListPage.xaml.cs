@@ -114,8 +114,12 @@ namespace Porter.Pages.FillupList
         public ObservableDictionary DefaultViewModel { get { return this.defaultViewModel; } }
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e) { }
         private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e) { }
-        protected override void OnNavigatedTo(NavigationEventArgs e) { this.navigationHelper.OnNavigatedTo(e); }
         protected override void OnNavigatedFrom(NavigationEventArgs e) { this.navigationHelper.OnNavigatedFrom(e); }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            RefreshDisplay();
+            this.navigationHelper.OnNavigatedTo(e);
+        }
     }
 }
