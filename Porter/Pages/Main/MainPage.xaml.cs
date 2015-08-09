@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using Windows.Data.Xml.Dom;
+using Porter.Common;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -34,7 +35,7 @@ namespace Porter.Pages.Main
             SetupAnimations();
             SetupFillupStats();
 
-            RefreshDisplay();
+            InitializeNavigation();
         }
 
         private void SetupForms()
@@ -73,5 +74,28 @@ namespace Porter.Pages.Main
         {
             Frame.Navigate(typeof(Settings.PreferencesPage));
         }
+
+
+        // Navigation
+        protected override void OnNavigatedTo(NavigationEventArgs e) {
+            RefreshDisplay();
+            this.navigationHelper.OnNavigatedTo(e);
+        }
+        protected override void OnNavigatedFrom(NavigationEventArgs e) { this.navigationHelper.OnNavigatedFrom(e); }
+
+
+        private void InitializeNavigation()
+        {
+            this.navigationHelper = new NavigationHelper(this);
+            this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
+            this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+        }
+        private NavigationHelper navigationHelper;
+        private ObservableDictionary defaultViewModel = new ObservableDictionary();
+        public NavigationHelper NavigationHelper { get { return this.navigationHelper; } }
+        public ObservableDictionary DefaultViewModel { get { return this.defaultViewModel; } }
+        private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e) { }
+        private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e) { }
+
     }
 }
