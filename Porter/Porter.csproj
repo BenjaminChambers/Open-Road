@@ -173,6 +173,7 @@
     <Content Include="Assets\Icons\edit.png" />
     <Content Include="Assets\Icons\hamburger.png" />
     <Content Include="Assets\Icons\save.png" />
+    <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\Logo.scale-240.png" />
     <Content Include="Assets\SmallLogo.scale-240.png" />
     <Content Include="Assets\SplashScreen.scale-240.png" />
