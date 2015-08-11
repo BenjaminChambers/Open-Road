@@ -34,20 +34,19 @@ namespace Porter.Pages.FillupList.AddFillup
             MapControl.ZoomLevel = 15;
             MapControl.Style = Windows.UI.Xaml.Controls.Maps.MapStyle.Road;
 
-            PushPin.Location = pos.Coordinate.Point;
+            FormData.Location = PushPin.Location = pos.Coordinate.Point;
             MapControl.MapElements.Add(PushPin);
         }
 
         private void OnMapMoved(MapControl sender, object args)
         {
-            PushPin.Location = MapControl.Center;
+            FormData.Location = PushPin.Location = MapControl.Center;
         }
 
         private void OnClickSave(object sender, RoutedEventArgs e)
         {
             Util.Models.Fillup fill = new Util.Models.Fillup();
             FormData.Update(fill);
-            fill.SetLocation(PushPin.Location);
 
             using (var db = Util.Database.Connection())
             {

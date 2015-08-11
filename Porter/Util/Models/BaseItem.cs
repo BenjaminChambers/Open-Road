@@ -21,14 +21,27 @@ namespace Porter.Util.Models
         public async void SetLocationToCurrent()
         {
             Geoposition pos = await new Geolocator().GetGeopositionAsync();
-            SetLocation(pos.Coordinate.Point);
+            Location = pos.Coordinate.Point;
         }
         
-        public void SetLocation(Geopoint pos)
+        [SQLite.Ignore]
+        public Geopoint Location
         {
-            Altitude = pos.Position.Altitude;
-            Latitude = pos.Position.Latitude;
-            Longitude = pos.Position.Longitude;
+            get
+            {
+                BasicGeoposition pos = new BasicGeoposition();
+                pos.Altitude = Altitude;
+                pos.Latitude = Latitude;
+                pos.Longitude = Longitude;
+
+                return new Geopoint(pos);
+            }
+            set
+            {
+                Altitude = value.Position.Altitude;
+                Latitude = value.Position.Latitude;
+                Longitude = value.Position.Longitude;
+            }
         }
     }
 }

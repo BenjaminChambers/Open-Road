@@ -2,6 +2,7 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml.Controls.Maps;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -15,23 +16,38 @@ namespace Porter.Pages.FillupList.EditFillup
         public static int FillupID = -1;
         Util.ViewModels.FillupForm FormData = null;
         Util.Models.Fillup Current = null;
+        MapIcon PushPin = new MapIcon();
 
         public EditFillupPage()
         {
             InitializeComponent();
             InitializeNavigation();
+        }
 
+        private void InitializeData()
+        {
             using (var db = Util.Database.Connection())
             {
                 Current = db.Get<Util.Models.Fillup>(FillupID);
-                FormData = new Util.ViewModels.FillupForm(Current);
             }
+            FormData = new Util.ViewModels.FillupForm(Current);
             FillupForm.DataContext = FormData;
+
+            MapControl.Center = PushPin.Location = FormData.Location;
+            MapControl.ZoomLevel = 15;
+            MapControl.MapElements.Add(PushPin);
+        }
+
+        private void OnMapMoved(MapControl sender, object args)
+        {
+            FormData.Location = PushPin.Location = MapControl.Center;
         }
 
         private void OnRevert(object sender, RoutedEventArgs e)
         {
             FormData = new Util.ViewModels.FillupForm(Current);
+            MapControl.Center = PushPin.Location = Current.Location;
+            MapControl.ZoomLevel = 15;
             FillupForm.DataContext = FormData;
         }
 
@@ -49,7 +65,14 @@ namespace Porter.Pages.FillupList.EditFillup
         public ObservableDictionary DefaultViewModel { get { return this.defaultViewModel; } }
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e) { }
         private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e) { }
-        protected override void OnNavigatedTo(NavigationEventArgs e) { this.navigationHelper.OnNavigatedTo(e); }
+
+
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            InitializeData();
+            this.navigationHelper.OnNavigatedTo(e);
+        }
 
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
