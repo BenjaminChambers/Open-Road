@@ -1,4 +1,5 @@
 ﻿using System;
+using Windows.Devices.Geolocation;
 
 namespace Porter.Util.Models
 {
@@ -6,7 +7,7 @@ namespace Porter.Util.Models
     {
         [SQLite.AutoIncrement, SQLite.PrimaryKey]
         public int ID { get; set; }
-        
+
         public DateTime Date { get; set; }
         public int Odometer { get; set; }
         public double Cost { get; set; }
@@ -16,5 +17,15 @@ namespace Porter.Util.Models
         public double Longitude { get; set; }
 
         public int CarID { get; set; }
+
+        public async void SetLocationToCurrent()
+        {
+            Geoposition pos = await new Geolocator().GetGeopositionAsync();
+
+            Altitude = pos.Coordinate.Point.Position.Altitude;
+            Latitude = pos.Coordinate.Point.Position.Latitude;
+            Longitude = pos.Coordinate.Point.Position.Longitude;
+        }
+        
     }
 }
