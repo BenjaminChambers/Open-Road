@@ -21,11 +21,14 @@ namespace Porter.Util.Models
         public async void SetLocationToCurrent()
         {
             Geoposition pos = await new Geolocator().GetGeopositionAsync();
-
-            Altitude = pos.Coordinate.Point.Position.Altitude;
-            Latitude = pos.Coordinate.Point.Position.Latitude;
-            Longitude = pos.Coordinate.Point.Position.Longitude;
+            SetLocation(pos.Coordinate.Point);
         }
         
+        public void SetLocation(Geopoint pos)
+        {
+            Altitude = pos.Position.Altitude;
+            Latitude = pos.Position.Latitude;
+            Longitude = pos.Position.Longitude;
+        }
     }
 }
