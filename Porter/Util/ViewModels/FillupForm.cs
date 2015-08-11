@@ -1,4 +1,5 @@
 ﻿using System;
+using Windows.Devices.Geolocation;
 
 namespace Porter.Util.ViewModels
 {
@@ -33,6 +34,8 @@ namespace Porter.Util.ViewModels
         public Models.Fillup ToFillup()
         {
             Models.Fillup item = new Models.Fillup();
+            item.SetLocationToCurrent();
+
             Update(item);
             return item;
         }
@@ -44,6 +47,27 @@ namespace Porter.Util.ViewModels
         public double Altitude { get { return _altitude; } set { SetField(ref _altitude, value); } }
         public double Latitude { get { return _latitude; } set { SetField(ref _latitude, value); } }
         public double Longitude { get { return _longitude; } set { SetField(ref _longitude, value); } }
+
+        public Geopoint Location
+        {
+            get
+            {
+                BasicGeoposition pos = new BasicGeoposition();
+                pos.Altitude = Altitude;
+                pos.Latitude = Latitude;
+                pos.Longitude = Longitude;
+
+                return new Geopoint(pos);
+            }
+            set
+            {
+                Altitude = value.Position.Altitude;
+                Latitude = value.Position.Latitude;
+                Longitude = value.Position.Longitude;
+                OnPropertyChanged("Location");
+            }
+        }
+
 
         private double _volume;
 

@@ -1,7 +1,10 @@
 ﻿using Porter.Common;
+using System;
+using Windows.Devices.Geolocation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml.Controls.Maps;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -13,19 +16,38 @@ namespace Porter.Pages.FillupList.AddFillup
     public sealed partial class AddFillupPage : Page
     {
         Util.ViewModels.FillupForm FormData = new Util.ViewModels.FillupForm();
+        MapIcon PushPin = new MapIcon();
 
         public AddFillupPage()
         {
             InitializeComponent();
             InitializeNavigation();
+            InitializeLocation();
 
             FillupForm.DataContext = FormData;
+        }
+
+        private async void InitializeLocation()
+        {
+            Geoposition pos = await new Geolocator().GetGeopositionAsync();
+            MapControl.Center = pos.Coordinate.Point;
+            MapControl.ZoomLevel = 15;
+            MapControl.Style = Windows.UI.Xaml.Controls.Maps.MapStyle.Road;
+
+            FormData.Location = PushPin.Location = pos.Coordinate.Point;
+            MapControl.MapElements.Add(PushPin);
+        }
+
+        private void OnMapMoved(MapControl sender, object args)
+        {
+            FormData.Location = PushPin.Location = MapControl.Center;
         }
 
         private void OnClickSave(object sender, RoutedEventArgs e)
         {
             Util.Models.Fillup fill = new Util.Models.Fillup();
             FormData.Update(fill);
+
             using (var db = Util.Database.Connection())
             {
                 db.Insert(fill);
