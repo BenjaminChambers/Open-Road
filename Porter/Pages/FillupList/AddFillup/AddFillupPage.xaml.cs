@@ -32,7 +32,7 @@ namespace Porter.Pages.FillupList.AddFillup
             Geoposition pos = await new Geolocator().GetGeopositionAsync();
             MapControl.Center = pos.Coordinate.Point;
             MapControl.ZoomLevel = 15;
-            MapControl.Style = Road;
+            MapControl.Style = MapStyle.Road;
 
             FormData.Location = PushPin.Location = pos.Coordinate.Point;
             MapControl.MapElements.Add(PushPin);
