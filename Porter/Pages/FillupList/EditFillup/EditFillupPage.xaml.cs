@@ -3,6 +3,8 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls.Maps;
+using Windows.Devices.Geolocation;
+using System;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -51,6 +53,10 @@ namespace Porter.Pages.FillupList.EditFillup
             FillupForm.DataContext = FormData;
         }
 
+        private async void OnCenterMap(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            FormData.Location = PushPin.Location = MapControl.Center = (await new Geolocator().GetGeopositionAsync()).Coordinate.Point;
+        }
 
         // Navigation stuff
         private void InitializeNavigation()

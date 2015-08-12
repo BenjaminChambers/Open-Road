@@ -32,7 +32,7 @@ namespace Porter.Pages.FillupList.AddFillup
             Geoposition pos = await new Geolocator().GetGeopositionAsync();
             MapControl.Center = pos.Coordinate.Point;
             MapControl.ZoomLevel = 15;
-            MapControl.Style = Windows.UI.Xaml.Controls.Maps.MapStyle.Road;
+            MapControl.Style = Road;
 
             FormData.Location = PushPin.Location = pos.Coordinate.Point;
             MapControl.MapElements.Add(PushPin);
@@ -56,6 +56,10 @@ namespace Porter.Pages.FillupList.AddFillup
             Frame.GoBack();
         }
 
+        private async void OnCenterMap(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            FormData.Location = PushPin.Location = MapControl.Center = (await new Geolocator().GetGeopositionAsync()).Coordinate.Point;
+        }
 
 
         // Navigation stuff
@@ -73,5 +77,6 @@ namespace Porter.Pages.FillupList.AddFillup
         private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e) { }
         protected override void OnNavigatedTo(NavigationEventArgs e) { this.navigationHelper.OnNavigatedTo(e); }
         protected override void OnNavigatedFrom(NavigationEventArgs e) { this.navigationHelper.OnNavigatedFrom(e); }
+
     }
 }
