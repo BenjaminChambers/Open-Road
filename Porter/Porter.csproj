@@ -94,6 +94,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Maintenance List\MaintenanceListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Main\Customization\CustomizationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -136,6 +140,9 @@
     <Compile Include="Pages\FillupList\FillupListPage.xaml.cs">
       <DependentUpon>FillupListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Maintenance List\MaintenanceListPage.xaml.cs">
+      <DependentUpon>MaintenanceListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Main\Customization\BoolNegator.cs" />
     <Compile Include="Pages\Main\Customization\CustomizationPage.xaml.cs">
       <DependentUpon>CustomizationPage.xaml</DependentUpon>
@@ -164,6 +171,7 @@
     <Compile Include="Util\ViewModels\FillupStatsView.xaml.cs">
       <DependentUpon>FillupStatsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Util\ViewModels\MaintenanceView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Icons\add.png" />
@@ -206,9 +214,7 @@
       <Name>SQLite for Windows Phone 8.1</Name>
     </SDKReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\Maintenance List\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>
