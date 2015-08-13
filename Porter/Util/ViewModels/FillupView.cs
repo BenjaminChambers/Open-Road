@@ -2,37 +2,37 @@
 
 namespace Porter.Util.ViewModels
 {
-    public class FillupView : Util.NotificationBase
+    public class FillupView : NotificationBase
     {
-        public FillupView(Util.Models.Fillup Single)
+        public FillupView(Models.Fillup Single)
         {
             ItemBackground = null;
             ID = Single.ID;
 
             Miles = "-";
 
-            Date = Util.Format.Date(Single.Date);
-            Gallons = Util.Format.Gallons(Single.Volume);
-            Cost = Util.Format.Currency(Single.Cost);
+            Date = Format.Date(Single.Date);
+            Gallons = Format.Gallons(Single.Volume);
+            Cost = Format.Currency(Single.Cost);
         }
 
-        public FillupView(Util.Models.Fillup Item, Util.Models.Fillup Previous)
+        public FillupView(Models.Fillup Item, Models.Fillup Previous)
         {
             ItemBackground = null;
             ID = Item.ID;
 
             double mileage = Item.Odometer - Previous.Odometer;
 
-            Date = Util.Format.Date(Item.Date);
+            Date = Format.Date(Item.Date);
 
-            Gallons = Util.Format.Gallons(Item.Volume);
-            Miles = Util.Format.Miles(mileage);
-            Cost = Util.Format.Currency(Item.Cost);
+            Gallons = Format.Gallons(Item.Volume);
+            Miles = Format.Miles(mileage);
+            Cost = Format.Currency(Item.Cost);
 
-            if (Util.Settings.PreferGPM)
-                Efficiency = Util.Format.GPM(mileage, Item.Volume);
+            if (Settings.PreferGPM)
+                Efficiency = Format.GPM(mileage, Item.Volume);
             else
-                Efficiency = Util.Format.MPG(mileage, Item.Volume);
+                Efficiency = Format.MPG(mileage, Item.Volume);
         }
 
         private Brush itemBackground;
