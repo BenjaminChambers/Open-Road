@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Porter.Common;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -27,13 +28,51 @@ namespace Porter.Pages.Maintenance_List.AddMaintenance
             this.InitializeComponent();
         }
 
-        /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
+        private void RefreshDisplay()
+        {
+
+        }
+
+        private void OnMapMoved(Windows.UI.Xaml.Controls.Maps.MapControl sender, object args)
+        {
+
+        }
+
+        private void OnCenterMap(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void OnClickSave(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OnClickReminder(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+        // Navigation stuff
+        private void InitializeNavigation()
+        {
+            this.navigationHelper = new NavigationHelper(this);
+            this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
+            this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+        }
+        private NavigationHelper navigationHelper;
+        private ObservableDictionary defaultViewModel = new ObservableDictionary();
+        public NavigationHelper NavigationHelper { get { return this.navigationHelper; } }
+        public ObservableDictionary DefaultViewModel { get { return this.defaultViewModel; } }
+        private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e) { }
+        private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e) { }
+        protected override void OnNavigatedFrom(NavigationEventArgs e) { this.navigationHelper.OnNavigatedFrom(e); }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            RefreshDisplay();
+            this.navigationHelper.OnNavigatedTo(e);
         }
     }
 }

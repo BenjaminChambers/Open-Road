@@ -12,19 +12,12 @@
         <Style TargetType="TextBlock">
             <Setter Property="HorizontalAlignment" Value="Center" />
         </Style>
-        
+
         <Style x:Key="FormTextStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="20" />
             <Setter Property="HorizontalAlignment" Value="Right" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="Margin" Value="15" />
-        </Style>
-
-        <Style x:Key="MapStyle" TargetType="Maps:MapControl">
-            <Setter Property="Width" Value="250" />
-            <Setter Property="Height" Value="250" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="MapServiceToken" Value="yOWRS59BYMupsGQx2Ljg~K_XtMIWnhRcvveZe0nu20A~AkAwZh-NYml0diu5sM6by9VtYrHUD20XidXMJm2Lob6hrENRHLt9DIdQQ3LtTI3f" />
         </Style>
 
         <LinearGradientBrush x:Name="PageBackground" EndPoint="0.5,1" StartPoint="0.5,0">
