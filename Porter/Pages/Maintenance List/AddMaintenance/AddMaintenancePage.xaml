@@ -29,10 +29,11 @@
             <TextBox Grid.Column="1" Grid.Row="2" InputScope="Number" Text="{Binding Path=Cost, Mode=TwoWay}" />
         </Grid>
         <Maps:MapControl x:Name="MapControl"
-                Style="{StaticResource MapStyle}"
+                Width="300" Height="300"
                 CenterChanged="OnMapMoved">
             <Image Source="ms-appx:///Assets/Icons/location.png" Margin="250,10,0,0" Width="40" Height="40" Tapped="OnCenterMap"/>
         </Maps:MapControl>
+        <Button x:Name="ReminderButton" Click="OnClickReminder" Tag="Add Reminder" Width="300" Template="{StaticResource PorterButton}" HorizontalAlignment="Center" />
         <Button Click="OnClickSave" Tag="Save Maintenance" Width="300" Template="{StaticResource PorterButton}" HorizontalAlignment="Center" />
     </StackPanel>
 </Page>

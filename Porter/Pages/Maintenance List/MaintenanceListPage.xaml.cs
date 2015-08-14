@@ -101,6 +101,5 @@ namespace Porter.Pages.Maintenance_List
             RefreshDisplay();
             this.navigationHelper.OnNavigatedTo(e);
         }
-
     }
 }
