@@ -94,6 +94,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Maintenance List\AddMaintenance\AddMaintenancePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Maintenance List\Edit\EditMaintenancePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Maintenance List\MaintenanceListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -139,6 +147,12 @@
     </Compile>
     <Compile Include="Pages\FillupList\FillupListPage.xaml.cs">
       <DependentUpon>FillupListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Maintenance List\AddMaintenance\AddMaintenancePage.xaml.cs">
+      <DependentUpon>AddMaintenancePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Maintenance List\Edit\EditMaintenancePage.xaml.cs">
+      <DependentUpon>EditMaintenancePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Maintenance List\MaintenanceListPage.xaml.cs">
       <DependentUpon>MaintenanceListPage.xaml</DependentUpon>
