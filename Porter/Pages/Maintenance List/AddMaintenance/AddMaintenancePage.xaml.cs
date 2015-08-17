@@ -26,6 +26,7 @@ namespace Porter.Pages.Maintenance_List.AddMaintenance
         public AddMaintenancePage()
         {
             this.InitializeComponent();
+            InitializeNavigation();
         }
 
         private void RefreshDisplay()
@@ -71,7 +72,6 @@ namespace Porter.Pages.Maintenance_List.AddMaintenance
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            RefreshDisplay();
             this.navigationHelper.OnNavigatedTo(e);
         }
     }

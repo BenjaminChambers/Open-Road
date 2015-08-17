@@ -32,7 +32,7 @@
             <Maps:MapControl x:Name="MapControl"
                              CenterChanged="OnMapMoved"
                              Width="300" Height="300"
-                             MapServiceToken="yOWRS59BYMupsGQx2Ljg~K_XtMIWnhRcvveZe0nu20A~AkAwZh-NYml0diu5sM6by9VtYrHUD20XidXMJm2Lob6hrENRHLt9DIdQQ3LtTI3f">
+                             MapServiceToken="{StaticResource MapToken}">
                 <Image Source="ms-appx:///Assets/Icons/location.png" Margin="250,10,0,0" Width="40" Height="40" Tapped="OnCenterMap"/>
             </Maps:MapControl>
             <Button Click="OnClickSave" Tag="Save Fill-up" Width="300" Template="{StaticResource PorterButton}" HorizontalAlignment="Center" /> 
