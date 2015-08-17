@@ -12,7 +12,7 @@ namespace Porter.Pages.Main
 
         private void OnViewFillups(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Pages.FillupList.FillupListPage));
+            Frame.Navigate(typeof(FillupList.FillupListPage));
         }
 
         private void OnAddFillup(object sender, RoutedEventArgs e)
