@@ -192,6 +192,7 @@
     <Compile Include="Util\ViewModels\FillupStatsView.xaml.cs">
       <DependentUpon>FillupStatsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Util\ViewModels\MaintenanceForm.cs" />
     <Compile Include="Util\ViewModels\MaintenanceView.cs" />
   </ItemGroup>
   <ItemGroup>
