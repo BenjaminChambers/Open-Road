@@ -53,7 +53,7 @@ namespace Porter.Pages.Maintenance_List
 
         private void OnClickAdd(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(AddMaintenance.AddMaintenancePage));
         }
 
         private void OnClickEdit(object sender, RoutedEventArgs e)
