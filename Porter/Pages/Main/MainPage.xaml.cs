@@ -64,6 +64,12 @@ namespace Porter.Pages.Main
             Frame.Navigate(typeof(Settings.PreferencesPage));
         }
 
+        private void OnViewMaintenance(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Maintenance_List.MaintenanceListPage));
+        }
+
+
 
         // Navigation
         protected override void OnNavigatedTo(NavigationEventArgs e) {

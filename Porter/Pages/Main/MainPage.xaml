@@ -31,6 +31,9 @@
                 <FlyoutBase.AttachedFlyout>
                     <MenuFlyout>
                         <MenuFlyoutItem Text="View Fill-ups" Click="OnViewFillups" />
+                        <MenuFlyoutItem Text="View Maintenance" Click="OnViewMaintenance" />
+                        <MenuFlyoutItem Text="View Reminders" />
+                        <MenuFlyoutSeparator/>
                         <MenuFlyoutItem Text="Customize Main Page" Click="OnClickCustomize" />
                         <MenuFlyoutItem Text="Preferences" Click="OnClickPreferences" />
                     </MenuFlyout>

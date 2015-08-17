@@ -2,14 +2,24 @@
     x:Class="Porter.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps" 
     xmlns:local="using:Porter">
 
     <Application.Resources>
+        <x:String x:Key="MapToken">yOWRS59BYMupsGQx2Ljg~K_XtMIWnhRcvveZe0nu20A~AkAwZh-NYml0diu5sM6by9VtYrHUD20XidXMJm2Lob6hrENRHLt9DIdQQ3LtTI3f</x:String>
+        
         <Style TargetType="Button">
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
         <Style TargetType="TextBlock">
             <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="FormTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="15" />
         </Style>
 
         <LinearGradientBrush x:Name="PageBackground" EndPoint="0.5,1" StartPoint="0.5,0">
