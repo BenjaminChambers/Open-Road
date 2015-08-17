@@ -33,8 +33,10 @@ namespace Porter.Pages.Maintenance_List
         public MaintenanceListPage()
         {
             this.InitializeComponent();
-
             InitializeNavigation();
+
+            MaintenanceList.DataContext = MaintenanceItems;
+            RefreshDisplay();
         }
 
         public void RefreshDisplay()
