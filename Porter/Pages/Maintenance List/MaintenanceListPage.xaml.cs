@@ -27,8 +27,8 @@ namespace Porter.Pages.Maintenance_List
     /// </summary>
     public sealed partial class MaintenanceListPage : Page
     {
-        ObservableCollection<MaintenanceView> Fillups = new ObservableCollection<MaintenanceView>();
-        private MaintenanceView FillupSelection = null;
+        ObservableCollection<MaintenanceView> MaintenanceItems = new ObservableCollection<MaintenanceView>();
+        private MaintenanceView MaintenanceSelection = null;
 
         public MaintenanceListPage()
         {
@@ -39,24 +39,16 @@ namespace Porter.Pages.Maintenance_List
 
         public void RefreshDisplay()
         {
-            /*
-            FillupSelection = null;
+            MaintenanceSelection = null;
 
-            Fillups.Clear();
-
+            MaintenanceItems.Clear();
             using (var db = Util.Database.Connection())
             {
-                var data = db.Table<Util.Models.Fillup>().OrderByDescending(item => item.Odometer).ToList();
+                var data = db.Table<Util.Models.Maintenance>().OrderByDescending(item => item.Odometer).ToList();
 
-                if (data.Count > 0)
-                {
-                    for (int i = 0; i < data.Count - 1; i++)
-                        Fillups.Add(new FillupView(data[i], data[i + 1]));
-
-                    Fillups.Add(new FillupView(data[data.Count - 1]));
-                }
+                for (int i = 0; i < data.Count; i++)
+                    MaintenanceItems.Add(new MaintenanceView(data[i]));
             }
-            */
         }
 
         private void OnClickAdd(object sender, RoutedEventArgs e)

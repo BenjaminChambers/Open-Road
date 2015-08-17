@@ -43,7 +43,7 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Showing:" Style="{StaticResource ListViewItemTextBlockStyle}" />
-                <ComboBox Grid.Column="1" />
+                <ComboBox x:Name="MaintenanceFilter" Grid.Column="1" />
             </Grid>
             <ListView x:Name="MaintenanceList" Height="550"
             ItemsSource="{Binding}"
