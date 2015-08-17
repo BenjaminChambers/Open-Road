@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     Background="{StaticResource PageBackground}">
 
-    <StackPanel x:Name="FillupForm" DataContext="{Binding}" Width="300">
+    <StackPanel x:Name="MaintenanceForm" DataContext="{Binding}" Width="300">
         <DatePicker HorizontalAlignment="Center" Date="{Binding Path=Date, Mode=TwoWay}" />
         <Grid>
             <Grid.ColumnDefinitions>
