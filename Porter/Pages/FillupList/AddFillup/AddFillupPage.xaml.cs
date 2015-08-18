@@ -45,6 +45,8 @@ namespace Porter.Pages.FillupList.AddFillup
 
         private void OnClickSave(object sender, RoutedEventArgs e)
         {
+            Util.Metrics.TrackFillup();
+
             Util.Models.Fillup fill = new Util.Models.Fillup();
             FormData.Update(fill);
 

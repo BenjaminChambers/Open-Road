@@ -17,6 +17,8 @@ namespace Porter.Pages.Main
 
         private void OnAddFillup(object sender, RoutedEventArgs e)
         {
+            Util.Metrics.TrackFillup();
+
             Storyboard fade = (Storyboard)Resources["NotificationFade"];
             Storyboard slide = (Storyboard)Resources["NotificationSlide"];
             fade.Begin();
