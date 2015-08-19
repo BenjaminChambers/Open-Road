@@ -5,6 +5,7 @@
     xmlns:local="using:Porter.Pages.Main"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:nb="using:NumberBox"
     mc:Ignorable="d" RequestedTheme="Dark">
 
     <Page.Resources>
@@ -58,15 +59,15 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Orientation="Vertical" Grid.Column="0">
                                 <TextBlock Text="Gallons" />
-                                <TextBox x:Name="QuickVolume" Margin="5" InputScope="Number" Text="{Binding Path=Volume, Mode=TwoWay}"/>
+                                <nb:NumberBox x:Name="QuickVolume" Margin="5" Number="{Binding Path=Volume, Mode=TwoWay}" DecimalPlaces="3" />
                             </StackPanel>
                             <StackPanel Orientation="Vertical" Grid.Column="1">
                                 <TextBlock Text="Cost" />
-                                <TextBox x:Name="QuickCost" Margin="5" InputScope="Number" Text="{Binding Path=Cost, Mode=TwoWay}"/>
+                                <nb:NumberBox x:Name="QuickCost" Margin="5" Number="{Binding Path=Cost, Mode=TwoWay}" Prefix="$" DecimalPlaces="2" />
                             </StackPanel>
                             <StackPanel Orientation="Vertical" Grid.Column="2">
                                 <TextBlock Text="Odometer" />
-                                <TextBox x:Name="QuickMiles" Margin="5" InputScope="Number" Text="{Binding Path=Odometer, Mode=TwoWay}"/>
+                                <nb:NumberBox x:Name="QuickMiles" Margin="5" Number="{Binding Path=Odometer, Mode=TwoWay}"/>
                             </StackPanel>
                         </Grid>
                         <Button Tag="Add Fill-up" Click="OnAddFillup" Template="{StaticResource PorterButton}" HorizontalAlignment="Stretch" />
