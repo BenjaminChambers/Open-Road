@@ -66,7 +66,7 @@ namespace Porter.Pages.Main
 
         private void OnViewMaintenance(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Maintenance_List.MaintenanceListPage));
+            Frame.Navigate(typeof(MaintenanceList.MaintenanceListPage));
         }
 
 

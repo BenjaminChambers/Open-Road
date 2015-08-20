@@ -95,19 +95,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Maintenance List\AddMaintenance\AddMaintenancePage.xaml">
+    <Page Include="Pages\MaintenanceList\AddMaintenance\AddMaintenancePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Maintenance List\AddMaintenance\ReminderPage.xaml">
+    <Page Include="Pages\MaintenanceList\AddMaintenance\ReminderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Maintenance List\Edit\EditMaintenancePage.xaml">
+    <Page Include="Pages\MaintenanceList\EditMaintenance\EditMaintenancePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Maintenance List\MaintenanceListPage.xaml">
+    <Page Include="Pages\MaintenanceList\MaintenanceListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -153,16 +153,16 @@
     <Compile Include="Pages\FillupList\FillupListPage.xaml.cs">
       <DependentUpon>FillupListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Maintenance List\AddMaintenance\AddMaintenancePage.xaml.cs">
+    <Compile Include="Pages\MaintenanceList\AddMaintenance\AddMaintenancePage.xaml.cs">
       <DependentUpon>AddMaintenancePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Maintenance List\AddMaintenance\ReminderPage.xaml.cs">
+    <Compile Include="Pages\MaintenanceList\AddMaintenance\ReminderPage.xaml.cs">
       <DependentUpon>ReminderPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Maintenance List\Edit\EditMaintenancePage.xaml.cs">
+    <Compile Include="Pages\MaintenanceList\EditMaintenance\EditMaintenancePage.xaml.cs">
       <DependentUpon>EditMaintenancePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Maintenance List\MaintenanceListPage.xaml.cs">
+    <Compile Include="Pages\MaintenanceList\MaintenanceListPage.xaml.cs">
       <DependentUpon>MaintenanceListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Main\Customization\BoolNegator.cs" />
