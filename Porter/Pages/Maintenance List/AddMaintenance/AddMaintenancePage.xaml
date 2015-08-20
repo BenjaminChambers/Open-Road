@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps" 
+    xmlns:nb="using:NumberBox"
     mc:Ignorable="d"
     Background="{StaticResource PageBackground}">
 
@@ -25,8 +26,8 @@
             <TextBlock Text="Odometer" Grid.Row="1" Style="{StaticResource FormTextStyle}" />
             <TextBlock Text="Cost" Grid.Row="2" Style="{StaticResource FormTextStyle}" />
             <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=Description, Mode=TwoWay}" />
-            <TextBox Grid.Column="1" Grid.Row="1" InputScope="Number" Text="{Binding Path=Odometer, Mode=TwoWay}" />
-            <TextBox Grid.Column="1" Grid.Row="2" InputScope="Number" Text="{Binding Path=Cost, Mode=TwoWay}" />
+            <nb:NumberBox Grid.Column="1" Grid.Row="1" Number="{Binding Path=Odometer, Mode=TwoWay}" />
+            <nb:NumberBox Grid.Column="1" Grid.Row="2" Text="{Binding Path=Cost, Mode=TwoWay}" />
         </Grid>
         <Maps:MapControl x:Name="MapControl"
                 Width="300" Height="300"
