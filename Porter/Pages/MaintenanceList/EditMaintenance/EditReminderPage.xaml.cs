@@ -18,15 +18,15 @@ using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace Porter.Pages.MaintenanceList.AddMaintenance
+namespace Porter.Pages.MaintenanceList.EditMaintenance
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class EditReminderPage : Page
     {
-        public static Util.ViewModels.ReminderForm Work = null;
-        Util.ViewModels.ReminderForm backup = null;
+        public static int MaintenanceID = -1;
+        public static Util.ViewModels.ReminderForm Work = new Util.ViewModels.ReminderForm();
 
         public EditReminderPage()
         {
@@ -53,27 +53,30 @@ namespace Porter.Pages.MaintenanceList.AddMaintenance
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedFrom(e);
+
+            if (MaintenanceID != -1)
+            {
+                using (var db = Util.Database.Connection())
+                {
+                    Util.Models.Maintenance item = db.Get<Util.Models.Maintenance>(MaintenanceID);
+                    Work.Update(item);
+                    db.Update(item);
+                }
+            }
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedTo(e);
 
-            if (Work == null)
-                Work = new Util.ViewModels.ReminderForm();
-
-            backup = new Util.ViewModels.ReminderForm(Work);
-
+            if (MaintenanceID != -1)
+            {
+                using (var db = Util.Database.Connection())
+                {
+                    Work = new Util.ViewModels.ReminderForm(db.Get<Util.Models.Maintenance>(MaintenanceID));
+                }
+            }
             ReminderForm.DataContext = Work;
-        }
-
-        private void OnClickSave(object sender, RoutedEventArgs e)
-        {
-            AddMaintenancePage.FormData.ReminderType = Work.Type;
-            AddMaintenancePage.FormData.ReminderDate = Work.NextDate;
-            AddMaintenancePage.FormData.ReminderMileage = Work.MileageInterval;
-
-            Frame.GoBack();
         }
     }
 }

@@ -22,6 +22,13 @@ namespace Porter.Util.ViewModels
             MileageInterval = src.NextMileage;
         }
 
+        public ReminderForm(ReminderForm src)
+        {
+            Type = src.Type;
+            NextDate = src.NextDate;
+            MileageInterval = src.MileageInterval;
+        }
+
         public void Update(Util.Models.Maintenance target)
         {
             target.Reminder = Type;

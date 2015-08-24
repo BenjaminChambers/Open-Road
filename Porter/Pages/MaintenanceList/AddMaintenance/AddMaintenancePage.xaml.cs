@@ -25,7 +25,7 @@ namespace Porter.Pages.MaintenanceList.AddMaintenance
     /// </summary>
     public sealed partial class AddMaintenancePage : Page
     {
-        Util.ViewModels.MaintenanceForm FormData = new Util.ViewModels.MaintenanceForm();
+        public static Util.ViewModels.MaintenanceForm FormData = new Util.ViewModels.MaintenanceForm();
         MapIcon PushPin = new MapIcon();
 
         public AddMaintenancePage()
@@ -63,6 +63,13 @@ namespace Porter.Pages.MaintenanceList.AddMaintenance
             Util.Models.Maintenance work = new Util.Models.Maintenance();
             FormData.Update(work);
 
+            if (EditReminderPage.Work != null)
+            {
+                work.Reminder = EditReminderPage.Work.Type;
+                work.NextDate = EditReminderPage.Work.NextDate;
+                work.NextMileage = EditReminderPage.Work.MileageInterval;
+            }
+
             using (var db = Util.Database.Connection())
             {
                 db.Insert(work);
@@ -73,6 +80,11 @@ namespace Porter.Pages.MaintenanceList.AddMaintenance
 
         private void OnClickReminder(object sender, RoutedEventArgs e)
         {
+            EditReminderPage.Work = new Util.ViewModels.ReminderForm();
+            EditReminderPage.Work.Type = FormData.ReminderType;
+            EditReminderPage.Work.NextDate = FormData.ReminderDate;
+            EditReminderPage.Work.MileageInterval = FormData.ReminderMileage;
+
             Frame.Navigate(typeof(EditReminderPage));
         }
 

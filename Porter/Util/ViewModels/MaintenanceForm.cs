@@ -45,13 +45,17 @@ namespace Porter.Util.ViewModels
         }
 
         public string Description { get { return _description; } set { SetField(ref _description, value); } }
-        public string Reminder { get { return _reminder; } private set { SetField(ref _reminder, value); } }
         public DateTimeOffset Date { get { return _date; } set { SetField(ref _date, value); } }
         public int Odometer { get { return _odometer; } set { SetField(ref _odometer, value); } }
         public double Cost { get { return _cost; } set { SetField(ref _cost, value); } }
+
         public double Altitude { get { return _altitude; } set { SetField(ref _altitude, value); } }
         public double Latitude { get { return _latitude; } set { SetField(ref _latitude, value); } }
         public double Longitude { get { return _longitude; } set { SetField(ref _longitude, value); } }
+
+        public Models.Maintenance.ReminderType ReminderType { get { return _reminderType; } set { SetField(ref _reminderType, value); } }
+        public int ReminderMileage { get { return _reminderMileage; } set { SetField(ref _reminderMileage, value); } }
+        public DateTime ReminderDate { get { return ReminderDate; } set { SetField(ref _reminderDate, value); } }
 
         public Geopoint Location
         {
@@ -83,5 +87,9 @@ namespace Porter.Util.ViewModels
         private double _altitude;
         private double _latitude;
         private double _longitude;
+
+        private Models.Maintenance.ReminderType _reminderType;
+        private int _reminderMileage;
+        private DateTime _reminderDate;
     }
 }
