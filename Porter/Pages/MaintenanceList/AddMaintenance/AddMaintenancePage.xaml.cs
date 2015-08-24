@@ -73,7 +73,7 @@ namespace Porter.Pages.MaintenanceList.AddMaintenance
 
         private void OnClickReminder(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(EditReminder.EditReminderPage));
         }
 
 
