@@ -15,6 +15,20 @@ namespace Porter.Util.ViewModels
             NextDate = DateTime.Now;
         }
 
+        public ReminderForm(Util.Models.Maintenance src)
+        {
+            Type = src.Reminder;
+            NextDate = src.NextDate;
+            MileageInterval = src.NextMileage;
+        }
+
+        public void Update(Util.Models.Maintenance target)
+        {
+            target.Reminder = Type;
+            target.NextDate = NextDate;
+            target.NextMileage = MileageInterval;
+        }
+
         private DateTime _nextDate;
         private int _mileageInterval;
         private Models.Maintenance.ReminderType _type;
