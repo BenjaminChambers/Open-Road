@@ -60,19 +60,9 @@ namespace Porter.Pages.MaintenanceList.AddMaintenance
 
         private void OnClickSave(object sender, RoutedEventArgs e)
         {
-            Util.Models.Maintenance work = new Util.Models.Maintenance();
-            FormData.Update(work);
-
-            if (EditReminderPage.Work != null)
-            {
-                work.Reminder = EditReminderPage.Work.Type;
-                work.NextDate = EditReminderPage.Work.NextDate;
-                work.NextMileage = EditReminderPage.Work.MileageInterval;
-            }
-
             using (var db = Util.Database.Connection())
             {
-                db.Insert(work);
+                db.Insert(FormData.ToMaintenance());
             }
 
             Frame.GoBack();

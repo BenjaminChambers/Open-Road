@@ -36,14 +36,19 @@ namespace Porter.Util.ViewModels
             item.Date = Date.Date;
             item.Odometer = Odometer;
             item.Cost = Cost;
+
             item.Altitude = Altitude;
             item.Latitude = Latitude;
             item.Longitude = Longitude;
+
+            item.Reminder = ReminderType;
+            item.NextDate = ReminderDate;
+            item.NextMileage = ReminderMileage;
         }
+
         public Models.Maintenance ToMaintenance()
         {
             Models.Maintenance item = new Models.Maintenance();
-            item.SetLocationToCurrent();
 
             Update(item);
             return item;
