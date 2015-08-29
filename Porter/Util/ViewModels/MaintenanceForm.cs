@@ -20,9 +20,14 @@ namespace Porter.Util.ViewModels
             Date = item.Date;
             Odometer = item.Odometer;
             Cost = item.Cost;
+
             Altitude = item.Altitude;
             Latitude = item.Latitude;
             Longitude = item.Longitude;
+
+            ReminderType = item.Reminder;
+            ReminderDate = item.NextDate;
+            ReminderMileage = item.NextMileage;
         }
 
         public void Update(Models.Maintenance item)
@@ -55,7 +60,7 @@ namespace Porter.Util.ViewModels
 
         public Models.Maintenance.ReminderType ReminderType { get { return _reminderType; } set { SetField(ref _reminderType, value); } }
         public int ReminderMileage { get { return _reminderMileage; } set { SetField(ref _reminderMileage, value); } }
-        public DateTime ReminderDate { get { return ReminderDate; } set { SetField(ref _reminderDate, value); } }
+        public DateTime ReminderDate { get { return _reminderDate; } set { SetField(ref _reminderDate, value); } }
 
         public Geopoint Location
         {
@@ -78,7 +83,6 @@ namespace Porter.Util.ViewModels
         }
 
         private string _description;
-        private string _reminder;
 
         private DateTimeOffset _date;
         private int _odometer;

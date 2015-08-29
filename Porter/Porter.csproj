@@ -264,8 +264,8 @@
       <HintPath>..\packages\Microsoft.ApplicationInsights.PersistenceChannel.1.2.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.PersistenceChannel.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NumberBox, Version=1.0.5710.24378, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NumberBox.1.0.5710.24378\lib\portable-Profile32\NumberBox.dll</HintPath>
+    <Reference Include="NumberBox, Version=1.0.5716.29105, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NumberBox.1.0.5716.29105\lib\portable-Profile32\NumberBox.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

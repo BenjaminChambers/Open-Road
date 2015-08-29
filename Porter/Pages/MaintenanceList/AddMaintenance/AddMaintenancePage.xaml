@@ -10,32 +10,86 @@
     mc:Ignorable="d"
     Background="{StaticResource PageBackground}">
 
-    <StackPanel x:Name="MaintenanceForm" DataContext="{Binding}" Width="300">
-        <DatePicker HorizontalAlignment="Center" Date="{Binding Path=Date, Mode=TwoWay}" />
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <TextBlock Text="Description" Style="{StaticResource FormTextStyle}" />
-            <TextBlock Text="Odometer" Grid.Row="1" Style="{StaticResource FormTextStyle}" />
-            <TextBlock Text="Cost" Grid.Row="2" Style="{StaticResource FormTextStyle}" />
-            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=Description, Mode=TwoWay}" />
-            <nb:NumberBox Grid.Column="1" Grid.Row="1" Number="{Binding Path=Odometer, Mode=TwoWay}" />
-            <nb:NumberBox Grid.Column="1" Grid.Row="2" Text="{Binding Path=Cost, Mode=TwoWay}" />
-        </Grid>
-        <Maps:MapControl x:Name="MapControl"
-                Width="300" Height="300"
-                MapServiceToken="{StaticResource MapToken}"
-                CenterChanged="OnMapMoved">
-            <Image Source="ms-appx:///Assets/Icons/location.png" Margin="250,10,0,0" Width="40" Height="40" Tapped="OnCenterMap"/>
-        </Maps:MapControl>
-        <Button x:Name="ReminderButton" Click="OnClickReminder" Tag="Edit Reminder" Width="300" Template="{StaticResource PorterButton}" HorizontalAlignment="Center" />
-        <Button Click="OnClickSave" Tag="Save Maintenance" Width="300" Template="{StaticResource PorterButton}" HorizontalAlignment="Center" />
-    </StackPanel>
+    <Grid>
+        <ScrollViewer>
+            <StackPanel x:Name="MaintenanceForm" DataContext="{Binding}">
+                <Border Width="350" BorderThickness="3" CornerRadius="25" BorderBrush="White"
+                        Margin="5" Padding="5" HorizontalAlignment="Center" >
+                    <StackPanel Width="300">
+                        <DatePicker HorizontalAlignment="Center" Date="{Binding Path=Date, Mode=TwoWay}" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Description" Style="{StaticResource FormTextStyle}" />
+                            <TextBlock Text="Odometer" Grid.Row="1" Style="{StaticResource FormTextStyle}" />
+                            <TextBlock Text="Cost" Grid.Row="2" Style="{StaticResource FormTextStyle}" />
+                            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=Description, Mode=TwoWay}" />
+                            <nb:NumberBox Grid.Column="1" Grid.Row="1" Number="{Binding Path=Odometer, Mode=TwoWay}" />
+                            <nb:NumberBox Grid.Column="1" Grid.Row="2" Text="{Binding Path=Cost, Mode=TwoWay}" Prefix="$" DecimalPlaces="2" />
+                        </Grid>
+                        <Maps:MapControl x:Name="MapControl"
+                        Width="300" Height="300"
+                        MapServiceToken="{StaticResource MapToken}"
+                        CenterChanged="OnMapMoved" Margin="0,0,0,15">
+                            <Image Source="ms-appx:///Assets/Icons/location.png" Margin="250,10,0,0" Width="40" Height="40" Tapped="OnCenterMap"/>
+                        </Maps:MapControl>
+                    </StackPanel>
+                </Border>
+                <Border Width="350" BorderThickness="3" CornerRadius="25" BorderBrush="White"
+                        Margin="5" Padding="5" HorizontalAlignment="Center">
+                    <StackPanel Width="300" >
+                        <TextBlock Text="Reminder Setup" Style="{StaticResource FormTextStyle}" HorizontalAlignment="Center" />
+                        <Grid x:Name="ReminderForm">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Type" Style="{StaticResource FormTextStyle}" />
+                            <ComboBox Grid.Column="1"
+                          SelectedIndex="{Binding Path=ReminderType}">
+                                <ComboBox.Items>
+                                    <ComboBoxItem Content="None" />
+                                    <ComboBoxItem Content="By Date" />
+                                    <ComboBoxItem Content="By Mileage" />
+                                    <ComboBoxItem Content="Either" />
+                                </ComboBox.Items>
+                            </ComboBox>
+                            <TextBlock Text="Date" Grid.Row="1" Style="{StaticResource FormTextStyle}" />
+                            <TextBlock Text="Mileage" Grid.Row="2" Style="{StaticResource FormTextStyle}" />
+                            <DatePicker Date="{Binding Path=ReminderDate, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" />
+                            <nb:NumberBox Number="{Binding Path=ReminderMileage, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" DecimalPlaces="0" />
+                        </Grid>
+                        <TextBlock Margin="5" TextWrapping="WrapWholeWords" TextAlignment="Center">
+                        If using Date, please enter the date by which the
+                        maintenance should be performed again, and you will see
+                        notifications beginning two weeks before then.
+                        </TextBlock>
+                        <TextBlock Margin="5" TextWrapping="WrapWholeWords" TextAlignment="Center">
+                        If using Mileage, please enter how many miles until the
+                        next time you should perform this maintenance. You will
+                        be notified when you are within approximate 2 gas tanks.
+                        </TextBlock>
+                        <TextBlock Margin="5" TextWrapping="WrapWholeWords" TextAlignment="Center">
+                        If using both, then you will see reminders beginning
+                        either at two weeks or two gas tanks, whichever comes
+                        first.
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+                <Button Click="OnClickSave" Tag="Save Maintenance" Width="350" Template="{StaticResource PorterButton}" HorizontalAlignment="Center" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
 </Page>
