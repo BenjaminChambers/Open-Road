@@ -25,7 +25,7 @@ namespace Porter.Pages.MaintenanceList.AddMaintenance
     /// </summary>
     public sealed partial class AddMaintenancePage : Page
     {
-        public static Util.ViewModels.MaintenanceForm FormData = new Util.ViewModels.MaintenanceForm();
+        public static Util.ViewModels.MaintenanceForm FormData;
         MapIcon PushPin = new MapIcon();
 
         public AddMaintenancePage()
@@ -33,8 +33,6 @@ namespace Porter.Pages.MaintenanceList.AddMaintenance
             this.InitializeComponent();
             InitializeNavigation();
             InitializeLocation();
-
-            MaintenanceForm.DataContext = FormData;
         }
 
         private async void InitializeLocation()
@@ -83,6 +81,14 @@ namespace Porter.Pages.MaintenanceList.AddMaintenance
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e) { }
         private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e) { }
         protected override void OnNavigatedFrom(NavigationEventArgs e) { this.navigationHelper.OnNavigatedFrom(e); }
-        protected override void OnNavigatedTo(NavigationEventArgs e) { navigationHelper.OnNavigatedTo(e); }
+
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            FormData = new Util.ViewModels.MaintenanceForm();
+            MaintenanceForm.DataContext = FormData;
+
+            navigationHelper.OnNavigatedTo(e);
+        }
     }
 }

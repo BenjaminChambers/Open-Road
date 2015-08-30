@@ -57,8 +57,8 @@
                                 <RowDefinition />
                             </Grid.RowDefinitions>
                             <TextBlock Text="Type" Style="{StaticResource FormTextStyle}" />
-                            <ComboBox Grid.Column="1"
-                          SelectedIndex="{Binding Path=ReminderType}">
+                            <ComboBox x:Name="ReminderBox" Grid.Column="1"
+                          SelectedIndex="{Binding Path=ReminderType, Mode=TwoWay}">
                                 <ComboBox.Items>
                                     <ComboBoxItem Content="None" />
                                     <ComboBoxItem Content="By Date" />
