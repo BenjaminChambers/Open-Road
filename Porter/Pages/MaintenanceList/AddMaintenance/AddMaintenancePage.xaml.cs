@@ -68,16 +68,6 @@ namespace Porter.Pages.MaintenanceList.AddMaintenance
             Frame.GoBack();
         }
 
-        private void OnClickReminder(object sender, RoutedEventArgs e)
-        {
-            EditReminderPage.Work = new Util.ViewModels.ReminderForm();
-            EditReminderPage.Work.Type = FormData.ReminderType;
-            EditReminderPage.Work.NextDate = FormData.ReminderDate;
-            EditReminderPage.Work.MileageInterval = FormData.ReminderMileage;
-
-            Frame.Navigate(typeof(EditReminderPage));
-        }
-
 
         // Navigation stuff
         private void InitializeNavigation()

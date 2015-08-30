@@ -99,10 +99,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\MaintenanceList\AddMaintenance\EditReminderPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Pages\MaintenanceList\EditMaintenance\EditMaintenancePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -159,9 +155,6 @@
     </Compile>
     <Compile Include="Pages\MaintenanceList\AddMaintenance\AddMaintenancePage.xaml.cs">
       <DependentUpon>AddMaintenancePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\MaintenanceList\AddMaintenance\EditReminderPage.xaml.cs">
-      <DependentUpon>EditReminderPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MaintenanceList\EditMaintenance\EditMaintenancePage.xaml.cs">
       <DependentUpon>EditMaintenancePage.xaml</DependentUpon>
