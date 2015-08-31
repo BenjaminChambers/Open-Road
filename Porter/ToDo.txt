@@ -17,5 +17,7 @@ General:
 - Switch between multiple cars
 - Add usage graphs
 
+- Add Live Tile Messages for maintenance
+
 - Create a template for borders (I'm using the same style quite a bit)
 - Remove bottom buttons from pages, replace in UI as fits

@@ -111,10 +111,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Main\FillupStatsTemplate.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Pages\Main\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -127,7 +123,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Util\ViewModels\FillupStatsView.xaml">
+    <Page Include="Pages\Main\Views\FillupStatsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,7 +158,6 @@
     <Compile Include="Pages\Main\Customization\CustomizationPage.xaml.cs">
       <DependentUpon>CustomizationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Main\FillupStuff.cs" />
     <Compile Include="Pages\Main\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -184,7 +179,7 @@
     <Compile Include="Util\Settings.cs" />
     <Compile Include="Util\ViewModels\FillupForm.cs" />
     <Compile Include="Util\ViewModels\FillupView.cs" />
-    <Compile Include="Util\ViewModels\FillupStatsView.xaml.cs">
+    <Compile Include="Pages\Main\Views\FillupStatsView.xaml.cs">
       <DependentUpon>FillupStatsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Util\ViewModels\MaintenanceForm.cs" />
@@ -258,6 +253,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>

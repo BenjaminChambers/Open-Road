@@ -14,7 +14,7 @@ namespace Porter.Pages.Main
     public sealed partial class MainPage : Page
     {
         Util.ViewModels.FillupForm FormData = new Util.ViewModels.FillupForm();
-        ObservableCollection<Util.ViewModels.FillupStatsView> fillupStats = new ObservableCollection<Util.ViewModels.FillupStatsView>();
+        ObservableCollection<Views.FillupStatsView> fillupStats = new ObservableCollection<Views.FillupStatsView>();
 
         public MainPage()
         {
@@ -22,7 +22,6 @@ namespace Porter.Pages.Main
 
             SetupForms();
             SetupAnimations();
-            SetupFillupStats();
 
             InitializeNavigation();
         }
@@ -43,8 +42,16 @@ namespace Porter.Pages.Main
 
         private void RefreshDisplay()
         {
-            foreach (Util.ViewModels.FillupStatsView item in fillupStats)
-                    item.Update();
+            fillupStats.Clear();
+            DetailListView.Items.Clear();
+
+            if (!Util.Settings.HideFillupRecent) fillupStats.Add(new Views.FillupStatsView(0, "Latest Fill-up"));
+            if (!Util.Settings.HideFillupMonthly) fillupStats.Add(new Views.FillupStatsView(31, "Monthly Gas Usage"));
+            if (!Util.Settings.HideFillupAnnual) fillupStats.Add(new Views.FillupStatsView(366, "Annual Gas Usage"));
+            if (!Util.Settings.HideFillupTotal) fillupStats.Add(new Views.FillupStatsView(-1, "Total Gas Usage"));
+
+            foreach (Views.FillupStatsView view in fillupStats)
+                DetailListView.Items.Add(view);
 
             Util.LiveTile.Render();
         }
@@ -68,6 +75,30 @@ namespace Porter.Pages.Main
         {
             Frame.Navigate(typeof(MaintenanceList.MaintenanceListPage));
         }
+
+        private void OnViewFillups(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(FillupList.FillupListPage));
+        }
+
+        private void OnAddFillup(object sender, RoutedEventArgs e)
+        {
+            Util.Metrics.TrackFillup();
+
+            Storyboard fade = (Storyboard)Resources["NotificationFade"];
+            Storyboard slide = (Storyboard)Resources["NotificationSlide"];
+            fade.Begin();
+            slide.Begin();
+
+            using (var db = Util.Database.Connection())
+            {
+                db.Insert(FormData.ToFillup());
+            }
+
+            SetupForms();
+            RefreshDisplay();
+        }
+
 
 
 

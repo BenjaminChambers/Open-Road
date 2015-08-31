@@ -14,11 +14,16 @@
             <StackPanel.Resources>
                 <local:BoolNegator x:Key="BoolNotConverter" />
             </StackPanel.Resources>
-            <TextBlock Text="Show fill-up stats for..." Style="{StaticResource SubheaderTextBlockStyle}" />
+            <TextBlock Text="Show fill-up stats for" Style="{StaticResource SubheaderTextBlockStyle}" HorizontalAlignment="Center" />
             <ToggleSwitch IsOn="{Binding Path=HideFillupRecent, Mode=TwoWay, Converter={StaticResource BoolNotConverter}}" OnContent="Most Recent" OffContent="Most Recent" Toggled="OnToggleFillupDisplay" />
             <ToggleSwitch IsOn="{Binding Path=HideFillupMonthly, Mode=TwoWay, Converter={StaticResource BoolNotConverter}}" OnContent="Last Month" OffContent="Last Month" />
             <ToggleSwitch IsOn="{Binding Path=HideFillupAnnual, Mode=TwoWay, Converter={StaticResource BoolNotConverter}}" OnContent="Last Year" OffContent="Last Year" />
             <ToggleSwitch IsOn="{Binding Path=HideFillupTotal, Mode=TwoWay, Converter={StaticResource BoolNotConverter}}" OnContent="All Time" OffContent="All Time" />
+            <TextBlock Text="Show maintenance stats for" Style="{StaticResource SubheaderTextBlockStyle}" HorizontalAlignment="Center" />
+            <ToggleSwitch OnContent="MostRecent" OffContent="Most Recent" Toggled="OnToggleFillupDisplay" />
+            <ToggleSwitch OnContent="Last Month" OffContent="Last Month" />
+            <ToggleSwitch OnContent="Last Year" OffContent="Last Year" />
+            <ToggleSwitch OnContent="All Time" OffContent="All Time" />
         </StackPanel>
     </StackPanel>
 </Page>
