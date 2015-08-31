@@ -1,4 +1,21 @@
-Add Maintenance Page
-Edit Maintenance Page
-MaintenanceList Page
-MaintenanceStats view
+MainPage:
+- Add Maintenance Views (recent maintenance & stats)
+- Add Reminder Views (upcoming maintenance & stats)
+- Add driving statistics (cost or miles over time)
+
+MaintenanceListPage:
+- Filter maintenance by type
+
+AddMaintenancePage:
+- Hide miles or days portions of the form based on selection
+
+EditMaintenancePage:
+- Flesh out (currently stub)
+
+General:
+- Get most recent mileage for car
+- Switch between multiple cars
+- Add usage graphs
+
+- Create a template for borders (I'm using the same style quite a bit)
+- Remove bottom buttons from pages, replace in UI as fits
