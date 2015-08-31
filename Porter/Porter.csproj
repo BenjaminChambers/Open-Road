@@ -154,7 +154,6 @@
     <Compile Include="Pages\MaintenanceList\MaintenanceListPage.xaml.cs">
       <DependentUpon>MaintenanceListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Main\Customization\BoolNegator.cs" />
     <Compile Include="Pages\Main\Customization\CustomizationPage.xaml.cs">
       <DependentUpon>CustomizationPage.xaml</DependentUpon>
     </Compile>

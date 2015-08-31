@@ -11,14 +11,11 @@
 
     <StackPanel>
         <StackPanel x:Name="Root" HorizontalAlignment="Center">
-            <StackPanel.Resources>
-                <local:BoolNegator x:Key="BoolNotConverter" />
-            </StackPanel.Resources>
             <TextBlock Text="Show fill-up stats for" Style="{StaticResource SubheaderTextBlockStyle}" HorizontalAlignment="Center" />
-            <ToggleSwitch IsOn="{Binding Path=HideFillupRecent, Mode=TwoWay, Converter={StaticResource BoolNotConverter}}" OnContent="Most Recent" OffContent="Most Recent" Toggled="OnToggleFillupDisplay" />
-            <ToggleSwitch IsOn="{Binding Path=HideFillupMonthly, Mode=TwoWay, Converter={StaticResource BoolNotConverter}}" OnContent="Last Month" OffContent="Last Month" />
-            <ToggleSwitch IsOn="{Binding Path=HideFillupAnnual, Mode=TwoWay, Converter={StaticResource BoolNotConverter}}" OnContent="Last Year" OffContent="Last Year" />
-            <ToggleSwitch IsOn="{Binding Path=HideFillupTotal, Mode=TwoWay, Converter={StaticResource BoolNotConverter}}" OnContent="All Time" OffContent="All Time" />
+            <ToggleSwitch IsOn="{Binding Path=ShowFillupRecent, Mode=TwoWay}" OnContent="Most Recent" OffContent="Most Recent" Toggled="OnToggleFillupDisplay" />
+            <ToggleSwitch IsOn="{Binding Path=ShowFillupMonthly, Mode=TwoWay}" OnContent="Last Month" OffContent="Last Month" />
+            <ToggleSwitch IsOn="{Binding Path=ShowFillupAnnual, Mode=TwoWay}" OnContent="Last Year" OffContent="Last Year" />
+            <ToggleSwitch IsOn="{Binding Path=ShowFillupTotal, Mode=TwoWay}" OnContent="All Time" OffContent="All Time" />
             <TextBlock Text="Show maintenance stats for" Style="{StaticResource SubheaderTextBlockStyle}" HorizontalAlignment="Center" />
             <ToggleSwitch OnContent="MostRecent" OffContent="Most Recent" Toggled="OnToggleFillupDisplay" />
             <ToggleSwitch OnContent="Last Month" OffContent="Last Month" />

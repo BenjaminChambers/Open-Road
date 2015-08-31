@@ -6,10 +6,10 @@ namespace Porter.Util
     {
         public static bool PreferGPM { get { return GetSetting<bool>(); } set { SetValue(value); } }
 
-        public static bool HideFillupRecent { get { return GetSetting<bool>(); } set { SetValue(value); } }
-        public static bool HideFillupMonthly { get { return GetSetting<bool>(); } set { SetValue(value); } }
-        public static bool HideFillupAnnual { get { return GetSetting<bool>(); } set { SetValue(value); } }
-        public static bool HideFillupTotal { get { return GetSetting<bool>(); } set { SetValue(value); } }
+        public static bool ShowFillupRecent { get { return GetSetting<bool>(); } set { SetValue(value); } }
+        public static bool ShowFillupMonthly { get { return GetSetting<bool>(); } set { SetValue(value); } }
+        public static bool ShowFillupAnnual { get { return GetSetting<bool>(); } set { SetValue(value); } }
+        public static bool ShowFillupTotal { get { return GetSetting<bool>(); } set { SetValue(value); } }
 
         public static T GetSetting<T>([CallerMemberName] string settingName = null)
         {
