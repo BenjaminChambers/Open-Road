@@ -87,6 +87,7 @@ namespace Porter.Pages.MaintenanceList.AddMaintenance
         {
             FormData = new Util.ViewModels.MaintenanceForm();
             MaintenanceForm.DataContext = FormData;
+            ReminderBox.SelectedIndex = 0;
 
             navigationHelper.OnNavigatedTo(e);
         }
