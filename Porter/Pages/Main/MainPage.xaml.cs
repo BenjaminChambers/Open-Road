@@ -14,7 +14,6 @@ namespace Porter.Pages.Main
     public sealed partial class MainPage : Page
     {
         Util.ViewModels.FillupForm FormData = new Util.ViewModels.FillupForm();
-        ObservableCollection<Views.FillupStatsView> fillupStats = new ObservableCollection<Views.FillupStatsView>();
 
         public MainPage()
         {
@@ -42,16 +41,12 @@ namespace Porter.Pages.Main
 
         private void RefreshDisplay()
         {
-            fillupStats.Clear();
             DetailListView.Items.Clear();
 
-            if (!Util.Settings.HideFillupRecent) fillupStats.Add(new Views.FillupStatsView(0, "Latest Fill-up"));
-            if (!Util.Settings.HideFillupMonthly) fillupStats.Add(new Views.FillupStatsView(31, "Monthly Gas Usage"));
-            if (!Util.Settings.HideFillupAnnual) fillupStats.Add(new Views.FillupStatsView(366, "Annual Gas Usage"));
-            if (!Util.Settings.HideFillupTotal) fillupStats.Add(new Views.FillupStatsView(-1, "Total Gas Usage"));
-
-            foreach (Views.FillupStatsView view in fillupStats)
-                DetailListView.Items.Add(view);
+            if (!Util.Settings.HideFillupRecent) DetailListView.Items.Add(new Views.FillupStatsView(0, "Latest Fill-up"));
+            if (!Util.Settings.HideFillupMonthly) DetailListView.Items.Add(new Views.FillupStatsView(31, "Monthly Gas Usage"));
+            if (!Util.Settings.HideFillupAnnual) DetailListView.Items.Add(new Views.FillupStatsView(366, "Annual Gas Usage"));
+            if (!Util.Settings.HideFillupTotal) DetailListView.Items.Add(new Views.FillupStatsView(-1, "Total Gas Usage"));
 
             Util.LiveTile.Render();
         }
