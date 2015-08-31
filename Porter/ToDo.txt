@@ -20,4 +20,4 @@ General:
 - Create a template for borders (I'm using the same style quite a bit)
 - Remove bottom buttons from pages, replace in UI as fits
 
-- Send page paramters via parameters rather than static data fields
+- Send page parameters via parameters rather than static data fields
