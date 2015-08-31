@@ -5,10 +5,76 @@
     xmlns:local="using:Porter.Pages.MaintenanceList.EditMaintenance"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:nb="using:NumberBox"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps" 
     mc:Ignorable="d"
     Background="{StaticResource PageBackground}">
 
     <Grid>
-
+        <ScrollViewer>
+            <StackPanel x:Name="MaintenanceForm" DataContext="{Binding}">
+                <Border Width="350" BorderThickness="3" CornerRadius="25" BorderBrush="White"
+                        Margin="5" Padding="5" HorizontalAlignment="Center" >
+                    <StackPanel Width="300">
+                        <DatePicker HorizontalAlignment="Center" Date="{Binding Path=Date, Mode=TwoWay}" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Description" Style="{StaticResource FormTextStyle}" />
+                            <TextBlock Text="Odometer" Grid.Row="1" Style="{StaticResource FormTextStyle}" />
+                            <TextBlock Text="Cost" Grid.Row="2" Style="{StaticResource FormTextStyle}" />
+                            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=Description, Mode=TwoWay}" />
+                            <nb:NumberBox Grid.Column="1" Grid.Row="1" Number="{Binding Path=Odometer, Mode=TwoWay}" />
+                            <nb:NumberBox Grid.Column="1" Grid.Row="2" Number="{Binding Path=Cost, Mode=TwoWay}" Prefix="$" DecimalPlaces="2" />
+                        </Grid>
+                        <Maps:MapControl x:Name="MapControl"
+                        Width="300" Height="300"
+                        MapServiceToken="{StaticResource MapToken}"
+                        CenterChanged="OnMapMoved" Margin="0,0,0,15">
+                            <Image Source="ms-appx:///Assets/Icons/location.png" Margin="250,10,0,0" Width="40" Height="40" Tapped="OnCenterMap"/>
+                        </Maps:MapControl>
+                    </StackPanel>
+                </Border>
+                <Border Width="350" BorderThickness="3" CornerRadius="25" BorderBrush="White"
+                        Margin="5" Padding="5" HorizontalAlignment="Center">
+                    <StackPanel Width="300" >
+                        <TextBlock Text="Reminder" Style="{StaticResource FormTextStyle}" HorizontalAlignment="Center" />
+                        <Grid x:Name="ReminderForm">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Interval Type" Style="{StaticResource FormTextStyle}" />
+                            <ComboBox x:Name="ReminderBox" Grid.Column="1"
+                          SelectedIndex="{Binding Path=ReminderType, Mode=TwoWay}">
+                                <ComboBox.Items>
+                                    <ComboBoxItem Content="None" />
+                                    <ComboBoxItem Content="By Date" />
+                                    <ComboBoxItem Content="By Mileage" />
+                                    <ComboBoxItem Content="Either" />
+                                </ComboBox.Items>
+                            </ComboBox>
+                            <TextBlock Text="Days" Grid.Row="1" Style="{StaticResource FormTextStyle}" />
+                            <TextBlock Text="Miles" Grid.Row="2" Style="{StaticResource FormTextStyle}" />
+                            <nb:NumberBox Number="{Binding Path=ReminderIntervalDays, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" DecimalPlaces="0" />
+                            <nb:NumberBox Number="{Binding Path=ReminderIntervalMiles, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" DecimalPlaces="0" />
+                        </Grid>
+                    </StackPanel>
+                </Border>
+                <Button Click="OnClickRevert" Tag="Revert" Width="350" Template="{StaticResource PorterButton}" HorizontalAlignment="Center" />
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
