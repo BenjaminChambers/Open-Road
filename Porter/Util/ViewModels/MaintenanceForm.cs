@@ -26,8 +26,8 @@ namespace Porter.Util.ViewModels
             Longitude = item.Longitude;
 
             ReminderType = item.Reminder;
-            ReminderDate = item.NextDate;
-            ReminderMileage = item.NextMileage;
+            ReminderIntervalDays = (int)((item.NextDate - item.Date).TotalDays);
+            ReminderIntervalMiles = item.NextMileage - item.Odometer;
         }
 
         public void Update(Models.Maintenance item)
@@ -42,8 +42,8 @@ namespace Porter.Util.ViewModels
             item.Longitude = Longitude;
 
             item.Reminder = ReminderType;
-            item.NextDate = ReminderDate;
-            item.NextMileage = ReminderMileage;
+            item.NextDate = (Date + new TimeSpan(ReminderIntervalDays, 0, 0, 0)).Date;
+            item.NextMileage = Odometer + ReminderIntervalMiles;
         }
 
         public Models.Maintenance ToMaintenance()
@@ -64,8 +64,8 @@ namespace Porter.Util.ViewModels
         public double Longitude { get { return _longitude; } set { SetField(ref _longitude, value); } }
 
         public Models.Maintenance.ReminderType ReminderType { get { return _reminderType; } set { SetField(ref _reminderType, value); } }
-        public int ReminderMileage { get { return _reminderMileage; } set { SetField(ref _reminderMileage, value); } }
-        public DateTime ReminderDate { get { return _reminderDate; } set { SetField(ref _reminderDate, value); } }
+        public int ReminderIntervalDays { get { return _reminderIntervalDays; } set { SetField(ref _reminderIntervalDays, value); } }
+        public int ReminderIntervalMiles { get { return _reminderIntervalMiles; } set { SetField(ref _reminderIntervalMiles, value); } }
 
         public Geopoint Location
         {
@@ -98,7 +98,7 @@ namespace Porter.Util.ViewModels
         private double _longitude;
 
         private Models.Maintenance.ReminderType _reminderType;
-        private int _reminderMileage;
-        private DateTime _reminderDate;
+        private int _reminderIntervalDays;
+        private int _reminderIntervalMiles;
     }
 }
