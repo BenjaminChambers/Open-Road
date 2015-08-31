@@ -70,8 +70,8 @@ namespace Porter.Pages.FillupList
                 FillupSelection.ItemBackground = new SolidColorBrush(Windows.UI.Colors.Transparent);
             }
 
-            ((FillupView)e.ClickedItem).ItemBackground = (Brush)App.Current.Resources["ButtonBackground"];
             FillupSelection = (FillupView)e.ClickedItem;
+            FillupSelection.ItemBackground = (Brush)App.Current.Resources["ButtonBackground"];
         }
 
         private void OnClickEdit(object sender, RoutedEventArgs e)

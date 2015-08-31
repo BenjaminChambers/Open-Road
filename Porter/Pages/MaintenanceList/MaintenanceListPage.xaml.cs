@@ -60,18 +60,39 @@ namespace Porter.Pages.MaintenanceList
 
         private void OnClickEdit(object sender, RoutedEventArgs e)
         {
-
+            if (MaintenanceSelection != null)
+            {
+                EditMaintenance.EditMaintenancePage.MaintenanceID = MaintenanceSelection.ID;
+                Frame.Navigate(typeof(EditMaintenance.EditMaintenancePage));
+            }
         }
 
         private void OnClickDelete(object sender, RoutedEventArgs e)
         {
+            if (MaintenanceSelection != null)
+            {
+                using (var db = Util.Database.Connection())
+                {
+                    var toDelete = db.Get<Util.Models.Maintenance>(MaintenanceSelection.ID);
 
+                    db.Delete(toDelete);
+                }
+
+                RefreshDisplay();
+            }
         }
 
         private void OnItemClick(object sender, ItemClickEventArgs e)
         {
+            if (MaintenanceSelection != null)
+            {
+                MaintenanceSelection.ItemBackground = new SolidColorBrush(Windows.UI.Colors.Transparent);
+            }
 
+            MaintenanceSelection = (MaintenanceView)e.ClickedItem;
+            MaintenanceSelection.ItemBackground = (Brush)App.Current.Resources["ButtonBackground"];
         }
+
 
 
 
