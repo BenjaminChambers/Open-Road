@@ -11,9 +11,8 @@
 
     <Page.Resources>
         <DataTemplate x:Key="FillupViewTemplate">
-            <Border BorderThickness="1" CornerRadius="25" BorderBrush="White"
-                    Background="{Binding ItemBackground}"  Margin="5" Padding="5"
-                    HorizontalAlignment="Center">
+            <Border Style="{StaticResource BorderStyle}"
+                    Background="{Binding ItemBackground}">
                 <Grid HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="75" />

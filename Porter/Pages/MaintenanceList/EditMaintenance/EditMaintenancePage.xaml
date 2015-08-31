@@ -13,8 +13,7 @@
     <Grid>
         <ScrollViewer>
             <StackPanel x:Name="MaintenanceForm" DataContext="{Binding}">
-                <Border Width="350" BorderThickness="3" CornerRadius="25" BorderBrush="White"
-                        Margin="5" Padding="5" HorizontalAlignment="Center" >
+                <Border Width="350" Style="{StaticResource BorderStyle}" >
                     <StackPanel Width="300">
                         <DatePicker HorizontalAlignment="Center" Date="{Binding Path=Date, Mode=TwoWay}" />
                         <Grid>
@@ -42,8 +41,7 @@
                         </Maps:MapControl>
                     </StackPanel>
                 </Border>
-                <Border Width="350" BorderThickness="3" CornerRadius="25" BorderBrush="White"
-                        Margin="5" Padding="5" HorizontalAlignment="Center">
+                <Border Width="350" Style="{StaticResource BorderStyle}">
                     <StackPanel Width="300" >
                         <TextBlock Text="Reminder" Style="{StaticResource FormTextStyle}" HorizontalAlignment="Center" />
                         <Grid x:Name="ReminderForm">

@@ -7,7 +7,7 @@
 
     <Application.Resources>
         <x:String x:Key="MapToken">yOWRS59BYMupsGQx2Ljg~K_XtMIWnhRcvveZe0nu20A~AkAwZh-NYml0diu5sM6by9VtYrHUD20XidXMJm2Lob6hrENRHLt9DIdQQ3LtTI3f</x:String>
-        
+
         <Style TargetType="Button">
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
@@ -38,6 +38,14 @@
             </Border>
         </ControlTemplate>
 
+        <Style x:Key="BorderStyle" TargetType="Border">
+            <Setter Property="BorderThickness" Value="3" />
+            <Setter Property="CornerRadius" Value="25" />
+            <Setter Property="BorderBrush" Value="White" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
     </Application.Resources>
 
 </Application>

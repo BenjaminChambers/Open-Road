@@ -47,8 +47,7 @@
                 HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Auto"
                 VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Auto">
             <StackPanel>
-                <Border BorderThickness="3" CornerRadius="25" BorderBrush="White"
-                        Margin="5" Padding="5" HorizontalAlignment="Center">
+                <Border Style="{StaticResource BorderStyle}">
                     <StackPanel HorizontalAlignment="Center">
                         <Grid x:Name="QuickFillupForm">
                             <Grid.ColumnDefinitions>

@@ -11,9 +11,7 @@
 
     <Page.Resources>
         <DataTemplate x:Key="MaintenanceViewTemplate">
-            <Border BorderThickness="1" CornerRadius="25" BorderBrush="White"
-                    Background="{Binding ItemBackground}"  Margin="5" Padding="5"
-                    HorizontalAlignment="Center">
+            <Border Background="{Binding ItemBackground}" Style="{StaticResource BorderStyle}">
                 <Grid HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition />
