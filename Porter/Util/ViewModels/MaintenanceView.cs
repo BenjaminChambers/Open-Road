@@ -25,10 +25,10 @@ namespace Porter.Util.ViewModels
                     Reminder = "Next on " + Format.Date(Item.NextDate);
                     break;
                 case Models.Maintenance.ReminderType.Mileage:
-                    Reminder = "Next at " + Format.Miles(Item.NextMileage) + " miles";
+                    Reminder = "Next at " + Format.Miles(Item.NextMileage);
                     break;
                 case Models.Maintenance.ReminderType.Both:
-                    Reminder = "Next at " + Format.Miles(Item.NextMileage) + " miles or on " + Format.Date(Item.NextDate);
+                    Reminder = "Next at " + Format.Miles(Item.NextMileage) + " or on " + Format.Date(Item.NextDate);
                     break;
             }
         }
