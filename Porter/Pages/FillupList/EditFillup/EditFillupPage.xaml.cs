@@ -17,7 +17,6 @@ namespace Porter.Pages.FillupList.EditFillup
     {
         public static int FillupID = -1;
         Util.ViewModels.FillupForm FormData = null;
-        Util.Models.Fillup Current = null;
         MapIcon PushPin = new MapIcon();
 
         public EditFillupPage()
@@ -30,9 +29,8 @@ namespace Porter.Pages.FillupList.EditFillup
         {
             using (var db = Util.Database.Connection())
             {
-                Current = db.Get<Util.Models.Fillup>(FillupID);
+                FormData = new Util.ViewModels.FillupForm(db.Get<Util.Models.Fillup>(FillupID));
             }
-            FormData = new Util.ViewModels.FillupForm(Current);
             FillupForm.DataContext = FormData;
 
             MapControl.Center = PushPin.Location = FormData.Location;
@@ -47,10 +45,7 @@ namespace Porter.Pages.FillupList.EditFillup
 
         private void OnRevert(object sender, RoutedEventArgs e)
         {
-            FormData = new Util.ViewModels.FillupForm(Current);
-            MapControl.Center = PushPin.Location = Current.Location;
-            MapControl.ZoomLevel = 15;
-            FillupForm.DataContext = FormData;
+            InitializeData();
         }
 
         private async void OnCenterMap(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
@@ -85,10 +80,11 @@ namespace Porter.Pages.FillupList.EditFillup
         {
             if (FormData != null)
             {
-                FormData.Update(Current);
                 using (var db = Util.Database.Connection())
                 {
-                    db.Update(Current);
+                    var work = db.Get<Util.Models.Fillup>(FillupID);
+                    FormData.Update(work);
+                    db.Update(work);
                 }
             }
 
