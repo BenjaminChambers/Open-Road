@@ -37,14 +37,6 @@
 
     <Grid>
         <StackPanel>
-            <Grid Width="300">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="Showing:" Style="{StaticResource ListViewItemTextBlockStyle}" />
-                <ComboBox x:Name="MaintenanceFilter" Grid.Column="1" />
-            </Grid>
             <ListView x:Name="MaintenanceList" Height="550"
             ItemsSource="{Binding}"
             ItemTemplate="{StaticResource MaintenanceViewTemplate}"
