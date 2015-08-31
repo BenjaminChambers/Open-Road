@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace Porter.Util
 {
@@ -22,8 +23,12 @@ namespace Porter.Util
             var result = settings.Values[name];
             if (result == null)
             {
-                settings.Values[name] = default(T);
-                return default(T);
+                if (Defaults.ContainsKey(name))
+                    settings.Values[name] = Defaults[name];
+                else
+                    settings.Values[name] = default(T);
+
+                return (T)settings.Values[name];
             }
             return (T)result;
         }
@@ -32,5 +37,13 @@ namespace Porter.Util
         {
             Windows.Storage.ApplicationData.Current.LocalSettings.Values[name] = value;
         }
+
+        private static Dictionary<string, bool> Defaults = new Dictionary<string, bool>
+        {
+            ["ShowFillupRecent"] = true,
+            ["ShowFillupMonthly"] = false,
+            ["ShowFillupAnnual"] = true,
+            ["ShowFillupTotal"] = false,
+        };
     }
 }
