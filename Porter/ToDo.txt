@@ -9,6 +9,9 @@ MaintenanceListPage:
 AddMaintenancePage:
 - Hide miles or days portions of the form based on selection
 
+FillupListPage:
+- Expand FillupView based on selection
+
 General:
 - Get most recent mileage for car
 - Switch between multiple cars

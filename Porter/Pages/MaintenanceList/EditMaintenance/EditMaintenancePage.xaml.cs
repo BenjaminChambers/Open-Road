@@ -48,7 +48,7 @@ namespace Porter.Pages.MaintenanceList.EditMaintenance
                 FormData = new Util.ViewModels.MaintenanceForm();
 
             MaintenanceForm.DataContext = FormData;
-            ReminderBox.SelectedIndex = 0;
+            ReminderBox.SelectedIndex = (int)FormData.ReminderType;
 
             Geoposition pos = await new Geolocator().GetGeopositionAsync();
             MapControl.Center = pos.Coordinate.Point;

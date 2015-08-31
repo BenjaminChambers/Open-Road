@@ -61,8 +61,8 @@
                           SelectedIndex="{Binding Path=ReminderType, Mode=TwoWay}">
                                 <ComboBox.Items>
                                     <ComboBoxItem Content="None" />
-                                    <ComboBoxItem Content="By Date" />
-                                    <ComboBoxItem Content="By Mileage" />
+                                    <ComboBoxItem Content="By Days" />
+                                    <ComboBoxItem Content="By Miles" />
                                     <ComboBoxItem Content="Either" />
                                 </ComboBox.Items>
                             </ComboBox>
