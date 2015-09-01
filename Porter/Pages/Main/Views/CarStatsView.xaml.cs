@@ -31,7 +31,7 @@ namespace Porter.Pages.Main.Views
                         maxOdom = maxMaint;
                 }
 
-                Odometer.Text = maxOdom.ToString();
+                Odometer.Text = Util.Format.Miles(maxOdom);
             }
         }
     }
