@@ -58,10 +58,7 @@ namespace Porter.Pages.MaintenanceList.AddMaintenance
 
         private void OnClickSave(object sender, RoutedEventArgs e)
         {
-            using (var db = Util.Database.Connection())
-            {
-                db.Insert(FormData.ToMaintenance());
-            }
+            FormData.SaveAsMaintenance();
 
             Frame.GoBack();
         }

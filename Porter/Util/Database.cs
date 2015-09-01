@@ -14,6 +14,7 @@ namespace Porter.Util
                 conn.CreateTable<Util.Models.Car>();
                 conn.CreateTable<Util.Models.Fillup>();
                 conn.CreateTable<Util.Models.Maintenance>();
+                conn.CreateTable<Util.Models.Reminder>();
 
                 if (conn.Table<Models.Car>().Count()==0)
                 {

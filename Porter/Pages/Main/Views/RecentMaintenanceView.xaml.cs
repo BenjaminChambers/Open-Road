@@ -15,12 +15,16 @@ namespace Porter.Pages.Main.Views
             this.InitializeComponent();
 
             Util.Models.Maintenance work = null;
+            Util.Models.Reminder rem = null;
 
             using (var db = Util.Database.Connection())
             {
                 var table = db.Table<Util.Models.Maintenance>();
                 if (table.Count() > 0)
                     work = table.OrderByDescending(item => item.Odometer).First();
+
+                if (work.ReminderID != -1)
+                    rem = db.Get<Util.Models.Reminder>(work.ReminderID);
             }
 
             if (work == null)
@@ -32,7 +36,9 @@ namespace Porter.Pages.Main.Views
                 MaintenanceName.Text = work.Description;
                 Cost.Text = Util.Format.Currency(work.Cost);
                 Mileage.Text = Util.Format.Miles(work.Odometer);
-                Reminder.Text = work.ReminderDescription;
+
+                if (rem != null)
+                    Reminder.Text = rem.ReminderDescription;
             }
         }
 

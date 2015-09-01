@@ -7,29 +7,25 @@ using Windows.UI.Xaml.Media;
 
 namespace Porter.Util.ViewModels
 {
-    public class MaintenanceView : Util.NotificationBase
+    public class MaintenanceView : NotificationBase
     {
-        public MaintenanceView(Models.Maintenance Item)
+        public MaintenanceView(int MaintenanceID)
         {
-            ID = Item.ID;
-            ItemBackground = null;
-
-            Date = Format.Date(Item.Date);
-            Description = Item.Description;
-            Miles = Format.Miles(Item.Odometer);
-            Cost = Format.Currency(Item.Cost);
-
-            switch(Item.Reminder)
+            using (var db = Database.Connection())
             {
-                case Models.Maintenance.ReminderType.Date:
-                    Reminder = "Next on " + Format.Date(Item.NextDate);
-                    break;
-                case Models.Maintenance.ReminderType.Mileage:
-                    Reminder = "Next at " + Format.Miles(Item.NextMileage);
-                    break;
-                case Models.Maintenance.ReminderType.Both:
-                    Reminder = "Next at " + Format.Miles(Item.NextMileage) + " or on " + Format.Date(Item.NextDate);
-                    break;
+                Models.Maintenance work = db.Get<Models.Maintenance>(MaintenanceID);
+                ID = work.ID;
+                ItemBackground = null;
+                Date = Format.Date(work.Date);
+                Description = work.Description;
+                Miles = Format.Miles(work.Odometer);
+                Cost = Format.Currency(work.Cost);
+
+                if (work.ReminderID != -1)
+                {
+                    Models.Reminder rem = db.Get<Models.Reminder>(work.ReminderID);
+                    Reminder = rem.ReminderDescription;
+                }
             }
         }
 

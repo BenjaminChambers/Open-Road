@@ -14,44 +14,82 @@ namespace Porter.Util.ViewModels
             Date = DateTime.Now;
         }
 
-        public MaintenanceForm(Models.Maintenance item)
+        public MaintenanceForm(int MaintenanceID)
         {
-            Description = item.Description;
-            Date = item.Date;
-            Odometer = item.Odometer;
-            Cost = item.Cost;
+            using (var db = Database.Connection())
+            {
+                Models.Maintenance item = db.Get<Models.Maintenance>(MaintenanceID);
 
-            Altitude = item.Altitude;
-            Latitude = item.Latitude;
-            Longitude = item.Longitude;
+                Description = item.Description;
+                Date = item.Date;
+                Odometer = item.Odometer;
+                Cost = item.Cost;
 
-            ReminderType = item.Reminder;
-            ReminderIntervalDays = (int)((item.NextDate - item.Date).TotalDays);
-            ReminderIntervalMiles = item.NextMileage - item.Odometer;
+                Altitude = item.Altitude;
+                Latitude = item.Latitude;
+                Longitude = item.Longitude;
+
+                if (item.ReminderID != -1)
+                {
+                    Models.Reminder rem = db.Get<Models.Reminder>(item.ReminderID);
+
+                    ReminderType = rem.Type;
+                    ReminderIntervalDays = (int)((rem.NextDate - item.Date).TotalDays);
+                    ReminderIntervalMiles = rem.NextMileage - item.Odometer;
+                }
+            }
         }
 
-        public void Update(Models.Maintenance item)
+        public void Update(int MaintenanceID)
         {
-            item.Description = Description;
-            item.Date = Date.Date;
-            item.Odometer = Odometer;
-            item.Cost = Cost;
+            using (var db = Database.Connection())
+            {
+                Models.Maintenance item = db.Get<Models.Maintenance>(MaintenanceID);
+                item.Description = Description;
+                item.Date = Date.Date;
+                item.Odometer = Odometer;
+                item.Cost = Cost;
 
-            item.Altitude = Altitude;
-            item.Latitude = Latitude;
-            item.Longitude = Longitude;
+                item.Altitude = Altitude;
+                item.Latitude = Latitude;
+                item.Longitude = Longitude;
 
-            item.Reminder = ReminderType;
-            item.NextDate = (Date + new TimeSpan(ReminderIntervalDays, 0, 0, 0)).Date;
-            item.NextMileage = Odometer + ReminderIntervalMiles;
+                if (ReminderType != Models.Reminder.ReminderType.None)
+                {
+                    Models.Reminder rem = (item.ReminderID == -1) ? new Models.Reminder() : db.Get<Models.Reminder>(item.ReminderID);
+                    rem.Type = ReminderType;
+                    rem.NextDate = (Date + new TimeSpan(ReminderIntervalDays, 0, 0, 0)).Date;
+                    rem.NextMileage = Odometer + ReminderIntervalMiles;
+
+                    if (item.ReminderID==-1)
+                    {
+                        db.Insert(rem);
+                        item.ReminderID = rem.ID;
+                    } else
+                    {
+                        db.Update(rem);
+                    }
+                } else
+                {
+                    if (item.ReminderID != -1)
+                    {
+                        db.Delete<Models.Reminder>(item.ReminderID);
+                        item.ReminderID = -1;
+                    }
+                }
+
+                db.Update(item);
+            }
         }
 
-        public Models.Maintenance ToMaintenance()
+        public void SaveAsMaintenance()
         {
-            Models.Maintenance item = new Models.Maintenance();
-
-            Update(item);
-            return item;
+            using (var db = Database.Connection())
+            {
+                Models.Maintenance item = new Models.Maintenance();
+                db.Insert(item);
+                Update(item.ID);
+            }
         }
 
         public string Description { get { return _description; } set { SetField(ref _description, value); } }
@@ -63,7 +101,7 @@ namespace Porter.Util.ViewModels
         public double Latitude { get { return _latitude; } set { SetField(ref _latitude, value); } }
         public double Longitude { get { return _longitude; } set { SetField(ref _longitude, value); } }
 
-        public Models.Maintenance.ReminderType ReminderType { get { return _reminderType; } set { SetField(ref _reminderType, value); } }
+        public Models.Reminder.ReminderType ReminderType { get { return _reminderType; } set { SetField(ref _reminderType, value); } }
         public int ReminderIntervalDays { get { return _reminderIntervalDays; } set { SetField(ref _reminderIntervalDays, value); } }
         public int ReminderIntervalMiles { get { return _reminderIntervalMiles; } set { SetField(ref _reminderIntervalMiles, value); } }
 
@@ -97,7 +135,7 @@ namespace Porter.Util.ViewModels
         private double _latitude;
         private double _longitude;
 
-        private Models.Maintenance.ReminderType _reminderType;
+        private Models.Reminder.ReminderType _reminderType;
         private int _reminderIntervalDays;
         private int _reminderIntervalMiles;
     }

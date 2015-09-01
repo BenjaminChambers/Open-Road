@@ -37,15 +37,10 @@ namespace Porter.Pages.MaintenanceList.EditMaintenance
 
         private async void Initialize()
         {
-            if (MaintenanceID != -1)
-            {
-                using (var db = Util.Database.Connection())
-                {
-                    FormData = new Util.ViewModels.MaintenanceForm(db.Get<Util.Models.Maintenance>(MaintenanceID));
-                }
-            }
-            else
+            if (MaintenanceID == -1)
                 FormData = new Util.ViewModels.MaintenanceForm();
+            else
+                FormData = new Util.ViewModels.MaintenanceForm(MaintenanceID);
 
             MaintenanceForm.DataContext = FormData;
             ReminderBox.SelectedIndex = (int)FormData.ReminderType;
@@ -94,9 +89,7 @@ namespace Porter.Pages.MaintenanceList.EditMaintenance
         {
             using (var db = Util.Database.Connection())
             {
-                var work = db.Get<Util.Models.Maintenance>(MaintenanceID);
-                FormData.Update(work);
-                db.Update(work);
+                FormData.Update(MaintenanceID);
             }
             this.navigationHelper.OnNavigatedFrom(e);
         }

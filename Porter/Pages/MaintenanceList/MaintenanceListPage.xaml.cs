@@ -49,7 +49,7 @@ namespace Porter.Pages.MaintenanceList
                 var data = db.Table<Util.Models.Maintenance>().OrderByDescending(item => item.Odometer).ToList();
 
                 for (int i = 0; i < data.Count; i++)
-                    MaintenanceItems.Add(new MaintenanceView(data[i]));
+                    MaintenanceItems.Add(new MaintenanceView(data[i].ID));
             }
         }
 

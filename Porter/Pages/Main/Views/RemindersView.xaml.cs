@@ -16,36 +16,13 @@ namespace Porter.Pages.Main.Views
 
             using (var db = Util.Database.Connection())
             {
-                var workSet = db.Table<Util.Models.Maintenance>().OrderByDescending(item => item.Odometer);
-
-                List<Util.Models.Maintenance> reminderSet = new List<Util.Models.Maintenance>();
-
-                foreach (Util.Models.Maintenance work in workSet)
-                {
-                    if (work.Reminder != Util.Models.Maintenance.ReminderType.None)
-                    {
-                        switch (work.Reminder)
-                        {
-                            case Util.Models.Maintenance.ReminderType.Date:
-                                if (work.NextDate > DateTime.Today)
-                                    AddReminder(work);
-                                break;
-                            case Util.Models.Maintenance.ReminderType.Mileage:
-//                                if (work.NextMileage > currentMileage)
-//                                    AddReminder(work);
-                                break;
-                            case Util.Models.Maintenance.ReminderType.Both:
-                                break;
-                        }
-                    }
-                }
             }
         }
 
-        void AddReminder(Util.Models.Maintenance work)
+        void AddReminder(Util.Models.Reminder rem)
         {
             TextBlock tb = new TextBlock();
-            tb.Text = work.ReminderDescription;
+            tb.Text = rem.ReminderDescription;
 
             ReminderPanel.Children.Add(tb);
         }
