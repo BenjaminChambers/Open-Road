@@ -9,31 +9,19 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Border Style="{StaticResource BorderStyle}">
-        <StackPanel>
+    <Border Style="{StaticResource BorderStyle}" Width="350">
+        <StackPanel HorizontalAlignment="Center">
             <TextBlock Text="Most Recent Maintenance" HorizontalAlignment="Center" />
             <TextBlock x:Name="MaintenanceName" HorizontalAlignment="Center" FontSize="20" />
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="GallonsPerDay" FontSize="16" HorizontalAlignment="Center"  Margin="5"/>
-                <TextBlock x:Name="CostPerDay" FontSize="16" HorizontalAlignment="Center"  Margin="5" Grid.Column="1"/>
-                <TextBlock x:Name="MilesPerDay" FontSize="16" HorizontalAlignment="Center"  Margin="5" Grid.Column="2"/>
+                <TextBlock x:Name="Cost" FontSize="16" HorizontalAlignment="Center"  Margin="5" />
+                <TextBlock x:Name="Mileage" Grid.Column="1" FontSize="16" HorizontalAlignment="Center"  Margin="5" />
             </Grid>
-            <TextBlock Text="Total" HorizontalAlignment="Stretch" TextAlignment="Center" />
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition Width="100" />
-                </Grid.ColumnDefinitions>
-                <TextBlock x:Name="TotalGallons" FontSize="16" HorizontalAlignment="Center"  Margin="5"/>
-                <TextBlock x:Name="TotalCost" FontSize="16" HorizontalAlignment="Center"  Margin="5"  Grid.Column="1" />
-                <TextBlock x:Name="TotalMiles" FontSize="16" HorizontalAlignment="Center"  Margin="5"  Grid.Column="2" />
-            </Grid>
+            <TextBlock x:Name="Reminder" HorizontalAlignment="Center" />
         </StackPanel>
     </Border>
 </UserControl>

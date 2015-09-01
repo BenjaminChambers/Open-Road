@@ -9,8 +9,8 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Border Style="{StaticResource BorderStyle}">
-        <StackPanel>
+    <Border Style="{StaticResource BorderStyle}" Width="350">
+        <StackPanel HorizontalAlignment="Center">
             <TextBlock x:Name="Title" HorizontalAlignment="Center" FontSize="20" />
             <TextBlock Text="Daily" HorizontalAlignment="Stretch" TextAlignment="Center" />
             <Grid>

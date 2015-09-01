@@ -48,6 +48,8 @@ namespace Porter.Pages.Main
             if (Util.Settings.ShowFillupAnnual) DetailListView.Items.Add(new Views.FillupStatsView(366, "Annual Gas Usage"));
             if (Util.Settings.ShowFillupTotal) DetailListView.Items.Add(new Views.FillupStatsView(-1, "Total Gas Usage"));
 
+            if (Util.Settings.ShowMaintenanceRecent) DetailListView.Items.Add(new Views.RecentMaintenanceView());
+
             Util.LiveTile.Render();
         }
 

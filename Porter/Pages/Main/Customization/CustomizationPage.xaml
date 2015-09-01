@@ -17,10 +17,9 @@
             <ToggleSwitch IsOn="{Binding Path=ShowFillupAnnual, Mode=TwoWay}" OnContent="Last Year" OffContent="Last Year" />
             <ToggleSwitch IsOn="{Binding Path=ShowFillupTotal, Mode=TwoWay}" OnContent="All Time" OffContent="All Time" />
             <TextBlock Text="Show maintenance stats for" Style="{StaticResource SubheaderTextBlockStyle}" HorizontalAlignment="Center" />
-            <ToggleSwitch OnContent="MostRecent" OffContent="Most Recent" Toggled="OnToggleFillupDisplay" />
-            <ToggleSwitch OnContent="Last Month" OffContent="Last Month" />
-            <ToggleSwitch OnContent="Last Year" OffContent="Last Year" />
-            <ToggleSwitch OnContent="All Time" OffContent="All Time" />
+            <ToggleSwitch IsOn="{Binding Path=ShowMaintenanceRecent, Mode=TwoWay}" OnContent="MostRecent" OffContent="Most Recent" Toggled="OnToggleFillupDisplay" />
+            <ToggleSwitch IsOn="{Binding Path=ShowMaintenanceAnnual, Mode=TwoWay}" OnContent="Last Year" OffContent="Last Year" />
+            <ToggleSwitch IsOn="{Binding Path=ShowMaintenanceTotal, Mode=TwoWay}" OnContent="All Time" OffContent="All Time" />
         </StackPanel>
     </StackPanel>
 </Page>

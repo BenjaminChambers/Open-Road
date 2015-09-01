@@ -13,6 +13,9 @@ namespace Porter.Util
         public static bool ShowFillupTotal { get { return GetValue<bool>(); } set { SetValue(value); } }
 
         public static bool ShowMaintenanceRecent { get { return GetValue<bool>(); } set { SetValue(value); } }
+        public static bool ShowMaintenanceAnnual { get { return GetValue<bool>(); } set { SetValue(value); } }
+        public static bool ShowMaintenanceTotal { get { return GetValue<bool>(); } set { SetValue(value); } }
+
 
         private static T GetValue<T>([CallerMemberName] string name = null)
         {
@@ -41,6 +44,10 @@ namespace Porter.Util
             ["ShowFillupMonthly"] = false,
             ["ShowFillupAnnual"] = true,
             ["ShowFillupTotal"] = false,
+
+            ["ShowMaintenanceRecent"] = false,
+            ["ShowMaintenanceAnnual"] = false,
+            ["ShowMaintenanceTotal"] = false,
         };
     }
 }

@@ -31,6 +31,9 @@ namespace Porter.Pages.Main.Views
             else
             {
                 MaintenanceName.Text = work.Description;
+                Cost.Text = Util.Format.Currency(work.Cost);
+                Mileage.Text = Util.Format.Miles(work.Odometer);
+                Reminder.Text = work.ReminderDescription;
             }
         }
 
