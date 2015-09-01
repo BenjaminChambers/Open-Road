@@ -43,6 +43,8 @@ namespace Porter.Pages.Main
         {
             DetailListView.Items.Clear();
 
+            DetailListView.Items.Add(new Views.CarStatsView());
+
             if (Util.Settings.ShowFillupRecent) DetailListView.Items.Add(new Views.RecentFillupView());
             if (Util.Settings.ShowFillupMonthly) DetailListView.Items.Add(new Views.FillupStatsView(31, "Monthly Gas Usage"));
             if (Util.Settings.ShowFillupAnnual) DetailListView.Items.Add(new Views.FillupStatsView(366, "Annual Gas Usage"));

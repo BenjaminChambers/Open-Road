@@ -5,6 +5,8 @@ namespace Porter.Util
 {
     public class Settings
     {
+        public static int CurrentCar { get { return GetValue<int>(); } set { SetValue(value); } }
+
         public static bool PreferGPM { get { return GetValue<bool>(); } set { SetValue(value); } }
 
         public static bool ShowFillupRecent { get { return GetValue<bool>(); } set { SetValue(value); } }
