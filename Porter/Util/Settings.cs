@@ -5,21 +5,16 @@ namespace Porter.Util
 {
     public class Settings
     {
-        public static bool PreferGPM { get { return GetSetting<bool>(); } set { SetValue(value); } }
+        public static bool PreferGPM { get { return GetValue<bool>(); } set { SetValue(value); } }
 
-        public static bool ShowFillupRecent { get { return GetSetting<bool>(); } set { SetValue(value); } }
-        public static bool ShowFillupMonthly { get { return GetSetting<bool>(); } set { SetValue(value); } }
-        public static bool ShowFillupAnnual { get { return GetSetting<bool>(); } set { SetValue(value); } }
-        public static bool ShowFillupTotal { get { return GetSetting<bool>(); } set { SetValue(value); } }
+        public static bool ShowFillupRecent { get { return GetValue<bool>(); } set { SetValue(value); } }
+        public static bool ShowFillupMonthly { get { return GetValue<bool>(); } set { SetValue(value); } }
+        public static bool ShowFillupAnnual { get { return GetValue<bool>(); } set { SetValue(value); } }
+        public static bool ShowFillupTotal { get { return GetValue<bool>(); } set { SetValue(value); } }
 
-        public static bool ShowMaintenanceRecent { get { return GetSetting<bool>(); } set { SetValue(value); } }
+        public static bool ShowMaintenanceRecent { get { return GetValue<bool>(); } set { SetValue(value); } }
 
-        public static T GetSetting<T>([CallerMemberName] string settingName = null)
-        {
-            return GetValue<T>(settingName);
-        }
-
-        private static T GetValue<T>(string name)
+        private static T GetValue<T>([CallerMemberName] string name = null)
         {
             var settings = Windows.Storage.ApplicationData.Current.LocalSettings;
             var result = settings.Values[name];
