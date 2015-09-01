@@ -34,9 +34,9 @@ namespace Porter.Util.ViewModels
         public Models.Fillup ToFillup()
         {
             Models.Fillup item = new Models.Fillup();
+            Update(item);
             item.SetLocationToCurrent();
 
-            Update(item);
             return item;
         }
 
