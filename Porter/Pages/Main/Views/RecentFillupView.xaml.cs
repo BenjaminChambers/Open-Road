@@ -10,10 +10,6 @@ namespace Porter.Pages.Main.Views
 {
     public sealed partial class RecentFillupView : UserControl
     {
-        private int _numDays;
-        private string _message;
-
-        // -1 for all, 0 for latest
         public RecentFillupView()
         {
             this.InitializeComponent();
@@ -44,9 +40,9 @@ namespace Porter.Pages.Main.Views
                         double _miles = fill.Odometer - second.Odometer;
 
                         if (Util.Settings.PreferGPM)
-                            Title.Text = _message + " " + Util.Format.GPM(_miles, fill.Volume);
+                            Title.Text = Title.Text + " " + Util.Format.GPM(_miles, fill.Volume);
                         else
-                            Title.Text = _message + " " + Util.Format.MPG(_miles, fill.Volume);
+                            Title.Text = Title.Text + " " + Util.Format.MPG(_miles, fill.Volume);
 
                         GallonsPerDay.Text = Util.Format.Gallons(fill.Volume / _days);
                         MilesPerDay.Text = Util.Format.Miles(_miles / _days);
