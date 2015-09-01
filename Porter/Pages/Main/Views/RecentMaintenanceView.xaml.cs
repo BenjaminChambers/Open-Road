@@ -10,7 +10,6 @@ namespace Porter.Pages.Main.Views
 {
     public sealed partial class RecentMaintenanceView : UserControl
     {
-        // -1 for all, 0 for latest
         public RecentMaintenanceView()
         {
             this.InitializeComponent();

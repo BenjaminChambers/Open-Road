@@ -13,7 +13,7 @@ namespace Porter.Pages.Main.Views
         private int _numDays;
         private string _message;
 
-        // -1 for all, 0 for latest
+        // -1 for all
         public FillupStatsView(int NumDays, string Message)
         {
             this.InitializeComponent();
