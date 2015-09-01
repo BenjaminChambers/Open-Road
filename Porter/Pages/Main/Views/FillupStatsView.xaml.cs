@@ -18,81 +18,32 @@ namespace Porter.Pages.Main.Views
         {
             this.InitializeComponent();
 
-            Name = Message;
-
             _numDays = NumDays;
             Title.Text = _message = Message;
 
-            int count = 0;
-            using (var db = Util.Database.Connection())
-                count = db.Table<Util.Models.Fillup>().Count();
-
-            switch (count)
-            {
-                case 0: Title.Text = "No fill-ups to show"; break;
-                case 1: UpdateLatest(); break;
-                default:
-                    switch (_numDays)
-                    {
-                        case -1: UpdateAll(); break;
-                        case 0: UpdateLatest(); break;
-                        default: UpdateSome(); break;
-                    }
-                    break;
-            }
-        }
-
-        private void UpdateLatest()
-        {
             using (var db = Util.Database.Connection())
             {
-                var allFills = db.Table<Util.Models.Fillup>().OrderByDescending(item => item.Odometer);
+                var set = db.Table<Util.Models.Fillup>().OrderByDescending(item => item.Odometer);
 
-                Util.Models.Fillup fill = allFills.First();
-                TotalGallons.Text = Util.Format.Gallons(fill.Volume);
-                TotalCost.Text = Util.Format.Currency(fill.Cost);
-
-                if (allFills.Count() > 1)
+                if (set.Count() == 0)
+                    Title.Text = "No fill-ups to show";
+                else
                 {
-                    Util.Models.Fillup second = allFills.ElementAt(1);
+                    DateTime cutoff = DateTime.Today - new TimeSpan(NumDays, 0, 0, 0);
 
-                    double _days = (fill.Date - second.Date).TotalDays;
-                    double _miles = fill.Odometer - second.Odometer;
+                    int count = (NumDays == -1) ? set.Count() : set.Where(item => item.Date > cutoff).Count();
 
-                    if (Util.Settings.PreferGPM)
-                        Title.Text = _message + " " + Util.Format.GPM(_miles, fill.Volume);
+                    var work = set.Take(count).ToList();
+
+                    if (work.Count > 1)
+                        UpdateFromList(work);
                     else
-                        Title.Text = _message + " " + Util.Format.MPG(_miles, fill.Volume);
-
-                    GallonsPerDay.Text = Util.Format.Gallons(fill.Volume / _days);
-                    MilesPerDay.Text = Util.Format.Miles(_miles / _days);
-                    CostPerDay.Text = Util.Format.Currency(fill.Cost / _days);
-                    TotalMiles.Text = Util.Format.Miles(_miles);
+                    {
+                        TotalGallons.Text = Util.Format.Gallons(work[0].Volume);
+                        TotalCost.Text = Util.Format.Currency(work[0].Cost);
+                    }
                 }
             }
-        }
-
-        private void UpdateSome()
-        {
-            using (var db = Util.Database.Connection())
-            {
-                var allFills = db.Table<Util.Models.Fillup>().OrderByDescending(item => item.Odometer);
-
-                DateTime cutoff = DateTime.Now - new TimeSpan(_numDays, 0, 0, 0);
-
-                var selected = allFills.Where(item => item.Date >= cutoff);
-
-                if (selected.Count() == allFills.Count())
-                    UpdateFromList(allFills.ToList());
-                else
-                    UpdateFromList(allFills.Take(selected.Count() + 1).ToList());
-            }
-        }
-
-        private void UpdateAll()
-        {
-            using (var db = Util.Database.Connection())
-                UpdateFromList(db.Table<Util.Models.Fillup>().OrderByDescending(item => item.Odometer).ToList());
         }
 
         private void UpdateFromList(List<Util.Models.Fillup> src)
