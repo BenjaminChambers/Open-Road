@@ -119,6 +119,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pages\Main\Views\RemindersView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\Main\Views\CarStatsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -175,6 +179,9 @@
     </Compile>
     <Compile Include="Pages\Main\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Main\Views\RemindersView.xaml.cs">
+      <DependentUpon>RemindersView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Main\Views\CarStatsView.xaml.cs">
       <DependentUpon>CarStatsView.xaml</DependentUpon>
