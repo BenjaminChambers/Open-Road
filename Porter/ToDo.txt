@@ -1,5 +1,4 @@
 MainPage:
-- Add Maintenance Views (recent maintenance & stats)
 - Add Reminder Views (upcoming maintenance & stats)
 - Add driving statistics (cost or miles over time)
 

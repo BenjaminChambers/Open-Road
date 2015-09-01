@@ -1,0 +1,39 @@
+﻿<UserControl
+    x:Class="Porter.Pages.Main.Views.RecentFillupView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Porter.Util.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Border Style="{StaticResource BorderStyle}" Width="350">
+        <StackPanel HorizontalAlignment="Center">
+            <TextBlock x:Name="Title" HorizontalAlignment="Center" FontSize="20" />
+            <TextBlock x:Name="DailyBlock" Text="Daily" HorizontalAlignment="Stretch" TextAlignment="Center" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="GallonsPerDay" FontSize="16" HorizontalAlignment="Center"  Margin="5"/>
+                <TextBlock x:Name="CostPerDay" FontSize="16" HorizontalAlignment="Center"  Margin="5" Grid.Column="1"/>
+                <TextBlock x:Name="MilesPerDay" FontSize="16" HorizontalAlignment="Center"  Margin="5" Grid.Column="2"/>
+            </Grid>
+            <TextBlock x:Name="TotalBlock" Text="Total" HorizontalAlignment="Stretch" TextAlignment="Center" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="TotalGallons" FontSize="16" HorizontalAlignment="Center"  Margin="5"/>
+                <TextBlock x:Name="TotalCost" FontSize="16" HorizontalAlignment="Center"  Margin="5"  Grid.Column="1" />
+                <TextBlock x:Name="TotalMiles" FontSize="16" HorizontalAlignment="Center"  Margin="5"  Grid.Column="2" />
+            </Grid>
+        </StackPanel>
+    </Border>
+</UserControl>
