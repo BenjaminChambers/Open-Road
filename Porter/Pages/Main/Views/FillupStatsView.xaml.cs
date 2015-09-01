@@ -26,7 +26,11 @@ namespace Porter.Pages.Main.Views
                 var set = db.Table<Util.Models.Fillup>().OrderByDescending(item => item.Odometer);
 
                 if (set.Count() == 0)
+                {
                     Title.Text = "No fill-ups to show";
+                    Multi.Visibility = Visibility.Collapsed;
+                    Single.Visibility = Visibility.Collapsed;
+                }
                 else
                 {
                     DateTime cutoff = DateTime.Today - new TimeSpan(NumDays, 0, 0, 0);
@@ -36,11 +40,15 @@ namespace Porter.Pages.Main.Views
                     var work = set.Take(count).ToList();
 
                     if (work.Count > 1)
+                    {
+                        Single.Visibility = Visibility.Collapsed;
                         UpdateFromList(work);
+                    }
                     else
                     {
-                        TotalGallons.Text = Util.Format.Gallons(work[0].Volume);
-                        TotalCost.Text = Util.Format.Currency(work[0].Cost);
+                        Multi.Visibility = Visibility.Collapsed;
+                        SingleGallons.Text = Util.Format.Gallons(work[0].Volume);
+                        SingleCost.Text = Util.Format.Currency(work[0].Cost);
                     }
                 }
             }

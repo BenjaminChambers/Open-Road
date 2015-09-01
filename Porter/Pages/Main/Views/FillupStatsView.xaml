@@ -10,29 +10,39 @@
     d:DesignWidth="400">
 
     <Border Style="{StaticResource BorderStyle}" Width="350">
-        <StackPanel HorizontalAlignment="Center">
+        <StackPanel>
             <TextBlock x:Name="Title" HorizontalAlignment="Center" FontSize="20" />
-            <TextBlock Text="Daily" HorizontalAlignment="Stretch" TextAlignment="Center" />
-            <Grid>
+            <StackPanel x:Name="Multi" HorizontalAlignment="Center">
+                <TextBlock Text="Daily" HorizontalAlignment="Stretch" TextAlignment="Center" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="GallonsPerDay" FontSize="16" HorizontalAlignment="Center"  Margin="5"/>
+                    <TextBlock x:Name="CostPerDay" FontSize="16" HorizontalAlignment="Center"  Margin="5" Grid.Column="1"/>
+                    <TextBlock x:Name="MilesPerDay" FontSize="16" HorizontalAlignment="Center"  Margin="5" Grid.Column="2"/>
+                </Grid>
+                <TextBlock Text="Total" HorizontalAlignment="Stretch" TextAlignment="Center" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="TotalGallons" FontSize="16" HorizontalAlignment="Center"  Margin="5"/>
+                    <TextBlock x:Name="TotalCost" FontSize="16" HorizontalAlignment="Center"  Margin="5"  Grid.Column="1" />
+                    <TextBlock x:Name="TotalMiles" FontSize="16" HorizontalAlignment="Center"  Margin="5"  Grid.Column="2" />
+                </Grid>
+            </StackPanel>
+            <Grid x:Name="Single" HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="150" />
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="GallonsPerDay" FontSize="16" HorizontalAlignment="Center"  Margin="5"/>
-                <TextBlock x:Name="CostPerDay" FontSize="16" HorizontalAlignment="Center"  Margin="5" Grid.Column="1"/>
-                <TextBlock x:Name="MilesPerDay" FontSize="16" HorizontalAlignment="Center"  Margin="5" Grid.Column="2"/>
-            </Grid>
-            <TextBlock Text="Total" HorizontalAlignment="Stretch" TextAlignment="Center" />
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition Width="100" />
-                </Grid.ColumnDefinitions>
-                <TextBlock x:Name="TotalGallons" FontSize="16" HorizontalAlignment="Center"  Margin="5"/>
-                <TextBlock x:Name="TotalCost" FontSize="16" HorizontalAlignment="Center"  Margin="5"  Grid.Column="1" />
-                <TextBlock x:Name="TotalMiles" FontSize="16" HorizontalAlignment="Center"  Margin="5"  Grid.Column="2" />
+                <TextBlock x:Name="SingleGallons" FontSize="16" HorizontalAlignment="Center"  Margin="5"/>
+                <TextBlock x:Name="SingleCost" FontSize="16" HorizontalAlignment="Center"  Margin="5"  Grid.Column="1" />
             </Grid>
         </StackPanel>
     </Border>

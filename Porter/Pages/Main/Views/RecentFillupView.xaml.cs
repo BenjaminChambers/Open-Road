@@ -24,34 +24,39 @@ namespace Porter.Pages.Main.Views
             {
                 var allFills = db.Table<Util.Models.Fillup>().OrderByDescending(item => item.Odometer);
 
-                Util.Models.Fillup fill = allFills.First();
-                TotalGallons.Text = Util.Format.Gallons(fill.Volume);
-                TotalCost.Text = Util.Format.Currency(fill.Cost);
-
-                if (allFills.Count() > 1)
+                if (allFills.Count()==0)
                 {
-                    Util.Models.Fillup second = allFills.ElementAt(1);
-
-                    double _days = (fill.Date - second.Date).TotalDays;
-                    double _miles = fill.Odometer - second.Odometer;
-
-                    if (Util.Settings.PreferGPM)
-                        Title.Text = _message + " " + Util.Format.GPM(_miles, fill.Volume);
-                    else
-                        Title.Text = _message + " " + Util.Format.MPG(_miles, fill.Volume);
-
-                    GallonsPerDay.Text = Util.Format.Gallons(fill.Volume / _days);
-                    MilesPerDay.Text = Util.Format.Miles(_miles / _days);
-                    CostPerDay.Text = Util.Format.Currency(fill.Cost / _days);
-                    TotalMiles.Text = Util.Format.Miles(_miles);
+                    Title.Text = "No fill-ups to show";
+                    Multi.Visibility = Visibility.Collapsed;
+                    Single.Visibility = Visibility.Collapsed;
                 }
                 else
                 {
-                    GallonsPerDay.Visibility = Visibility.Collapsed;
-                    CostPerDay.Visibility = Visibility.Collapsed;
-                    MilesPerDay.Visibility = Visibility.Collapsed;
-                    DailyBlock.Visibility = Visibility.Collapsed;
-                    TotalBlock.Visibility = Visibility.Collapsed;
+                    Util.Models.Fillup fill = allFills.First();
+                    TotalGallons.Text = SingleGallons.Text = Util.Format.Gallons(fill.Volume);
+                    TotalCost.Text = SingleCost.Text = Util.Format.Currency(fill.Cost);
+
+                    if (allFills.Count() > 1)
+                    {
+                        Util.Models.Fillup second = allFills.ElementAt(1);
+
+                        double _days = (fill.Date - second.Date).TotalDays;
+                        double _miles = fill.Odometer - second.Odometer;
+
+                        if (Util.Settings.PreferGPM)
+                            Title.Text = _message + " " + Util.Format.GPM(_miles, fill.Volume);
+                        else
+                            Title.Text = _message + " " + Util.Format.MPG(_miles, fill.Volume);
+
+                        GallonsPerDay.Text = Util.Format.Gallons(fill.Volume / _days);
+                        MilesPerDay.Text = Util.Format.Miles(_miles / _days);
+                        CostPerDay.Text = Util.Format.Currency(fill.Cost / _days);
+                        TotalMiles.Text = Util.Format.Miles(_miles);
+
+                        Single.Visibility = Visibility.Collapsed;
+                    }
+                    else
+                        Multi.Visibility = Visibility.Collapsed;
                 }
             }
         }
