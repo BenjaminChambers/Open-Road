@@ -12,6 +12,8 @@ namespace Porter.Util
         public static bool ShowFillupAnnual { get { return GetSetting<bool>(); } set { SetValue(value); } }
         public static bool ShowFillupTotal { get { return GetSetting<bool>(); } set { SetValue(value); } }
 
+        public static bool ShowMaintenanceRecent { get { return GetSetting<bool>(); } set { SetValue(value); } }
+
         public static T GetSetting<T>([CallerMemberName] string settingName = null)
         {
             return GetValue<T>(settingName);

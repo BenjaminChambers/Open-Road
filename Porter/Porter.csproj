@@ -119,6 +119,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pages\Main\Views\RecentMaintenanceView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\Settings\PreferencesPages.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -159,6 +163,9 @@
     </Compile>
     <Compile Include="Pages\Main\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Main\Views\RecentMaintenanceView.xaml.cs">
+      <DependentUpon>RecentMaintenanceView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Settings\PreferencesPages.xaml.cs">
       <DependentUpon>PreferencesPages.xaml</DependentUpon>
