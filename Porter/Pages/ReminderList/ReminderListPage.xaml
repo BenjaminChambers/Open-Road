@@ -1,0 +1,56 @@
+﻿<Page
+    x:Class="Porter.Pages.ReminderList.ReminderListPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Porter.Pages.ReminderList"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{StaticResource PageBackground}"
+    RequestedTheme="Dark">
+
+    <Page.Resources>
+        <DataTemplate x:Key="ReminderViewTemplate">
+            <Border Background="{Binding ItemBackground}" Style="{StaticResource BorderStyle}">
+                <StackPanel>
+                    <TextBlock Text="{Binding Description}" />
+                    <TextBlock Text="{Binding TextString}" />
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid>
+        <StackPanel>
+            <ListView x:Name="MaintenanceList" Height="550"
+            ItemsSource="{Binding}"
+            ItemTemplate="{StaticResource ReminderViewTemplate}"
+            HorizontalAlignment="Center" IsItemClickEnabled="True"
+                  ItemClick="OnItemClick" VerticalAlignment="Top"
+            />
+        </StackPanel>
+        <Grid VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Width="96" Height="96" HorizontalAlignment="Center" Click="OnClickAdd">
+                <Button.Background>
+                    <ImageBrush Stretch="None" ImageSource="ms-appx:///Assets/Icons/add.png"/>
+                </Button.Background>
+            </Button>
+            <Button Grid.Column="1" Width="96" Height="96" HorizontalAlignment="Center" Click="OnClickEdit">
+                <Button.Background>
+                    <ImageBrush Stretch="None" ImageSource="ms-appx:///Assets/Icons/edit.png"/>
+                </Button.Background>
+            </Button>
+            <Button Grid.Column="2" Width="96" Height="96" HorizontalAlignment="Center" Click="OnClickDelete">
+                <Button.Background>
+                    <ImageBrush Stretch="None" ImageSource="ms-appx:///Assets/Icons/delete.png"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+
+    </Grid>
+</Page>

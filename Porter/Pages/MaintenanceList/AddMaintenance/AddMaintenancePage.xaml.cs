@@ -58,7 +58,9 @@ namespace Porter.Pages.MaintenanceList.AddMaintenance
 
         private void OnClickSave(object sender, RoutedEventArgs e)
         {
-            FormData.SaveAsMaintenance();
+            Util.Metrics.TrackMaintenance();
+
+            FormData.Insert();
 
             Frame.GoBack();
         }

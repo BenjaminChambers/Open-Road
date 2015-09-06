@@ -22,5 +22,6 @@ namespace Porter.Util
         }
 
         public static void TrackFillup() { Client.TrackEvent("Fill-up"); }
+        public static void TrackMaintenance() { Client.TrackEvent("Maintenance"); }
     }
 }

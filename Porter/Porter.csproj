@@ -139,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pages\ReminderList\ReminderListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Settings\PreferencesPages.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -195,6 +199,9 @@
     <Compile Include="Pages\Main\Views\RecentMaintenanceView.xaml.cs">
       <DependentUpon>RecentMaintenanceView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ReminderList\ReminderListPage.xaml.cs">
+      <DependentUpon>ReminderListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Settings\PreferencesPages.xaml.cs">
       <DependentUpon>PreferencesPages.xaml</DependentUpon>
     </Compile>
@@ -217,8 +224,10 @@
     <Compile Include="Pages\Main\Views\FillupStatsView.xaml.cs">
       <DependentUpon>FillupStatsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Util\ViewModels\IForm.cs" />
     <Compile Include="Util\ViewModels\MaintenanceForm.cs" />
     <Compile Include="Util\ViewModels\MaintenanceView.cs" />
+    <Compile Include="Util\ViewModels\ReminderView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Icons\add.png" />

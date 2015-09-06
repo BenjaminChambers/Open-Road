@@ -91,10 +91,7 @@ namespace Porter.Pages.Main
             fade.Begin();
             slide.Begin();
 
-            using (var db = Util.Database.Connection())
-            {
-                db.Insert(FormData.ToFillup());
-            }
+            FormData.Insert();
 
             SetupForms();
             RefreshDisplay();

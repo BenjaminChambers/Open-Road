@@ -1,5 +1,9 @@
 MainPage:
 - Add Reminder Views (upcoming maintenance & stats)
+-- Show upcoming
+-- Dismiss Reminders when finished
+
+
 - Add driving statistics (cost or miles over time)
 
 MaintenanceListPage:
@@ -11,6 +15,9 @@ AddMaintenancePage:
 FillupListPage:
 - Expand FillupView based on selection
 
+ViewRemindersPage
+- Add it!
+
 General:
 - Get most recent mileage for car
 - Switch between multiple cars
@@ -19,3 +26,14 @@ General:
 - Add Live Tile Messages for maintenance
 
 - Remove bottom buttons from pages, replace in UI as fits
+
+
+Reminders
+Show as overdue when appropriate
+Dismiss / renew when completed
+
+They need to:
+Give Toast notifications when approaching
+Update live tile when approaching
+
+Use separate page for creating them, rather than maintenance page?

@@ -37,13 +37,10 @@ namespace Porter.Pages.MaintenanceList.EditMaintenance
 
         private async void Initialize()
         {
-            if (MaintenanceID == -1)
-                FormData = new Util.ViewModels.MaintenanceForm();
-            else
-                FormData = new Util.ViewModels.MaintenanceForm(MaintenanceID);
+            FormData = new Util.ViewModels.MaintenanceForm();
+            FormData.From(MaintenanceID);
 
             MaintenanceForm.DataContext = FormData;
-            ReminderBox.SelectedIndex = (int)FormData.ReminderType;
 
             Geoposition pos = await new Geolocator().GetGeopositionAsync();
             MapControl.Center = pos.Coordinate.Point;

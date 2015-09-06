@@ -1,16 +1,25 @@
 ﻿using System;
 using Windows.Devices.Geolocation;
+using Porter.Util.Models;
 
 namespace Porter.Util.ViewModels
 {
-    public class FillupForm : NotificationBase
+    public class FillupForm : NotificationBase, IForm<FillupForm, Fillup>
     {
         public FillupForm()
         {
             Date = DateTime.Now;
         }
 
-        public FillupForm(Models.Fillup item)
+        public void From(int RecordID)
+        {
+            using (var db = Database.Connection())
+            {
+                From(db.Get<Fillup>(RecordID));
+            }
+        }
+
+        public void From(Fillup item)
         {
             Volume = item.Volume;
             Date = item.Date;
@@ -21,7 +30,16 @@ namespace Porter.Util.ViewModels
             Longitude = item.Longitude;
         }
 
-        public void Update(Models.Fillup item)
+        public void Update(int RecordID)
+        {
+            using (var db = Database.Connection())
+            {
+                var item = db.Get<Fillup>(RecordID);
+                Update(item);
+                db.Update(item);
+            }
+        }
+        private void Update(Fillup item)
         {
             item.Volume = Volume;
             item.Date = Date.Date;
@@ -31,13 +49,17 @@ namespace Porter.Util.ViewModels
             item.Latitude = Latitude;
             item.Longitude = Longitude;
         }
-        public Models.Fillup ToFillup()
+
+        public int Insert()
         {
-            Models.Fillup item = new Models.Fillup();
+            Fillup item = new Fillup();
             Update(item);
             item.SetLocationToCurrent();
-
-            return item;
+            using (var db = Database.Connection())
+            {
+                db.Insert(item);
+            }
+            return item.ID;
         }
 
         public double Volume { get { return _volume; } set { SetField(ref _volume, value); } }

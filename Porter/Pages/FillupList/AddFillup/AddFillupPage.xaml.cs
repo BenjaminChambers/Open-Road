@@ -47,13 +47,7 @@ namespace Porter.Pages.FillupList.AddFillup
         {
             Util.Metrics.TrackFillup();
 
-            Util.Models.Fillup fill = new Util.Models.Fillup();
-            FormData.Update(fill);
-
-            using (var db = Util.Database.Connection())
-            {
-                db.Insert(fill);
-            }
+            FormData.Insert();
 
             Frame.GoBack();
         }

@@ -27,10 +27,8 @@ namespace Porter.Pages.FillupList.EditFillup
 
         private void InitializeData()
         {
-            using (var db = Util.Database.Connection())
-            {
-                FormData = new Util.ViewModels.FillupForm(db.Get<Util.Models.Fillup>(FillupID));
-            }
+            FormData = new Util.ViewModels.FillupForm();
+            FormData.From(FillupID);
             FillupForm.DataContext = FormData;
 
             MapControl.Center = PushPin.Location = FormData.Location;
@@ -80,12 +78,7 @@ namespace Porter.Pages.FillupList.EditFillup
         {
             if (FormData != null)
             {
-                using (var db = Util.Database.Connection())
-                {
-                    var work = db.Get<Util.Models.Fillup>(FillupID);
-                    FormData.Update(work);
-                    db.Update(work);
-                }
+                FormData.Update(FillupID);
             }
 
             this.navigationHelper.OnNavigatedFrom(e);
