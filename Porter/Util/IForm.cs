@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Porter.Util.ViewModels
+namespace Porter.Util
 {
     public interface IForm<TForm, TRecord>
     {

@@ -11,14 +11,14 @@ namespace Porter.Util
             var conn = new SQLite.SQLiteConnection(DBPath);
             if (!Initialized)
             {
-                conn.CreateTable<Util.Models.Car>();
-                conn.CreateTable<Util.Models.Fillup>();
-                conn.CreateTable<Util.Models.Maintenance>();
-                conn.CreateTable<Util.Models.Reminder>();
+                conn.CreateTable<Car.Car>();
+                conn.CreateTable<Fillup.Fillup>();
+                conn.CreateTable<Maintenance.Maintenance>();
+                conn.CreateTable<Reminder.Reminder>();
 
-                if (conn.Table<Models.Car>().Count()==0)
+                if (conn.Table<Car.Car>().Count()==0)
                 {
-                    Models.Car car = new Models.Car();
+                    Car.Car car = new Car.Car();
                     conn.Insert(car);
                 }
 

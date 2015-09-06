@@ -1,7 +1,7 @@
 ﻿using System;
 using Windows.Devices.Geolocation;
 
-namespace Porter.Util.Models
+namespace Porter.Util
 {
     public abstract class BaseItem
     {

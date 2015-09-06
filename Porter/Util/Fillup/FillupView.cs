@@ -1,10 +1,10 @@
 ﻿using Windows.UI.Xaml.Media;
 
-namespace Porter.Util.ViewModels
+namespace Porter.Util.Fillup
 {
     public class FillupView : NotificationBase
     {
-        public FillupView(Models.Fillup Single)
+        public FillupView(Fillup Single)
         {
             ItemBackground = null;
             ID = Single.ID;
@@ -16,7 +16,7 @@ namespace Porter.Util.ViewModels
             Cost = Format.Currency(Single.Cost);
         }
 
-        public FillupView(Models.Fillup Item, Models.Fillup Previous)
+        public FillupView(Fillup Item, Fillup Previous)
         {
             ItemBackground = null;
             ID = Item.ID;

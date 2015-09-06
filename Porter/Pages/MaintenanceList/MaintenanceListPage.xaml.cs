@@ -1,5 +1,5 @@
 ﻿using Porter.Common;
-using Porter.Util.ViewModels;
+using Porter.Util.Maintenance;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -46,7 +46,7 @@ namespace Porter.Pages.MaintenanceList
             MaintenanceItems.Clear();
             using (var db = Util.Database.Connection())
             {
-                var data = db.Table<Util.Models.Maintenance>().OrderByDescending(item => item.Odometer).ToList();
+                var data = db.Table<Maintenance>().OrderByDescending(item => item.Odometer).ToList();
 
                 for (int i = 0; i < data.Count; i++)
                     MaintenanceItems.Add(new MaintenanceView(data[i].ID));
@@ -73,7 +73,7 @@ namespace Porter.Pages.MaintenanceList
             {
                 using (var db = Util.Database.Connection())
                 {
-                    var toDelete = db.Get<Util.Models.Maintenance>(MaintenanceSelection.ID);
+                    var toDelete = db.Get<Maintenance>(MaintenanceSelection.ID);
 
                     db.Delete(toDelete);
                 }

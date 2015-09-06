@@ -5,6 +5,7 @@ using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls.Maps;
 using Windows.Devices.Geolocation;
 using System;
+using Porter.Util.Fillup;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -16,7 +17,7 @@ namespace Porter.Pages.FillupList.EditFillup
     public sealed partial class EditFillupPage : Page
     {
         public static int FillupID = -1;
-        Util.ViewModels.FillupForm FormData = null;
+        FillupForm FormData = null;
         MapIcon PushPin = new MapIcon();
 
         public EditFillupPage()
@@ -27,7 +28,7 @@ namespace Porter.Pages.FillupList.EditFillup
 
         private void InitializeData()
         {
-            FormData = new Util.ViewModels.FillupForm();
+            FormData = new FillupForm();
             FormData.From(FillupID);
             FillupForm.DataContext = FormData;
 

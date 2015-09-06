@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Porter.Util.Maintenance;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -25,7 +26,7 @@ namespace Porter.Pages.MaintenanceList.AddMaintenance
     /// </summary>
     public sealed partial class AddMaintenancePage : Page
     {
-        public static Util.ViewModels.MaintenanceForm FormData;
+        public static MaintenanceForm FormData;
         MapIcon PushPin = new MapIcon();
 
         public AddMaintenancePage()
@@ -84,7 +85,7 @@ namespace Porter.Pages.MaintenanceList.AddMaintenance
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            FormData = new Util.ViewModels.MaintenanceForm();
+            FormData = new MaintenanceForm();
             MaintenanceForm.DataContext = FormData;
             ReminderBox.SelectedIndex = 0;
 

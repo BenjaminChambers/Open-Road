@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Porter.Util.Fillup;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -18,7 +19,7 @@ namespace Porter.Pages.Main.Views
 
             using (var db = Util.Database.Connection())
             {
-                var allFills = db.Table<Util.Models.Fillup>().OrderByDescending(item => item.Odometer);
+                var allFills = db.Table<Fillup>().OrderByDescending(item => item.Odometer);
 
                 if (allFills.Count()==0)
                 {
@@ -28,13 +29,13 @@ namespace Porter.Pages.Main.Views
                 }
                 else
                 {
-                    Util.Models.Fillup fill = allFills.First();
+                    Fillup fill = allFills.First();
                     TotalGallons.Text = SingleGallons.Text = Util.Format.Gallons(fill.Volume);
                     TotalCost.Text = SingleCost.Text = Util.Format.Currency(fill.Cost);
 
                     if (allFills.Count() > 1)
                     {
-                        Util.Models.Fillup second = allFills.ElementAt(1);
+                        Fillup second = allFills.ElementAt(1);
 
                         double _days = (fill.Date - second.Date).TotalDays;
                         double _miles = fill.Odometer - second.Odometer;

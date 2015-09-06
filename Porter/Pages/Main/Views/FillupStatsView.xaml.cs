@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Porter.Util.Fillup;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -23,7 +24,7 @@ namespace Porter.Pages.Main.Views
 
             using (var db = Util.Database.Connection())
             {
-                var set = db.Table<Util.Models.Fillup>().OrderByDescending(item => item.Odometer);
+                var set = db.Table<Fillup>().OrderByDescending(item => item.Odometer);
 
                 if (set.Count() == 0)
                 {
@@ -54,7 +55,7 @@ namespace Porter.Pages.Main.Views
             }
         }
 
-        private void UpdateFromList(List<Util.Models.Fillup> src)
+        private void UpdateFromList(List<Fillup> src)
         {
             double _days = (src[0].Date - src[src.Count - 1].Date).TotalDays;
             double _miles = src[0].Odometer - src[src.Count - 1].Odometer;

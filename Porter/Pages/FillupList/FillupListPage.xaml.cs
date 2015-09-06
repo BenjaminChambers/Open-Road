@@ -1,5 +1,5 @@
 ﻿using Porter.Common;
-using Porter.Util.ViewModels;
+using Porter.Util.Fillup;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Windows.UI.Xaml;
@@ -36,7 +36,7 @@ namespace Porter.Pages.FillupList
 
             using (var db = Util.Database.Connection())
             {
-                var data = db.Table<Util.Models.Fillup>().OrderByDescending(item => item.Odometer).ToList();
+                var data = db.Table<Fillup>().OrderByDescending(item => item.Odometer).ToList();
 
                 if (data.Count > 0)
                 {
@@ -54,7 +54,7 @@ namespace Porter.Pages.FillupList
             {
                 using (var db = Util.Database.Connection())
                 {
-                    var toDelete = db.Get<Util.Models.Fillup>(FillupSelection.ID);
+                    var toDelete = db.Get<Fillup>(FillupSelection.ID);
 
                     db.Delete(toDelete);
                 }

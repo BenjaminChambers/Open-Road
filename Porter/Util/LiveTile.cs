@@ -2,6 +2,7 @@
 using System.Linq;
 using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
+using Porter.Util.Fillup;
 
 namespace Porter.Util
 {
@@ -13,7 +14,7 @@ namespace Porter.Util
         {
             using (var db = Util.Database.Connection())
             {
-                var fillups = db.Table<Util.Models.Fillup>();
+                var fillups = db.Table<Fillup.Fillup>();
                 switch (fillups.Count())
                 {
                     case 0:
@@ -24,7 +25,7 @@ namespace Porter.Util
                         break;
                     default:
                         var twoRecent = fillups.OrderByDescending(item => item.Odometer).Take(2).ToList();
-                        var stats = new Util.ViewModels.FillupView(twoRecent[0], twoRecent[1]);
+                        var stats = new FillupView(twoRecent[0], twoRecent[1]);
 
                         Messages.Add("You drove " + stats.Miles + " on your last tank of gas.");
                         Messages.Add("You got " + stats.Efficiency + " on your last tank of gas.");

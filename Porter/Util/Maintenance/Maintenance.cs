@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Porter.Util.Models
+namespace Porter.Util.Maintenance
 {
     public class Maintenance : BaseItem
     {
@@ -8,11 +8,9 @@ namespace Porter.Util.Models
         public Maintenance()
         {
             CarID = Settings.CurrentCar;
-            ReminderID = -1;
         }
 
         // Properties
         public string Description { get; set; }
-        public int ReminderID { get; set; }
     }
 }

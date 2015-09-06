@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Porter.Util.Maintenance;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -26,7 +27,7 @@ namespace Porter.Pages.MaintenanceList.EditMaintenance
     public sealed partial class EditMaintenancePage : Page
     {
         public static int MaintenanceID = -1;
-        Util.ViewModels.MaintenanceForm FormData;
+        MaintenanceForm FormData;
         MapIcon PushPin = new MapIcon();
 
         public EditMaintenancePage()
@@ -37,7 +38,7 @@ namespace Porter.Pages.MaintenanceList.EditMaintenance
 
         private async void Initialize()
         {
-            FormData = new Util.ViewModels.MaintenanceForm();
+            FormData = new MaintenanceForm();
             FormData.From(MaintenanceID);
 
             MaintenanceForm.DataContext = FormData;

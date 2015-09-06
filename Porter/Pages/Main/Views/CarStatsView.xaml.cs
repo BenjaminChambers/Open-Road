@@ -16,8 +16,8 @@ namespace Porter.Pages.Main.Views
 
             using (var db = Util.Database.Connection())
             {
-                var fills = db.Table<Util.Models.Fillup>();
-                var maint = db.Table<Util.Models.Maintenance>();
+                var fills = db.Table<Util.Fillup.Fillup>();
+                var maint = db.Table<Util.Maintenance.Maintenance>();
 
                 int maxOdom = 0;
 

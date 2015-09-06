@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Media;
 
-namespace Porter.Util.ViewModels
+namespace Porter.Util.Maintenance
 {
     public class MaintenanceView : NotificationBase
     {
@@ -13,19 +13,13 @@ namespace Porter.Util.ViewModels
         {
             using (var db = Database.Connection())
             {
-                Models.Maintenance work = db.Get<Models.Maintenance>(MaintenanceID);
+                Maintenance work = db.Get<Maintenance>(MaintenanceID);
                 ID = work.ID;
                 ItemBackground = null;
                 Date = Format.Date(work.Date);
                 Description = work.Description;
                 Miles = Format.Miles(work.Odometer);
                 Cost = Format.Currency(work.Cost);
-
-                if (work.ReminderID != -1)
-                {
-                    Models.Reminder rem = db.Get<Models.Reminder>(work.ReminderID);
-                    Reminder = rem.ReminderDescription;
-                }
             }
         }
 

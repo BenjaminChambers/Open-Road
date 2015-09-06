@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Porter.Util.Models
+namespace Porter.Util.Reminder
 {
     public class Reminder
     {

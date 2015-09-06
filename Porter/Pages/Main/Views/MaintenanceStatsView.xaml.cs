@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Porter.Util.Maintenance;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -20,8 +21,8 @@ namespace Porter.Pages.Main.Views
             using (var db = Util.Database.Connection())
             {
                 var set = (_days > 0 ?
-                    db.Table<Util.Models.Maintenance>().Where(item => item.Date > cutoff)
-                    : db.Table<Util.Models.Maintenance>()
+                    db.Table<Maintenance>().Where(item => item.Date > cutoff)
+                    : db.Table<Maintenance>()
                     );
 
                 if (set.Count() == 0)

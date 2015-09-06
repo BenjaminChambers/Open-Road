@@ -1,4 +1,4 @@
-﻿namespace Porter.Util.Models
+﻿namespace Porter.Util.Car
 {
     public class Car : BaseItem
     {

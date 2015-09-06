@@ -5,6 +5,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls.Maps;
+using Porter.Util.Fillup;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -15,7 +16,7 @@ namespace Porter.Pages.FillupList.AddFillup
     /// </summary>
     public sealed partial class AddFillupPage : Page
     {
-        Util.ViewModels.FillupForm FormData = new Util.ViewModels.FillupForm();
+        FillupForm FormData = new FillupForm();
         MapIcon PushPin = new MapIcon();
 
         public AddFillupPage()

@@ -14,12 +14,13 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Porter.Util.Reminder;
 
 namespace Porter.Pages.ReminderList
 {
     public sealed partial class ReminderListPage : Page
     {
-        ObservableCollection<Util.ViewModels.ReminderView> Reminders = new ObservableCollection<Util.ViewModels.ReminderView>();
+        ObservableCollection<ReminderView> Reminders = new ObservableCollection<ReminderView>();
 
         public ReminderListPage()
         {

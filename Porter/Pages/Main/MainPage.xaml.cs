@@ -13,7 +13,7 @@ namespace Porter.Pages.Main
 {
     public sealed partial class MainPage : Page
     {
-        Util.ViewModels.FillupForm FormData = new Util.ViewModels.FillupForm();
+        Util.Fillup.FillupForm FormData = new Util.Fillup.FillupForm();
 
         public MainPage()
         {
@@ -27,7 +27,7 @@ namespace Porter.Pages.Main
 
         private void SetupForms()
         {
-            FormData = new Util.ViewModels.FillupForm();
+            FormData = new Util.Fillup.FillupForm();
             QuickFillupForm.DataContext = FormData;
         }
 

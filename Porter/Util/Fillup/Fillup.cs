@@ -1,4 +1,4 @@
-﻿namespace Porter.Util.Models
+﻿namespace Porter.Util.Fillup
 {
     public class Fillup : BaseItem
     {
