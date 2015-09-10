@@ -69,6 +69,8 @@
                             </StackPanel>
                         </Grid>
                         <Button Tag="Add Fill-up" Click="OnAddFillup" Template="{StaticResource PorterButton}" HorizontalAlignment="Stretch" />
+                        <Button Tag="Add partial tank" Click="OnClickPartial" Template="{StaticResource PorterButton}" HorizontalAlignment="Center" Width="200" FontSize="12" />
+                        <TextBlock x:Name="PartialMessage" Text="Hello, world!" />
                     </StackPanel>
                 </Border>
                 <ListView x:Name="DetailListView" HorizontalAlignment="Center" />

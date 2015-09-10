@@ -7,7 +7,7 @@ namespace Porter.Util.Maintenance
         // Constructors
         public Maintenance()
         {
-            CarID = Settings.CurrentCar;
+            CarID = Settings.CurrentCarID;
         }
 
         // Properties

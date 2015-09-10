@@ -51,14 +51,37 @@ namespace Porter.Util.Fillup
 
         public int Insert()
         {
-            Fillup item = new Fillup();
-            Update(item);
-            item.SetLocationToCurrent();
             using (var db = Database.Connection())
             {
+                Fillup item = new Fillup();
+                Update(item);
+                item.SetLocationToCurrent();
+
+                var car = db.Get<Car.Car>(Settings.CurrentCarID);
+                item.Cost += car.PartialCost;
+                item.Volume += car.PartialVolume;
+                car.PartialCost = car.PartialVolume = 0;
                 db.Insert(item);
+
+                db.Update(car);
+
+                return item.ID;
             }
-            return item.ID;
+        }
+
+        public void AddPartial()
+        {
+            using (var db = Database.Connection())
+            {
+                var car = db.Get<Car.Car>(Settings.CurrentCarID);
+
+                car.PartialCost += Cost;
+                car.PartialVolume += Volume;
+                db.Update(car);
+
+                Volume = 0;
+                Cost = 0;
+            }
         }
 
         public double Volume { get { return _volume; } set { SetField(ref _volume, value); } }

@@ -5,7 +5,15 @@ namespace Porter.Util
 {
     public class Settings
     {
-        public static int CurrentCar { get { return GetValue<int>(); } set { SetValue(value); } }
+        public static int CurrentCarID { get { return GetValue<int>(); } set { SetValue(value); } }
+        public static Car.Car CurrentCar {
+            get {
+                using (var db = Database.Connection())
+                {
+                    return db.Get<Car.Car>(CurrentCarID);
+                }
+            }
+        }
 
         public static bool PreferGPM { get { return GetValue<bool>(); } set { SetValue(value); } }
 

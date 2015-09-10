@@ -9,5 +9,8 @@
         public string Model { get; set; }
         public string Trim { get; set; }
         public int Year { get; set; }
+
+        public double PartialCost { get; set; }
+        public double PartialVolume { get; set; }
     }
 }

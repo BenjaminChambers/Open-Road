@@ -54,6 +54,17 @@ namespace Porter.Pages.Main
             if (Util.Settings.ShowMaintenanceAnnual) DetailListView.Items.Add(new Views.MaintenanceStatsView(365, "Annual Maintenance"));
             if (Util.Settings.ShowMaintenanceTotal) DetailListView.Items.Add(new Views.MaintenanceStatsView(-1, "All Maintenance"));
 
+            var car = Util.Settings.CurrentCar;
+
+            if ((car.PartialCost > 0.0) || (car.PartialVolume > 0.0))
+            {
+                PartialMessage.Visibility = Visibility.Visible;
+                PartialMessage.Text = "Current total: " + Util.Format.Gallons(car.PartialVolume) + ", " + Util.Format.Currency(car.PartialCost);
+            } else
+            {
+                PartialMessage.Visibility = Visibility.Collapsed;
+            }
+
             Util.LiveTile.Render();
         }
 
@@ -97,6 +108,12 @@ namespace Porter.Pages.Main
             RefreshDisplay();
         }
 
+        private void OnClickPartial(object sender, RoutedEventArgs e)
+        {
+            FormData.AddPartial();
+
+            RefreshDisplay();
+        }
 
 
 

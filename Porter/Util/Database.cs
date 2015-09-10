@@ -16,11 +16,21 @@ namespace Porter.Util
                 conn.CreateTable<Maintenance.Maintenance>();
                 conn.CreateTable<Reminder.Reminder>();
 
-                if (conn.Table<Car.Car>().Count()==0)
+                var cars = conn.Table<Car.Car>();
+
+                if (cars.Count()==0)
                 {
                     Car.Car car = new Car.Car();
                     conn.Insert(car);
                 }
+
+                var firstCar = cars.First();
+
+                if (cars.Where(vehicle => vehicle.ID == Settings.CurrentCarID).Count() == 0)
+                    Settings.CurrentCarID = firstCar.ID;
+
+                
+                
 
                 Initialized = true;
             }

@@ -4,7 +4,7 @@
     {
         public Fillup()
         {
-            CarID = Settings.CurrentCar;
+            CarID = Settings.CurrentCarID;
         }
 
         public double Volume { get; set; }
