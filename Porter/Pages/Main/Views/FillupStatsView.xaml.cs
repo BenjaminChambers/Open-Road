@@ -37,6 +37,8 @@ namespace Porter.Pages.Main.Views
                     DateTime cutoff = DateTime.Today - new TimeSpan(NumDays, 0, 0, 0);
 
                     int count = (NumDays == -1) ? set.Count() : set.Where(item => item.Date > cutoff).Count();
+                    if (count < 1)
+                        count = 1;
 
                     var work = set.Take(count).ToList();
 
