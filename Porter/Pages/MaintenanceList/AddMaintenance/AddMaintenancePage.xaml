@@ -41,36 +41,6 @@
                         </Maps:MapControl>
                     </StackPanel>
                 </Border>
-                <Border Width="350" Style="{StaticResource BorderStyle}">
-                    <StackPanel Width="300" >
-                        <TextBlock Text="Reminder" Style="{StaticResource FormTextStyle}" HorizontalAlignment="Center" />
-                        <Grid x:Name="ReminderForm">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <TextBlock Text="Interval Type" Style="{StaticResource FormTextStyle}" />
-                            <ComboBox x:Name="ReminderBox" Grid.Column="1"
-                          SelectedIndex="{Binding Path=ReminderType, Mode=TwoWay}">
-                                <ComboBox.Items>
-                                    <ComboBoxItem Content="None" />
-                                    <ComboBoxItem Content="By Days" />
-                                    <ComboBoxItem Content="By Miles" />
-                                    <ComboBoxItem Content="Either" />
-                                </ComboBox.Items>
-                            </ComboBox>
-                            <TextBlock Text="Days" Grid.Row="1" Style="{StaticResource FormTextStyle}" />
-                            <TextBlock Text="Miles" Grid.Row="2" Style="{StaticResource FormTextStyle}" />
-                            <nb:NumberBox Number="{Binding Path=ReminderIntervalDays, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" DecimalPlaces="0" />
-                            <nb:NumberBox Number="{Binding Path=ReminderIntervalMiles, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" DecimalPlaces="0" />
-                        </Grid>
-                    </StackPanel>
-                </Border>
                 <Button Click="OnClickSave" Tag="Save Maintenance" Width="350" Template="{StaticResource PorterButton}" HorizontalAlignment="Center" />
             </StackPanel>
         </ScrollViewer>
