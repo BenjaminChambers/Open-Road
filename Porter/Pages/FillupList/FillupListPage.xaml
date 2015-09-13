@@ -10,22 +10,31 @@
     RequestedTheme="Dark">
 
     <Page.Resources>
+        <Style x:Key="ViewTextStyle" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
         <DataTemplate x:Key="FillupViewTemplate">
             <Border Style="{StaticResource BorderStyle}"
-                    Background="{Binding ItemBackground}">
-                <Grid HorizontalAlignment="Center">
+                    Background="{Binding ItemBackground}"
+                    HorizontalAlignment="Center"
+                    >
+                <Grid HorizontalAlignment="Center" Width="350">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="75" />
-                        <ColumnDefinition Width="75" />
-                        <ColumnDefinition Width="75" />
-                        <ColumnDefinition Width="75" />
-                        <ColumnDefinition Width="75" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="{Binding Path=Date}" VerticalAlignment="Center" />
-                    <TextBlock Text="{Binding Path=Efficiency}" Grid.Column="1" HorizontalAlignment="Center" />
-                    <TextBlock Text="{Binding Path=Gallons}" Grid.Column="2" HorizontalAlignment="Center" />
-                    <TextBlock Text="{Binding Path=Miles}" Grid.Column="3" HorizontalAlignment="Center" />
-                    <TextBlock Text="{Binding Path=Cost}" Grid.Column="4" HorizontalAlignment="Center" />
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="{Binding Path=Date}" Style="{StaticResource ViewTextStyle}" Grid.RowSpan="2" />
+                    <TextBlock Text="{Binding Path=Efficiency}" Grid.Column="1" Style="{StaticResource ViewTextStyle}" />
+                    <TextBlock Text="{Binding Path=Miles}" Grid.Column="2" Style="{StaticResource ViewTextStyle}" />
+                    <TextBlock Text="{Binding Path=Gallons}" Grid.Column="1" Style="{StaticResource ViewTextStyle}" Grid.Row="1" />
+                    <TextBlock Text="{Binding Path=Cost}" Grid.Column="2" Style="{StaticResource ViewTextStyle}" Grid.Row="1" />
                 </Grid>
             </Border>
         </DataTemplate>
