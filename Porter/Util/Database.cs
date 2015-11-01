@@ -37,7 +37,7 @@ namespace Porter.Util
             }
             return conn;
         }
-        public static async void SyncOnline()
+        public static async void Upload()
         {
             if (Settings.SaveToOneDrive)
             {
@@ -46,6 +46,17 @@ namespace Porter.Util
                 await OneDriveClient.AuthenticateAsync();
                 var root = await OneDriveClient.Drive.Special.AppRoot.Request().GetAsync();
                 
+            }
+        }
+        public static async void Download()
+        {
+            if (Settings.SaveToOneDrive)
+            {
+                string[] scopes = { "wl.signin", "onedrive.appfolder" };
+                var OneDriveClient = OneDriveClientExtensions.GetUniversalClient(scopes);
+                await OneDriveClient.AuthenticateAsync();
+                var root = await OneDriveClient.Drive.Special.AppRoot.Request().GetAsync();
+
             }
         }
     }
