@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Porter.Util.Reminder
 {
-    public class ReminderView : NotificationBase
+    public class ReminderView : NotifyPropertyChangedBase
     {
 
     }

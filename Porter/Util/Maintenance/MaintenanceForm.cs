@@ -7,7 +7,7 @@ using Windows.Devices.Geolocation;
 
 namespace Porter.Util.Maintenance
 {
-    public class MaintenanceForm : NotificationBase, IForm<MaintenanceForm, Maintenance>
+    public class MaintenanceForm : NotifyPropertyChangedBase, IForm<MaintenanceForm, Maintenance>
     {
         public MaintenanceForm()
         {

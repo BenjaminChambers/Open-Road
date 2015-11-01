@@ -198,12 +198,12 @@
     <PackageInfo>
       <OsMinVersion>6.3.1.0</OsMinVersion>
       <PackageArchitecture>Arm</PackageArchitecture>
-      <PackageMaxArchitectureVersion>2015.812.0.6</PackageMaxArchitectureVersion>
+      <PackageMaxArchitectureVersion>2015.909.0.8</PackageMaxArchitectureVersion>
     </PackageInfo>
     <PackageInfo>
       <OsMinVersion>6.3.1.0</OsMinVersion>
       <PackageArchitecture>Neutral</PackageArchitecture>
-      <PackageMaxArchitectureVersion>2015.812.0.6</PackageMaxArchitectureVersion>
+      <PackageMaxArchitectureVersion>2015.909.0.8</PackageMaxArchitectureVersion>
     </PackageInfo>
   </PackageInfoList>
 </StoreAssociation>

@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace Porter.Util
 {
-    public class NotificationBase : INotifyPropertyChanged
+    public class NotifyPropertyChangedBase : INotifyPropertyChanged
     {
         // boiler-plate
         public event PropertyChangedEventHandler PropertyChanged;

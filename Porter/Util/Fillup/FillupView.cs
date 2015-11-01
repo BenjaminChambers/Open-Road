@@ -2,7 +2,7 @@
 
 namespace Porter.Util.Fillup
 {
-    public class FillupView : NotificationBase
+    public class FillupView : NotifyPropertyChangedBase
     {
         public FillupView(Fillup Single)
         {

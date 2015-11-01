@@ -3,7 +3,7 @@ using Windows.Devices.Geolocation;
 
 namespace Porter.Util.Fillup
 {
-    public class FillupForm : NotificationBase, IForm<FillupForm, Fillup>
+    public class FillupForm : NotifyPropertyChangedBase, IForm<FillupForm, Fillup>
     {
         public FillupForm()
         {

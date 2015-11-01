@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Media;
 
 namespace Porter.Util.Maintenance
 {
-    public class MaintenanceView : NotificationBase
+    public class MaintenanceView : NotifyPropertyChangedBase
     {
         public MaintenanceView(int MaintenanceID)
         {

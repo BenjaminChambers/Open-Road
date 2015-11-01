@@ -217,7 +217,7 @@
     <Compile Include="Util\Fillup\Fillup.cs" />
     <Compile Include="Util\Maintenance\Maintenance.cs" />
     <Compile Include="Util\Reminder\Reminder.cs" />
-    <Compile Include="Util\NotificationBase.cs" />
+    <Compile Include="Util\NotifyPropertyChangedBase.cs" />
     <Compile Include="Util\Settings.cs" />
     <Compile Include="Util\Fillup\FillupForm.cs" />
     <Compile Include="Util\Fillup\FillupView.cs" />
@@ -271,8 +271,8 @@
     <SDKReference Include="Microsoft.VCLibs, version=12.0">
       <Name>Microsoft Visual C++ 2013 Runtime Package for Windows Phone</Name>
     </SDKReference>
-    <SDKReference Include="SQLite.WP81, Version=3.8.11.1">
-      <Name>SQLite for Windows Phone 8.1</Name>
+    <SDKReference Include="SQLite.WP81, Version=3.9.1">
+      <Name>SQLite for Windows Phone 8.1 %28SQLite.WP81, Version=3.9.1%29</Name>
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
@@ -288,8 +288,20 @@
       <HintPath>..\packages\Microsoft.ApplicationInsights.PersistenceChannel.1.2.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.PersistenceChannel.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NumberBox, Version=1.0.5716.29105, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NumberBox.1.0.5716.29105\lib\portable-Profile32\NumberBox.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OneDriveSdk, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.OneDriveSDK.1.0.1\lib\wpa81\OneDriveSdk.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OneDriveSdk.WinStore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.OneDriveSDK.1.0.1\lib\wpa81\OneDriveSdk.WinStore.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
