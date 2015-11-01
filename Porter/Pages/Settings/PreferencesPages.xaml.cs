@@ -17,22 +17,33 @@ namespace Porter.Pages.Settings
             InitializeComponent();
             InitializeNavigation();
 
-            SetEfficiency();
+            SetTextLabels();
         }
 
 
-        private void SetEfficiency()
+        private void SetTextLabels()
         {
             if (Util.Settings.PreferGPM)
                 PreferGPMBox.Tag = "Gallons per 100mi";
             else
                 PreferGPMBox.Tag = "Miles per Gallon";
+
+            if (Util.Settings.SaveToOneDrive)
+                AllowOneDrive.Tag = "Saving Data to OneDrive";
+            else
+                AllowOneDrive.Tag = "No online backup";
         }
 
         private void OnToggleEfficiency(object sender, RoutedEventArgs e)
         {
             Util.Settings.PreferGPM = !Util.Settings.PreferGPM;
-            SetEfficiency();
+            SetTextLabels();
+        }
+
+        private void OnToggleOneDrive(object sender, RoutedEventArgs e)
+        {
+            Util.Settings.SaveToOneDrive = !Util.Settings.SaveToOneDrive;
+            SetTextLabels();
         }
 
 

@@ -16,6 +16,7 @@ namespace Porter.Util
         }
 
         public static bool PreferGPM { get { return GetValue<bool>(); } set { SetValue(value); } }
+        public static bool SaveToOneDrive { get { return GetValue<bool>(); } set { SetValue(value); } }
 
         public static bool ShowFillupRecent { get { return GetValue<bool>(); } set { SetValue(value); } }
         public static bool ShowFillupMonthly { get { return GetValue<bool>(); } set { SetValue(value); } }
