@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Microsoft.OneDrive.Sdk.WinStore;
+using System.IO;
 
 namespace Porter.Util
 {
@@ -35,6 +36,16 @@ namespace Porter.Util
                 Initialized = true;
             }
             return conn;
+        }
+        public static async void SyncOnline()
+        {
+            if (Settings.SaveToOneDrive)
+            {
+                string[] scopes = { "wl.signin", "onedrive.appfolder" };
+                var OneDriveClient = OneDriveClientExtensions.GetUniversalClient(scopes);
+                await OneDriveClient.AuthenticateAsync();
+
+            }
         }
     }
 }
