@@ -44,7 +44,8 @@ namespace Porter.Util
                 string[] scopes = { "wl.signin", "onedrive.appfolder" };
                 var OneDriveClient = OneDriveClientExtensions.GetUniversalClient(scopes);
                 await OneDriveClient.AuthenticateAsync();
-
+                var root = await OneDriveClient.Drive.Special.AppRoot.Request().GetAsync();
+                
             }
         }
     }
