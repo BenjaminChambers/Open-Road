@@ -29,9 +29,15 @@ namespace Porter.Pages.Settings
                 PreferGPMBox.Tag = "Miles per Gallon";
 
             if (Util.Settings.SaveToOneDrive)
+            {
                 AllowOneDrive.Tag = "Saving Data to OneDrive";
+                RestoreFromOneDrive.Visibility = Visibility.Visible;
+            }
             else
+            {
                 AllowOneDrive.Tag = "No online backup";
+                RestoreFromOneDrive.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void OnToggleEfficiency(object sender, RoutedEventArgs e)
@@ -44,6 +50,11 @@ namespace Porter.Pages.Settings
         {
             Util.Settings.SaveToOneDrive = !Util.Settings.SaveToOneDrive;
             SetTextLabels();
+        }
+
+        private void OnRestoreOneDrive(object sender, RoutedEventArgs e)
+        {
+
         }
 
 
@@ -63,6 +74,5 @@ namespace Porter.Pages.Settings
         private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e) { }
         protected override void OnNavigatedTo(NavigationEventArgs e) { this.navigationHelper.OnNavigatedTo(e); }
         protected override void OnNavigatedFrom(NavigationEventArgs e) { this.navigationHelper.OnNavigatedFrom(e); }
-
     }
 }

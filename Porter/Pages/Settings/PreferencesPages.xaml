@@ -14,6 +14,7 @@
             <TextBlock Text="Tap a button to change its setting" Style="{StaticResource FormTextStyle}" HorizontalAlignment="Center" />
             <Button x:Name="PreferGPMBox" Click="OnToggleEfficiency" Template="{StaticResource PorterButton}" Tag="Prefer GPM" Width="300" HorizontalAlignment="Center" />
             <Button x:Name="AllowOneDrive" Click="OnToggleOneDrive" Template="{StaticResource PorterButton}" Tag="No online backup" Width="300" HorizontalAlignment="Center" />
+            <Button x:Name="RestoreFromOneDrive" Click="OnRestoreOneDrive" Template="{StaticResource PorterButton}" Tag="Restore Data from OneDrive" Width="300" HorizontalAlignment="Center" />
         </StackPanel>
     </Grid>
 </Page>

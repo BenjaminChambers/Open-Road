@@ -38,12 +38,13 @@ namespace Porter.Util
             }
             return conn;
         }
+        
+        private static string[] OneDriveScopes = { "wl.signin", "onedrive.appfolder", "wl.offline_access" };
         public static async void Upload()
         {
             if (Settings.SaveToOneDrive)
             {
-                string[] scopes = { "wl.signin", "onedrive.appfolder", "wl.offline_access" };
-                var OneDriveClient = OneDriveClientExtensions.GetUniversalClient(scopes);
+                var OneDriveClient = OneDriveClientExtensions.GetUniversalClient(OneDriveScopes);
                 await OneDriveClient.AuthenticateAsync();
 
                 Stream localFile = await (
@@ -59,19 +60,12 @@ namespace Porter.Util
         {
             if (Settings.SaveToOneDrive)
             {
-                string[] scopes = { "wl.signin", "onedrive.appfolder" };
-                var OneDriveClient = OneDriveClientExtensions.GetUniversalClient(scopes);
+                var OneDriveClient = OneDriveClientExtensions.GetUniversalClient(OneDriveScopes);
                 await OneDriveClient.AuthenticateAsync();
 
-                var file = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync("porter.sqlite");
-
-                var onlineFolder = await OneDriveClient.Drive.Special.AppRoot.Children.Request().GetAsync();
+                var backups = await OneDriveClient.Drive.Special.AppRoot.Children.Request().GetAsync();
 
 
-                var onlineFile = await OneDriveClient.Drive.Special.AppRoot.Children["porter.sqlite"].Content.Request().GetAsync();
-                Stream localFile = await file.OpenStreamForWriteAsync();
-
-                await onlineFile.CopyToAsync(localFile);
             }
         }
     }
