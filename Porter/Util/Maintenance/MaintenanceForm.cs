@@ -42,6 +42,7 @@ namespace Porter.Util.Maintenance
             {
                 db.Insert(item);
             }
+            Database.Upload();
             return item.ID;
         }
         public void Update(int RecordID)
@@ -52,6 +53,7 @@ namespace Porter.Util.Maintenance
                 Update(item);
                 db.Update(item);
             }
+            Database.Upload();
         }
         private void Update(Maintenance Item)
         {

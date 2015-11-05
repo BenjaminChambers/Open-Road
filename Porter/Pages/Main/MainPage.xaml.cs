@@ -66,7 +66,6 @@ namespace Porter.Pages.Main
             }
 
             Util.LiveTile.Render();
-            Util.Database.Upload();
         }
 
         private void OnTapHamburger(object sender, TappedRoutedEventArgs e)

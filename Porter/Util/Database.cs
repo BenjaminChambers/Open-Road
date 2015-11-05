@@ -1,5 +1,6 @@
 ﻿using Microsoft.OneDrive.Sdk.WinStore;
 using System.IO;
+using System;
 
 namespace Porter.Util
 {
@@ -41,11 +42,17 @@ namespace Porter.Util
         {
             if (Settings.SaveToOneDrive)
             {
-                string[] scopes = { "wl.signin", "onedrive.appfolder" };
+                string[] scopes = { "wl.signin", "onedrive.appfolder", "wl.offline_access" };
                 var OneDriveClient = OneDriveClientExtensions.GetUniversalClient(scopes);
                 await OneDriveClient.AuthenticateAsync();
-                var root = await OneDriveClient.Drive.Special.AppRoot.Request().GetAsync();
-                
+
+                Stream localFile = await (
+                    await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync("porter.sqlite")
+                    ).OpenStreamForReadAsync();
+
+                string fName = DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ".OpenRoad";
+
+                await OneDriveClient.Drive.Special.AppRoot.ItemWithPath(fName).Content.Request().PutAsync<Microsoft.OneDrive.Sdk.Item>(localFile);
             }
         }
         public static async void Download()
@@ -55,8 +62,16 @@ namespace Porter.Util
                 string[] scopes = { "wl.signin", "onedrive.appfolder" };
                 var OneDriveClient = OneDriveClientExtensions.GetUniversalClient(scopes);
                 await OneDriveClient.AuthenticateAsync();
-                var root = await OneDriveClient.Drive.Special.AppRoot.Request().GetAsync();
 
+                var file = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync("porter.sqlite");
+
+                var onlineFolder = await OneDriveClient.Drive.Special.AppRoot.Children.Request().GetAsync();
+
+
+                var onlineFile = await OneDriveClient.Drive.Special.AppRoot.Children["porter.sqlite"].Content.Request().GetAsync();
+                Stream localFile = await file.OpenStreamForWriteAsync();
+
+                await onlineFile.CopyToAsync(localFile);
             }
         }
     }

@@ -37,6 +37,7 @@ namespace Porter.Util.Fillup
                 Update(item);
                 db.Update(item);
             }
+            Database.Upload();
         }
         private void Update(Fillup item)
         {
@@ -64,6 +65,8 @@ namespace Porter.Util.Fillup
                 db.Insert(item);
 
                 db.Update(car);
+
+                Database.Upload();
 
                 return item.ID;
             }
