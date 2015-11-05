@@ -1,6 +1,8 @@
-﻿using Porter.Common;
+﻿using Microsoft.OneDrive.Sdk.WinStore;
+using Porter.Common;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
@@ -18,8 +20,16 @@ namespace Porter.Pages.Settings
             InitializeNavigation();
 
             SetTextLabels();
+            SetupAnimations();
         }
 
+        private void SetupAnimations()
+        {
+            Timeline fade = (Timeline)Resources["NotificationFade"];
+            Storyboard.SetTarget(fade, NotificationPanel);
+            Timeline slide = (Timeline)Resources["NotificationSlide"];
+            Storyboard.SetTarget(slide, NotificationPanelTransform);
+        }
 
         private void SetTextLabels()
         {
@@ -52,9 +62,24 @@ namespace Porter.Pages.Settings
             SetTextLabels();
         }
 
-        private void OnRestoreOneDrive(object sender, RoutedEventArgs e)
+        private async void OnRestoreOneDrive(object sender, RoutedEventArgs e)
         {
+            var OneDriveClient = OneDriveClientExtensions.GetUniversalClient(Util.Database.OneDriveScopes);
+            await OneDriveClient.AuthenticateAsync();
 
+            var backups = await OneDriveClient.Drive.Special.AppRoot.Children.Request().GetAsync();
+
+            if (backups.Count < 1)
+            {
+                Storyboard fade = (Storyboard)Resources["NotificationFade"];
+                Storyboard slide = (Storyboard)Resources["NotificationSlide"];
+                fade.Begin();
+                slide.Begin();
+            }
+            else
+            {
+
+            }
         }
 
 

@@ -39,7 +39,7 @@ namespace Porter.Util
             return conn;
         }
         
-        private static string[] OneDriveScopes = { "wl.signin", "onedrive.appfolder", "wl.offline_access" };
+        public static string[] OneDriveScopes = { "wl.signin", "onedrive.appfolder", "wl.offline_access" };
         public static async void Upload()
         {
             if (Settings.SaveToOneDrive)
@@ -54,18 +54,6 @@ namespace Porter.Util
                 string fName = DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ".OpenRoad";
 
                 await OneDriveClient.Drive.Special.AppRoot.ItemWithPath(fName).Content.Request().PutAsync<Microsoft.OneDrive.Sdk.Item>(localFile);
-            }
-        }
-        public static async void Download()
-        {
-            if (Settings.SaveToOneDrive)
-            {
-                var OneDriveClient = OneDriveClientExtensions.GetUniversalClient(OneDriveScopes);
-                await OneDriveClient.AuthenticateAsync();
-
-                var backups = await OneDriveClient.Drive.Special.AppRoot.Children.Request().GetAsync();
-
-
             }
         }
     }
