@@ -143,15 +143,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Settings\NotificationAnimation.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Pages\Settings\PreferencesPages.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Main\Views\FillupStatsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Settings\RestoreDataPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -208,6 +208,9 @@
     </Compile>
     <Compile Include="Pages\Settings\PreferencesPages.xaml.cs">
       <DependentUpon>PreferencesPages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Settings\RestoreDataPage.xaml.cs">
+      <DependentUpon>RestoreDataPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLite.cs" />

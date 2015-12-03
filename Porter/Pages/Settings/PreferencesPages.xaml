@@ -9,27 +9,12 @@
     Background="{StaticResource PageBackground}"
     RequestedTheme="Dark">
 
-    <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="NotificationAnimation.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Page.Resources>
-
     <Grid x:Name="LayoutRoot">
         <StackPanel x:Name="ButtonList">
             <TextBlock Text="Tap a button to change its setting" Style="{StaticResource FormTextStyle}" HorizontalAlignment="Center" />
             <Button x:Name="PreferGPMBox" Click="OnToggleEfficiency" Template="{StaticResource PorterButton}" Tag="Prefer GPM" Width="300" HorizontalAlignment="Center" />
             <Button x:Name="AllowOneDrive" Click="OnToggleOneDrive" Template="{StaticResource PorterButton}" Tag="No online backup" Width="300" HorizontalAlignment="Center" />
             <Button x:Name="RestoreFromOneDrive" Click="OnRestoreOneDrive" Template="{StaticResource PorterButton}" Tag="Restore Data from OneDrive" Width="300" HorizontalAlignment="Center" />
-        </StackPanel>
-
-        <StackPanel Grid.Row="1" x:Name="NotificationPanel" VerticalAlignment="Bottom" Background="#FF404040" Margin="0" Opacity="0">
-            <StackPanel.RenderTransform>
-                <TranslateTransform x:Name="NotificationPanelTransform" X="400" />
-            </StackPanel.RenderTransform>
-            <TextBlock Text="No backups found!" Margin="5" HorizontalAlignment="Center" FontSize="26.667" />
         </StackPanel>
     </Grid>
 </Page>

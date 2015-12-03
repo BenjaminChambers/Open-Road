@@ -1,0 +1,22 @@
+﻿<Page
+    x:Class="Porter.Pages.Settings.RestoreDataPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Porter.Pages.Settings"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{StaticResource PageBackground}"
+    RequestedTheme="Dark">
+
+    <Grid x:Name="LayoutRoot">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Available Data Files" Style="{StaticResource FormTextStyle}" />
+            <ListView x:Name="FileList" 
+                      SelectionMode="None"
+                      IsItemClickEnabled="True" ItemClick="OnSelectDataFile"
+                      />
+            <ProgressRing x:Name="RingOfProgress" Visibility="Collapsed" IsActive="False" />
+        </StackPanel>
+    </Grid>
+</Page>
