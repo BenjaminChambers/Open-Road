@@ -61,9 +61,17 @@ namespace Porter.Pages.Settings
             }
         }
 
-        private void OnSelectDataFile(object sender, ItemClickEventArgs e)
+        private async void OnSelectDataFile(object sender, ItemClickEventArgs e)
         {
             string fName = (string)e.ClickedItem;
+
+            RingOfProgress.IsActive = true;
+            RingOfProgress.Visibility = Visibility.Visible;
+            await Util.Database.DownloadAsync(fName);
+            RingOfProgress.Visibility = Visibility.Collapsed;
+            RingOfProgress.IsActive = false;
+
+            this.Frame.Navigate(typeof(Pages.Main.MainPage));
         }
 
         // Navigation

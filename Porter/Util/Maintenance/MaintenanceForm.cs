@@ -42,7 +42,7 @@ namespace Porter.Util.Maintenance
             {
                 db.Insert(item);
             }
-            Database.Upload();
+            Database.UploadAsync();
             return item.ID;
         }
         public void Update(int RecordID)
@@ -53,7 +53,7 @@ namespace Porter.Util.Maintenance
                 Update(item);
                 db.Update(item);
             }
-            Database.Upload();
+            Database.UploadAsync();
         }
         private void Update(Maintenance Item)
         {

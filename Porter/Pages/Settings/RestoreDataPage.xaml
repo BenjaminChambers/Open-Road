@@ -16,7 +16,7 @@
                       SelectionMode="None"
                       IsItemClickEnabled="True" ItemClick="OnSelectDataFile"
                       />
-            <ProgressRing x:Name="RingOfProgress" Visibility="Collapsed" IsActive="False" />
+            <ProgressRing x:Name="RingOfProgress" Visibility="Collapsed" IsActive="False" Background="{x:Null}" />
         </StackPanel>
     </Grid>
 </Page>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.OneDrive.Sdk.WinStore;
 using System.IO;
 using System;
+using System.Threading.Tasks;
 
 namespace Porter.Util
 {
@@ -20,7 +21,7 @@ namespace Porter.Util
 
                 var cars = conn.Table<Car.Car>();
 
-                if (cars.Count()==0)
+                if (cars.Count() == 0)
                 {
                     Car.Car car = new Car.Car();
                     conn.Insert(car);
@@ -31,16 +32,16 @@ namespace Porter.Util
                 if (cars.Where(vehicle => vehicle.ID == Settings.CurrentCarID).Count() == 0)
                     Settings.CurrentCarID = firstCar.ID;
 
-                
-                
+
+
 
                 Initialized = true;
             }
             return conn;
         }
-        
+
         public static string[] OneDriveScopes = { "wl.signin", "onedrive.appfolder", "wl.offline_access" };
-        public static async void Upload()
+        public static async void UploadAsync()
         {
             if (Settings.SaveToOneDrive)
             {
@@ -55,6 +56,22 @@ namespace Porter.Util
 
                 await OneDriveClient.Drive.Special.AppRoot.ItemWithPath(fName).Content.Request().PutAsync<Microsoft.OneDrive.Sdk.Item>(localFile);
             }
+        }
+
+        public static async Task DownloadAsync(string fName)
+        {
+            var OneDriveClient = OneDriveClientExtensions.GetUniversalClient(OneDriveScopes);
+            await OneDriveClient.AuthenticateAsync();
+
+            var localFile = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFileAsync("porter.sqlite", Windows.Storage.CreationCollisionOption.ReplaceExisting);
+            var localStream = await localFile.OpenStreamForWriteAsync();
+
+            var remoteStream = await OneDriveClient.Drive.Special.AppRoot.ItemWithPath(fName).Content.Request().GetAsync();
+
+            await remoteStream.CopyToAsync(localStream);
+            await localStream.FlushAsync();
+
+            return;
         }
     }
 }
