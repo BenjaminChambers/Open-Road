@@ -1,0 +1,44 @@
+﻿<Page
+    x:Class="Porter.Pages.About.AboutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Porter.Pages.About"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{StaticResource PageBackground}"
+    RequestedTheme="Dark">
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="Width" Value="350" />
+            <Setter Property="TextWrapping" Value="WrapWholeWords" />
+            
+        </Style>
+    </Page.Resources>
+
+    <Grid x:Name="LayoutRoot">
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Open Road" Style="{StaticResource FormTextStyle}" FontSize="48" HorizontalAlignment="Center" />
+            <TextBlock Text="Open Road is an open source utility for tracking mileage and costs of your vehicle." />
+
+            <TextBlock Text="December 5th, 2015" Margin="0,15,0,0" />
+            <TextBlock Text="&#8226; Ability to save/restore data from OneDrive added" />
+            <TextBlock Text="&#8226; About Page and changelog added" />
+
+            <TextBlock Text="September 13th, 2015" Margin="0,15,0,0" />
+            <TextBlock Text="&#8226; Increased some font sizes to aid readability" />
+
+            <TextBlock Text="August 11th, 2015" Margin="0,15,0,0" />
+            <TextBlock Text="&#8226; Enabled location tracking" />
+
+            <TextBlock Text="August 6th, 2015" Margin="0,15,0,0" />
+            <TextBlock Text="&#8226; Cleaned up display" />
+
+            <TextBlock Text="August 2nd, 2015" Margin="0,15,0,0" />
+            <TextBlock Text="&#8226; Initial submission to Windows Phone Store" />
+        </StackPanel>
+    </Grid>
+</Page>

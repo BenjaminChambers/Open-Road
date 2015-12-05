@@ -83,6 +83,11 @@ namespace Porter.Pages.Main
             Frame.Navigate(typeof(Settings.PreferencesPage));
         }
 
+        private void OnClickAbout(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(About.AboutPage));
+        }
+
         private void OnViewMaintenance(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MaintenanceList.MaintenanceListPage));

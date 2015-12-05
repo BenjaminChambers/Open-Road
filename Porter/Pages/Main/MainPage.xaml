@@ -35,6 +35,7 @@
                         <MenuFlyoutSeparator/>
                         <MenuFlyoutItem Text="Customize Main Page" Click="OnClickCustomize" />
                         <MenuFlyoutItem Text="Preferences" Click="OnClickPreferences" />
+                        <MenuFlyoutItem Text="About" Click="OnClickAbout" />
                     </MenuFlyout>
                 </FlyoutBase.AttachedFlyout>
             </Image>
