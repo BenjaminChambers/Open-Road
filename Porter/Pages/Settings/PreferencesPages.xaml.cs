@@ -58,6 +58,11 @@ namespace Porter.Pages.Settings
             Frame.Navigate(typeof(RestoreDataPage));
         }
 
+        private void OnSaveOneDrive(object sender, RoutedEventArgs e)
+        {
+            Util.Database.UploadAsync();
+        }
+
 
 
         // Navigation stuff

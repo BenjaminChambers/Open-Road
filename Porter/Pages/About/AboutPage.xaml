@@ -24,6 +24,9 @@
             <TextBlock Text="Open Road" Style="{StaticResource FormTextStyle}" FontSize="48" HorizontalAlignment="Center" />
             <TextBlock Text="Open Road is an open source utility for tracking mileage and costs of your vehicle." />
 
+            <TextBlock Text="December 6th, 2015" Margin="0,15,0,0" />
+            <TextBlock Text="&#8226; Added manual backup to OneDrive in addition to the automatic backups" />
+
             <TextBlock Text="December 5th, 2015" Margin="0,15,0,0" />
             <TextBlock Text="&#8226; Ability to save/restore data from OneDrive added" />
             <TextBlock Text="&#8226; About Page and changelog added" />
