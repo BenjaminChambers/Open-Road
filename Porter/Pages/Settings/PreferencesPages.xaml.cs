@@ -18,8 +18,18 @@ namespace Porter.Pages.Settings
         {
             InitializeComponent();
             InitializeNavigation();
+            InitializeAnimations();
+
 
             SetTextLabels();
+        }
+
+        private void InitializeAnimations()
+        {
+            Timeline fade = (Timeline)Resources["NotificationFade"];
+            Storyboard.SetTarget(fade, NotificationPanel);
+            Timeline slide = (Timeline)Resources["NotificationSlide"];
+            Storyboard.SetTarget(slide, NotificationPanelTransform);
         }
 
         private void SetTextLabels()
@@ -33,11 +43,13 @@ namespace Porter.Pages.Settings
             {
                 AllowOneDrive.Tag = "Saving Data to OneDrive";
                 RestoreFromOneDrive.Visibility = Visibility.Visible;
+                SaveToOneDrive.Visibility = Visibility.Visible;
             }
             else
             {
                 AllowOneDrive.Tag = "No online backup";
                 RestoreFromOneDrive.Visibility = Visibility.Collapsed;
+                SaveToOneDrive.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -61,6 +73,11 @@ namespace Porter.Pages.Settings
         private void OnSaveOneDrive(object sender, RoutedEventArgs e)
         {
             Util.Database.UploadAsync();
+
+            Storyboard fade = (Storyboard)Resources["NotificationFade"];
+            Storyboard slide = (Storyboard)Resources["NotificationSlide"];
+            fade.Begin();
+            slide.Begin();
         }
 
 
